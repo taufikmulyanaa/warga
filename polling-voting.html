@@ -3,42 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warga Connect - Polling & Voting</title>
+    <title>Warga Connect - Polling & Voting Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
         body { background-color: #F7F7F9; }
-        .card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            border-radius: 1.5rem; /* 24px */
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
-        }
-        .tab-active { 
-            border-color: #3b82f6; /* blue-600 */
-            color: #2563eb; /* blue-700 */
+        .card { border-radius: 1.5rem; }
+        .tab-btn.active {
+            border-color: #3b82f6;
+            color: #2563eb;
             font-weight: 600;
         }
-        .progress-bar { 
-            background-color: #e5e7eb; 
-            border-radius: 999px; 
-            overflow: hidden; 
-            height: 24px;
-        }
-        .progress { 
-            height: 100%; 
-            transition: width 0.5s ease; 
-            text-align: right; 
-            padding-right: 8px; 
-            color: white; 
-            font-size: 12px; 
-            line-height: 24px;
-            font-weight: 600;
-        }
+        .progress-bar-bg { background-color: #e5e7eb; border-radius: 999px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; transition: width 0.5s ease; text-align: right; padding-right: 8px; color: white; font-size: 12px; line-height: 20px; }
+        .candidate-card { transition: all 0.2s ease-in-out; }
+        .candidate-card.selected { border-color: #3b82f6; box-shadow: 0 0 0 2px #3b82f6; transform: scale(1.02); }
     </style>
 </head>
 <body class="text-gray-800">
@@ -50,8 +31,8 @@
                 <a href="index.html" class="flex items-center gap-4">
                     <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-900">Polling & Voting</h1>
-                        <p class="text-sm text-gray-500">Pengambilan Keputusan Bersama</p>
+                        <h1 class="text-xl font-bold text-gray-900">Polling & Voting Online</h1>
+                        <p class="text-sm text-gray-500">Ambil Keputusan Bersama</p>
                     </div>
                 </a>
                 <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
@@ -63,155 +44,163 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <header class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">Suara Anda Penting</h1>
-                <p class="text-gray-600 mt-1">Ikut serta dalam pengambilan keputusan untuk kemajuan lingkungan kita.</p>
-            </div>
-            <button id="buat-polling-btn" class="bg-blue-600 text-white font-medium py-3 px-5 rounded-xl hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap shadow-sm hover:shadow-lg transition-shadow">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Daftar Polling</h2>
+            <button id="buat-polling-btn" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center gap-2">
                 <i data-lucide="plus-circle" class="w-5 h-5"></i>
                 <span>Buat Polling Baru</span>
             </button>
-        </header>
+        </div>
 
         <!-- Tabs -->
         <div class="border-b border-gray-200 mb-6">
             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <button id="tab-aktif" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 text-sm">Polling Aktif</button>
-                <button id="tab-selesai" class="text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm">Polling Selesai</button>
+                <button class="tab-btn active p-4 border-b-2" data-tab="aktif">Polling Aktif</button>
+                <button class="tab-btn p-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700" data-tab="selesai">Polling Selesai</button>
             </nav>
         </div>
 
         <!-- Konten Polling -->
-        <div id="konten-polling" class="space-y-6">
+        <div id="tab-content">
             <!-- Polling Aktif Section -->
-            <div id="polling-aktif" class="space-y-6">
-                <!-- Contoh: Single Choice -->
-                <div class="card bg-white p-6 shadow-sm">
-                    <div class="border-b pb-4 mb-4"><h3 class="text-lg font-semibold">Pemilihan Ketua RT 2025-2028</h3><p class="text-sm text-gray-500">Berakhir dalam <span class="font-bold text-red-600">3 hari</span></p></div>
-                    <div class="space-y-3">
-                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="radio" name="ketua_rt" class="mr-3">Bpk. Budi Santoso</label>
-                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="radio" name="ketua_rt" class="mr-3">Bpk. Agus Setiawan</label>
-                        <button class="w-full bg-blue-600 text-white font-medium py-3 px-4 rounded-lg hover:bg-blue-700 mt-2">Kirim Suara</button>
+            <div id="aktif-content" class="tab-pane space-y-6">
+                <!-- Pemilihan Ketua RT -->
+                <div class="card bg-white shadow-sm overflow-hidden polling-card">
+                    <div class="p-6 border-b"><h3 class="text-lg font-semibold">Pemilihan Ketua RT 2025-2028</h3><p class="text-sm text-gray-500">Berakhir dalam <span class="font-bold text-red-600">3 hari</span>. Hak suara: 1 per KK.</p></div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 candidate-group">
+                            <div class="candidate-card border-2 border-gray-200 rounded-xl p-4 cursor-pointer">
+                                <input type="radio" name="ketua_rt" value="Budi Santoso" class="hidden">
+                                <div class="flex items-center gap-4">
+                                    <img src="https://placehold.co/80x80/E2E8F0/475569?text=BS" class="w-20 h-20 rounded-full" alt="Budi Santoso">
+                                    <div>
+                                        <p class="font-bold text-lg">Budi Santoso</p>
+                                        <p class="text-sm text-gray-600">Blok A No. 15</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="candidate-card border-2 border-gray-200 rounded-xl p-4 cursor-pointer">
+                                <input type="radio" name="ketua_rt" value="Agus Setiawan" class="hidden">
+                                <div class="flex items-center gap-4">
+                                    <img src="https://placehold.co/80x80/E2E8F0/475569?text=AS" class="w-20 h-20 rounded-full" alt="Agus Setiawan">
+                                    <div>
+                                        <p class="font-bold text-lg">Agus Setiawan</p>
+                                        <p class="text-sm text-gray-600">Blok B No. 08</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="vote-btn w-full bg-blue-600 text-white font-medium py-3 px-4 rounded-lg hover:bg-blue-700">Kirim Suara</button>
                     </div>
                 </div>
-                <!-- Contoh: Multiple Choice -->
-                <div class="card bg-white p-6 shadow-sm">
-                    <div class="border-b pb-4 mb-4"><h3 class="text-lg font-semibold">Pilih Kegiatan Lomba 17an (Bisa lebih dari 1)</h3><p class="text-sm text-gray-500">Berakhir dalam <span class="font-bold text-red-600">5 hari</span></p></div>
-                    <div class="space-y-3">
-                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="checkbox" name="lomba" class="mr-3 rounded">Lomba Balap Karung</label>
-                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="checkbox" name="lomba" class="mr-3 rounded">Lomba Makan Kerupuk</label>
-                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="checkbox" name="lomba" class="mr-3 rounded">Lomba Tarik Tambang</label>
-                        <button class="w-full bg-blue-600 text-white font-medium py-3 px-4 rounded-lg hover:bg-blue-700 mt-2">Kirim Pilihan</button>
+                <!-- Keputusan Pengecatan Gapura -->
+                <div class="card bg-white shadow-sm overflow-hidden polling-card">
+                    <div class="p-6 border-b"><h3 class="text-lg font-semibold">Apakah setuju dana kas digunakan untuk pengecatan gapura?</h3><p class="text-sm text-gray-500">Berakhir dalam <span class="font-bold text-red-600">5 hari</span>.</p></div>
+                    <div class="p-6 space-y-3">
+                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="radio" name="gapura" class="mr-3">Setuju</label>
+                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="radio" name="gapura" class="mr-3">Tidak Setuju</label>
+                        <label class="block p-4 border rounded-lg hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500"><input type="radio" name="gapura" class="mr-3">Butuh Diskusi Lagi</label>
+                        <button class="vote-btn w-full bg-blue-600 text-white font-medium py-3 px-4 rounded-lg hover:bg-blue-700 mt-2">Kirim Jawaban</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Polling Selesai Section (Hidden by default) -->
-            <div id="polling-selesai" class="hidden space-y-6">
-                 <div class="card bg-white p-6 shadow-sm">
-                    <div class="border-b pb-4 mb-4"><h3 class="text-lg font-semibold">Proyek Renovasi Pos Ronda</h3><p class="text-sm text-gray-500">Voting ditutup pada 10 Sep 2025</p></div>
-                    <div>
-                        <p class="font-bold text-lg text-green-600 mb-4">Hasil: DISETUJUI (85%)</p>
+            <!-- Polling Selesai Section -->
+            <div id="selesai-content" class="tab-pane hidden space-y-6">
+                 <div class="card bg-white shadow-sm">
+                    <div class="p-6 border-b"><h3 class="text-lg font-semibold">Proyek Renovasi Pos Ronda</h3><p class="text-sm text-gray-500">Voting ditutup pada 10 Sep 2025. Partisipasi: 95%</p></div>
+                    <div class="p-6">
+                        <p class="font-bold text-lg text-green-600 mb-4">Hasil: DISETUJUI</p>
                         <div class="space-y-3">
-                            <div><span class="font-medium text-sm">Setuju</span><div class="progress-bar mt-1"><div class="progress bg-green-500" style="width: 85%;">85%</div></div></div>
-                            <div><span class="font-medium text-sm">Tidak Setuju</span><div class="progress-bar mt-1"><div class="progress bg-red-500" style="width: 15%;">15%</div></div></div>
+                            <div>
+                                <div class="flex justify-between mb-1"><span class="font-medium text-sm">Setuju</span><span class="text-sm font-semibold">85%</span></div>
+                                <div class="progress-bar-bg h-5"><div class="progress-bar-fill bg-green-500" style="width: 85%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1"><span class="font-medium text-sm">Tidak Setuju</span><span class="text-sm font-semibold">15%</span></div>
+                                <div class="progress-bar-bg h-5"><div class="progress-bar-fill bg-red-500" style="width: 15%;"></div></div>
+                            </div>
                         </div>
-                        <button class="text-blue-600 hover:underline mt-4 text-sm font-semibold">Lihat Laporan Akhir</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="h-24 lg:hidden"></div>
     </main>
 
     <!-- Modal Buat Polling -->
-    <div id="polling-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div id="polling-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10 rounded-t-2xl">
-                <h3 class="text-xl font-bold">Buat Polling / Voting Baru</h3>
-                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10"><h3 class="text-xl font-bold">Buat Polling / Voting Baru</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
             <form id="polling-form" class="p-6 space-y-6">
-                <!-- Detail Polling -->
-                <div class="space-y-4">
-                    <div><label class="block text-sm font-medium mb-1">Judul Polling</label><input type="text" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div>
-                    <div><label class="block text-sm font-medium mb-1">Jenis Voting</label><select class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><option>Single Choice (Pilih Satu)</option><option>Multiple Choice (Pilih Banyak)</option><option>Yes/No (Setuju/Tidak)</option></select></div>
-                    <div id="opsi-container"><label class="block text-sm font-medium mb-1">Opsi Jawaban</label><input type="text" placeholder="Opsi 1" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><input type="text" placeholder="Opsi 2" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><button type="button" class="text-blue-600 text-sm mt-2 hover:underline">+ Tambah Opsi</button></div>
-                </div>
-                <!-- Aturan -->
-                <div class="space-y-4">
-                    <h4 class="font-semibold border-b pb-2">Aturan Voting</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><label class="block text-sm font-medium mb-1">Hak Suara</label><select class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><option>1 Kepala Keluarga = 1 Suara</option><option>1 NIK Terdaftar = 1 Suara</option></select></div>
-                        <div><label class="block text-sm font-medium mb-1">Durasi Voting (Hari)</label><input type="number" value="3" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div>
-                    </div>
-                    <div class="flex items-center"><input type="checkbox" class="h-4 w-4 rounded mr-2 text-blue-600"><label class="text-sm">Tampilkan hasil secara real-time</label></div>
-                </div>
+                 <div><label class="block text-sm font-medium">Judul Polling</label><input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                 <div><label class="block text-sm font-medium">Deskripsi</label><textarea rows="3" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></textarea></div>
+                 <div><label class="block text-sm font-medium">Jenis Voting</label><select class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><option>Single Choice (Pilih Satu)</option><option>Multiple Choice (Pilih Banyak)</option></select></div>
+                 <div id="opsi-container"><label class="block text-sm font-medium">Opsi Jawaban</label><input type="text" placeholder="Opsi 1" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><input type="text" placeholder="Opsi 2" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><button type="button" class="text-blue-600 text-sm mt-2 hover:underline">+ Tambah Opsi</button></div>
+                 <div><label class="block text-sm font-medium">Durasi Voting (Hari)</label><input type="number" value="3" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
                 <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-200">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Publikasikan Polling</button></div>
             </form>
         </div>
     </div>
     
-     <!-- Bottom Navigation (Mobile) -->
-    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
-        <div class="grid grid-cols-5 h-20">
-            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
-                <i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span>
-            </a>
-            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
-                <i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span>
-            </a>
-            <a href="laporan-keamanan.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
-                 <i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Lapor</span>
-            </a>
-            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
-                <i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span>
-            </a>
-             <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
-                <i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span>
-            </a>
-        </div>
-    </div>
-
     <script>
-        lucide.createIcons();
-        const tabAktif = document.getElementById('tab-aktif');
-        const tabSelesai = document.getElementById('tab-selesai');
-        const pollingAktif = document.getElementById('polling-aktif');
-        const pollingSelesai = document.getElementById('polling-selesai');
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
 
-        tabAktif.addEventListener('click', () => {
-            tabAktif.classList.add('tab-active');
-            tabSelesai.classList.remove('tab-active');
-            pollingAktif.classList.remove('hidden');
-            pollingSelesai.classList.add('hidden');
-        });
+            // --- Tab Logic ---
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    tabPanes.forEach(pane => {
+                        pane.style.display = pane.id === `${button.dataset.tab}-content` ? 'block' : 'none';
+                    });
+                });
+            });
 
-        tabSelesai.addEventListener('click', () => {
-            tabSelesai.classList.add('tab-active');
-            tabAktif.classList.remove('tab-active');
-            pollingSelesai.classList.remove('hidden');
-            pollingAktif.classList.add('hidden');
-        });
+            // --- Modal Buat Polling ---
+            const pollingModal = document.getElementById('polling-modal');
+            document.getElementById('buat-polling-btn').addEventListener('click', () => pollingModal.classList.remove('hidden'));
+            document.getElementById('close-modal-btn').addEventListener('click', () => pollingModal.classList.add('hidden'));
+            document.getElementById('batal-btn').addEventListener('click', () => pollingModal.classList.add('hidden'));
+            pollingModal.addEventListener('click', (e) => { if (e.target === pollingModal) pollingModal.classList.add('hidden'); });
 
-        const pollingModal = document.getElementById('polling-modal');
-        const openModalBtn = document.getElementById('buat-polling-btn');
-        const closeModalBtn = pollingModal.querySelector('#close-modal-btn');
-        const batalBtn = pollingModal.querySelector('#batal-btn');
-        const pollingForm = document.getElementById('polling-form');
+            // --- Voting Logic ---
+            // For candidate selection
+            document.querySelectorAll('.candidate-group').forEach(group => {
+                group.querySelectorAll('.candidate-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        group.querySelectorAll('.candidate-card').forEach(c => c.classList.remove('selected'));
+                        card.classList.add('selected');
+                        card.querySelector('input[type="radio"]').checked = true;
+                    });
+                });
+            });
 
-        openModalBtn.addEventListener('click', () => pollingModal.classList.remove('hidden'));
-        closeModalBtn.addEventListener('click', () => pollingModal.classList.add('hidden'));
-        batalBtn.addEventListener('click', () => pollingModal.classList.add('hidden'));
-        
-        pollingModal.addEventListener('click', (e) => { if (e.target === pollingModal) pollingModal.classList.add('hidden');});
-        
-        pollingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Polling baru berhasil dipublikasikan!');
-            pollingModal.classList.add('hidden');
-            pollingForm.reset();
+            // For submitting vote
+            document.querySelectorAll('.vote-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.polling-card');
+                    const inputs = card.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+                    let isVoted = false;
+                    inputs.forEach(input => {
+                        if (input.checked) isVoted = true;
+                    });
+                    
+                    if(isVoted) {
+                        inputs.forEach(input => input.disabled = true);
+                        card.querySelectorAll('label, .candidate-card').forEach(el => el.style.pointerEvents = 'none');
+                        button.textContent = '✅ Suara Anda Telah Direkam';
+                        button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                        button.classList.add('bg-green-600');
+                        button.disabled = true;
+                        card.style.opacity = '0.7';
+                    } else {
+                        alert('Silakan pilih salah satu opsi terlebih dahulu.');
+                    }
+                });
+            });
         });
     </script>
 </body>
