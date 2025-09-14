@@ -35,6 +35,14 @@
         .bottom-nav a.active {
             color: var(--primary-color);
         }
+        /* Animation for notification panel */
+        @keyframes slide-down {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .notification-panel {
+            animation: slide-down 0.2s ease-out;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -47,10 +55,44 @@
                     <p class="text-sm text-gray-500">Selamat datang kembali!</p>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button class="relative p-2 text-gray-500 hover:text-gray-800">
-                        <i data-lucide="bell" class="w-6 h-6"></i>
-                        <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
-                    </button>
+                    <div class="relative">
+                        <button id="notification-btn" class="relative p-2 text-gray-500 hover:text-gray-800">
+                            <i data-lucide="bell" class="w-6 h-6"></i>
+                            <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                        </button>
+                        <!-- Notification Panel -->
+                        <div id="notification-panel" class="hidden absolute top-full right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border z-50 notification-panel">
+                            <div class="p-4 border-b">
+                                <h3 class="font-semibold">Notifikasi</h3>
+                            </div>
+                            <div class="divide-y max-h-80 overflow-y-auto">
+                                <a href="jadwal-ronda.html" class="flex items-start gap-3 p-4 hover:bg-gray-50">
+                                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex-shrink-0 flex items-center justify-center"><i data-lucide="shield" class="w-5 h-5 text-yellow-600"></i></div>
+                                    <div>
+                                        <p class="text-sm font-medium">Jadwal Ronda Anda besok, 15 Sep pukul 23:00.</p>
+                                        <p class="text-xs text-gray-400 mt-1">1 hari yang lalu</p>
+                                    </div>
+                                </a>
+                                <a href="papan-pengumuman.html" class="flex items-start gap-3 p-4 hover:bg-gray-50">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex-shrink-0 flex items-center justify-center"><i data-lucide="megaphone" class="w-5 h-5 text-blue-600"></i></div>
+                                    <div>
+                                        <p class="text-sm font-medium">Pengumuman baru: Kerja Bakti Minggu Pagi.</p>
+                                        <p class="text-xs text-gray-400 mt-1">2 hari yang lalu</p>
+                                    </div>
+                                </a>
+                                <a href="iuran-warga.html" class="flex items-start gap-3 p-4 hover:bg-gray-50">
+                                    <div class="w-10 h-10 bg-red-100 rounded-full flex-shrink-0 flex items-center justify-center"><i data-lucide="wallet" class="w-5 h-5 text-red-600"></i></div>
+                                    <div>
+                                        <p class="text-sm font-medium">Iuran bulan September akan jatuh tempo dalam 3 hari.</p>
+                                        <p class="text-xs text-gray-400 mt-1">4 hari yang lalu</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="p-2 bg-gray-50 rounded-b-2xl text-center">
+                                <a href="#" class="text-sm font-semibold text-blue-600 hover:underline">Lihat semua notifikasi</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
                         <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                     </div>
@@ -305,6 +347,23 @@
                 greetingText = 'Selamat Malam, Budi';
             }
             greetingElement.textContent = greetingText;
+            
+            // Notification Panel Logic
+            const notificationButton = document.getElementById('notification-btn');
+            const notificationPanel = document.getElementById('notification-panel');
+
+            if(notificationButton && notificationPanel) {
+                notificationButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    notificationPanel.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!notificationPanel.classList.contains('hidden') && !notificationPanel.contains(event.target) && !notificationButton.contains(event.target)) {
+                        notificationPanel.classList.add('hidden');
+                    }
+                });
+            }
         });
     </script>
 </body>
