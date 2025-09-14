@@ -7,53 +7,181 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>:root { font-family: 'Inter', sans-serif; }</style>
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        .chat-container { height: calc(100vh - 8rem); } /* 100vh - nav height - padding */
+        .group-active { background-color: #eff6ff; color: #1d4ed8; }
+    </style>
 </head>
-<body class="bg-slate-50 flex flex-col h-screen">
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<body class="bg-slate-50">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
-                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                 <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
+                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                    </div>
                 </a>
-                <div class="text-center">
-                    <h2 class="font-semibold">Grup Info RT 003</h2>
-                    <p class="text-xs text-gray-500">45 anggota</p>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
+                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
                 </div>
-                 <button class="p-2 text-gray-500 hover:text-gray-700">
-                    <i data-lucide="more-vertical" class="w-5 h-5"></i>
-                </button>
             </div>
         </div>
     </nav>
-    <main class="flex-1 overflow-y-auto p-4 space-y-4">
-        <!-- Pesan Masuk -->
-        <div class="flex items-end gap-2">
-            <img src="https://placehold.co/40x40/E2E8F0/475569?text=RT" class="w-8 h-8 rounded-full">
-            <div class="p-3 bg-white rounded-lg rounded-bl-none shadow-sm max-w-xs">
-                <p class="font-semibold text-sm text-blue-600">Ketua RT</p>
-                <p class="text-sm">Assalamualaikum wr. wb. Bapak/Ibu, jangan lupa besok pagi ada kerja bakti jam 7 ya.</p>
-                <p class="text-xs text-right text-gray-400 mt-1">08:10</p>
-            </div>
+
+    <!-- Main Chat Interface -->
+    <div class="max-w-7xl mx-auto p-4">
+        <div class="bg-white rounded-lg shadow-sm border flex chat-container">
+            <!-- Sidebar: Daftar Grup -->
+            <aside class="w-1/4 border-r hidden md:flex flex-col">
+                <div class="p-4 border-b">
+                    <h2 class="font-semibold text-lg">Grup Chat</h2>
+                </div>
+                <nav class="flex-1 p-2 space-y-1">
+                    <a href="#" class="flex items-center gap-3 p-2 rounded-lg group-active">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><i data-lucide="users" class="w-5 h-5 text-blue-600"></i></div>
+                        <div><p class="font-semibold">Grup Resmi RT</p><p class="text-xs text-gray-500">Pengumuman: Kerja bakti...</p></div>
+                    </a>
+                     <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100">
+                        <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"><i data-lucide="shield" class="w-5 h-5 text-red-600"></i></div>
+                        <div><p class="font-semibold">Grup Ronda</p><p class="text-xs text-gray-500">Jadwal baru dirilis...</p></div>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><i data-lucide="calendar-heart" class="w-5 h-5 text-green-600"></i></div>
+                        <div><p class="font-semibold">Grup Kegiatan</p><p class="text-xs text-gray-500">Rapat panitia 17an...</p></div>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center"><i data-lucide="briefcase" class="w-5 h-5 text-gray-600"></i></div>
+                        <div><p class="font-semibold">Grup Pengurus</p><p class="text-xs text-gray-500">Mohon segera update...</p></div>
+                    </a>
+                </nav>
+            </aside>
+            
+            <!-- Main Chat Area -->
+            <main class="flex-1 flex flex-col">
+                <!-- Chat Header -->
+                <header class="p-4 border-b flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Grup Resmi RT</h3>
+                        <p class="text-xs text-gray-500">125 Warga Tergabung</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button class="text-gray-500 hover:text-gray-700"><i data-lucide="search" class="w-5 h-5"></i></button>
+                        <button class="text-gray-500 hover:text-gray-700"><i data-lucide="more-vertical" class="w-5 h-5"></i></button>
+                    </div>
+                </header>
+
+                <!-- Messages -->
+                <div id="message-list" class="flex-1 p-6 overflow-y-auto space-y-6">
+                    <!-- Pesan Pengumuman Penting -->
+                    <div class="bg-yellow-100 border-l-4 border-yellow-400 p-3 rounded-r-lg">
+                        <p class="font-bold text-yellow-800">[PENGUMUMAN PENTING]</p>
+                        <p class="text-sm text-yellow-900">Diberitahukan kepada seluruh warga, akan diadakan kerja bakti pembersihan selokan besok, 15 September 2025, pukul 07:00 pagi. Harap partisipasinya.</p>
+                        <div class="text-xs text-yellow-700 mt-1">Ketua RT (Blok C No. 01) - 10:30</div>
+                    </div>
+
+                    <!-- Pesan dari Orang Lain -->
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-200 flex items-center justify-center text-green-700 font-bold text-sm">AS</div>
+                        <div>
+                            <p class="text-xs text-gray-500">Agus Setiawan (Blok B No. 08)</p>
+                            <div class="bg-gray-100 p-3 rounded-lg rounded-tl-none mt-1">
+                                <p>Baik, Pak RT. Siap laksanakan.</p>
+                            </div>
+                            <div class="text-xs text-gray-400 mt-1">10:32</div>
+                        </div>
+                    </div>
+
+                    <!-- Pesan dari Saya (Pengguna) -->
+                    <div class="flex items-start gap-3 justify-end">
+                        <div>
+                            <p class="text-xs text-gray-500 text-right">Budi Santoso (Blok A No. 15)</p>
+                            <div class="bg-blue-600 text-white p-3 rounded-lg rounded-br-none mt-1">
+                                <p>Noted. Terima kasih informasinya.</p>
+                            </div>
+                             <div class="text-xs text-gray-400 mt-1 text-right">10:35</div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center text-blue-700 font-bold text-sm">BS</div>
+                    </div>
+                    
+                    <!-- Pesan dengan Lampiran Gambar -->
+                     <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-200 flex items-center justify-center text-purple-700 font-bold text-sm">SA</div>
+                        <div>
+                            <p class="text-xs text-gray-500">Siti Aminah (Blok A No. 15)</p>
+                            <div class="bg-gray-100 p-3 rounded-lg rounded-tl-none mt-1">
+                                <p>Sekadar info, kondisi selokan di depan seperti ini.</p>
+                                <img src="https://placehold.co/300x200/e2e8f0/64748b?text=Contoh+Selokan" alt="Kondisi Selokan" class="mt-2 rounded-lg max-w-xs">
+                            </div>
+                            <div class="text-xs text-gray-400 mt-1">10:40</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Input Message -->
+                <footer class="p-4 border-t">
+                    <div class="relative">
+                        <textarea id="message-input" rows="1" class="w-full bg-gray-100 rounded-lg p-3 pr-24 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" placeholder="Ketik pesan..."></textarea>
+                        <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                            <button class="text-gray-500 hover:text-gray-700"><i data-lucide="paperclip" class="w-5 h-5"></i></button>
+                            <button id="send-btn" class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-blue-700"><i data-lucide="send" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </footer>
+            </main>
         </div>
-        <!-- Pesan Keluar -->
-        <div class="flex items-end gap-2 justify-end">
-            <div class="p-3 bg-blue-500 text-white rounded-lg rounded-br-none shadow-sm max-w-xs">
-                <p class="text-sm">Siap, Pak RT. Terima kasih infonya.</p>
-                <p class="text-xs text-right text-blue-200 mt-1">08:12</p>
-            </div>
-        </div>
-    </main>
-    <footer class="p-2 bg-white border-t">
-        <div class="flex items-center gap-2">
-            <input type="text" placeholder="Ketik pesan..." class="w-full p-2 border rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700">
-                <i data-lucide="send"></i>
-            </button>
-        </div>
-    </footer>
+    </div>
     <script>
         lucide.createIcons();
+
+        // Auto-resize textarea
+        const messageInput = document.getElementById('message-input');
+        messageInput.addEventListener('input', () => {
+            messageInput.style.height = 'auto';
+            messageInput.style.height = (messageInput.scrollHeight) + 'px';
+        });
+
+        // Mock send message
+        const sendBtn = document.getElementById('send-btn');
+        const messageList = document.getElementById('message-list');
+
+        function sendMessage() {
+            const messageText = messageInput.value.trim();
+            if (messageText === '') return;
+
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('flex', 'items-start', 'gap-3', 'justify-end');
+            messageElement.innerHTML = `
+                <div>
+                    <p class="text-xs text-gray-500 text-right">Budi Santoso (Blok A No. 15)</p>
+                    <div class="bg-blue-600 text-white p-3 rounded-lg rounded-br-none mt-1">
+                        <p>${messageText}</p>
+                    </div>
+                     <div class="text-xs text-gray-400 mt-1 text-right">Sekarang</div>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center text-blue-700 font-bold text-sm">BS</div>
+            `;
+
+            messageList.appendChild(messageElement);
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
+            messageList.scrollTop = messageList.scrollHeight; // Scroll to bottom
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
     </script>
 </body>
 </html>
+

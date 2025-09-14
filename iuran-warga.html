@@ -9,191 +9,159 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
-        .tab-active {
-            border-color: #3b82f6;
-            color: #2563eb;
-        }
+        .tab-active { border-color: #2563eb; color: #2563eb; }
+        .tab-inactive { border-color: transparent; color: #6b7280; }
     </style>
 </head>
 <body class="bg-slate-50">
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                  <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
+                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
                     </div>
                 </a>
-                <h2 class="font-semibold">Iuran Warga</h2>
-                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </a>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
+                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <!-- Tabs -->
-        <div class="mb-6">
-            <div class="border-b border-gray-200">
-                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                    <button id="tab-tagihan" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                        Tagihan Bulan Ini
-                    </button>
-                    <button id="tab-riwayat" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                        Riwayat Pembayaran
-                    </button>
-                </nav>
-            </div>
-        </div>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">Iuran Warga Online</h1>
+            <p class="text-gray-600 mt-1">Bayar iuran lebih mudah, transparan, dan tercatat.</p>
+        </header>
 
-        <!-- Konten Tagihan Bulan Ini -->
-        <div id="konten-tagihan">
-            <div class="bg-white rounded-lg shadow-sm border p-6 mb-6">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <p class="text-sm text-gray-500">Tagihan Bulan</p>
-                        <h3 class="text-2xl font-bold text-gray-800">September 2025</h3>
-                        <p class="text-sm text-red-600 mt-1">Jatuh tempo pada 20 September 2025</p>
-                    </div>
-                    <span class="text-base font-semibold bg-orange-100 text-orange-800 px-3 py-1 rounded-full">Belum Lunas</span>
+        <!-- Ringkasan & Notifikasi -->
+        <div class="bg-white rounded-lg shadow-sm border p-6 mb-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h2 class="text-lg font-semibold">Total Tagihan Bulan September</h2>
+                    <p class="text-3xl font-bold text-red-600">Rp 75.000</p>
+                    <p class="text-sm text-gray-500">Jatuh tempo pada <span class="font-medium">20 September 2025</span></p>
                 </div>
-                <div class="border-t my-4"></div>
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Iuran Keamanan</span>
-                        <span>Rp 50.000</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Iuran Kebersihan</span>
-                        <span>Rp 25.000</span>
-                    </div>
-                </div>
-                <div class="border-t my-4"></div>
-                <div class="flex justify-between font-bold text-lg">
-                    <span>Total Tagihan</span>
-                    <span>Rp 75.000</span>
-                </div>
+                <button id="bayar-sekarang-btn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 flex items-center gap-2 w-full md:w-auto">
+                    <i data-lucide="credit-card" class="w-5 h-5"></i>
+                    <span>Bayar Sekarang</span>
+                </button>
             </div>
-
-            <div class="bg-white rounded-lg shadow-sm border p-6">
-                <h4 class="text-lg font-semibold mb-4">Pilih Metode Pembayaran</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- QRIS -->
-                    <button id="bayar-qris" class="border rounded-lg p-4 flex items-center gap-4 hover:bg-gray-50">
-                        <img src="https://placehold.co/40x40/E2E8F0/475569?text=QRIS" alt="QRIS" class="w-10 h-10">
-                        <div>
-                            <p class="font-semibold text-left">QRIS</p>
-                            <p class="text-xs text-gray-500 text-left">Mendukung semua e-wallet</p>
-                        </div>
-                    </button>
-                    <!-- Transfer Bank -->
-                    <div class="border rounded-lg p-4 flex items-center gap-4">
-                         <img src="https://placehold.co/40x40/E2E8F0/475569?text=Bank" alt="Bank" class="w-10 h-10">
-                        <div>
-                            <p class="font-semibold">Transfer Bank</p>
-                            <p class="text-xs text-gray-500">Bank BCA: 123456789 (a.n. Bendahara RT)</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-xs text-center mt-4 text-gray-500">Setelah melakukan transfer, harap konfirmasi ke Bendahara RT.</p>
+             <div class="mt-4 p-3 bg-yellow-50 text-yellow-800 rounded-lg text-sm flex items-center gap-3">
+                <i data-lucide="bell" class="w-5 h-5 flex-shrink-0"></i>
+                <span>Pengingat: Tagihan Anda akan jatuh tempo dalam 3 hari.</span>
             </div>
         </div>
         
-        <!-- Konten Riwayat -->
-        <div id="konten-riwayat" class="hidden">
-             <div class="bg-white rounded-lg shadow-sm border">
-                <ul role="list" class="divide-y divide-gray-200">
-                    <li class="p-4 flex justify-between items-center">
-                        <div>
-                            <p class="font-semibold text-gray-800">Iuran Agustus 2025</p>
-                            <p class="text-sm text-gray-500">Dibayar pada 5 Agu 2025</p>
-                        </div>
-                        <span class="text-xs font-medium bg-green-100 text-green-800 px-2 py-1 rounded-full">Lunas</span>
-                    </li>
-                    <li class="p-4 flex justify-between items-center">
-                        <div>
-                            <p class="font-semibold text-gray-800">Iuran Juli 2025</p>
-                            <p class="text-sm text-gray-500">Dibayar pada 3 Jul 2025</p>
-                        </div>
-                        <span class="text-xs font-medium bg-green-100 text-green-800 px-2 py-1 rounded-full">Lunas</span>
-                    </li>
-                     <li class="p-4 flex justify-between items-center">
-                        <div>
-                            <p class="font-semibold text-gray-800">Iuran Juni 2025</p>
-                            <p class="text-sm text-gray-500">Dibayar pada 8 Jun 2025</p>
-                        </div>
-                        <span class="text-xs font-medium bg-green-100 text-green-800 px-2 py-1 rounded-full">Lunas</span>
-                    </li>
-                </ul>
-            </div>
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                <button id="tab-rincian" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Rincian Tagihan</button>
+                <button id="tab-riwayat" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Riwayat Pembayaran</button>
+            </nav>
         </div>
 
-    </main>
-    
-    <!-- Modal QRIS -->
-    <div id="modal-qris" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-sm text-center">
-            <div class="p-6 border-b flex justify-between items-center">
-                <h3 class="text-xl font-bold">Bayar dengan QRIS</h3>
-                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
+        <!-- Konten Iuran -->
+        <div id="konten-iuran">
+            <!-- Rincian Tagihan -->
+            <div id="rincian-tagihan" class="space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm border">
+                    <h3 class="font-semibold text-gray-800">Iuran Rutin Bulanan</h3>
+                    <div class="flex justify-between items-center mt-2"><span>Keamanan & Kebersihan</span><span class="font-bold">Rp 50.000</span></div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border">
+                    <h3 class="font-semibold text-gray-800">Iuran Insidental</h3>
+                    <div class="flex justify-between items-center mt-2"><span>Perbaikan Jalan Blok A</span><span class="font-bold">Rp 25.000</span></div>
+                </div>
+                 <div class="bg-white p-4 rounded-lg shadow-sm border">
+                    <h3 class="font-semibold text-gray-800">Donasi Sukarela (Opsional)</h3>
+                    <div class="flex justify-between items-center mt-2"><span>Bantuan Warga Sakit (Bpk. Joko)</span><a href="#" class="text-blue-600 hover:underline font-medium">Beri Donasi</a></div>
+                </div>
             </div>
-            <div class="p-6">
-                <p>Scan QR Code di bawah ini</p>
-                <img src="https://placehold.co/300x300/FFFFFF/000000?text=QRIS+RT+003" alt="QRIS Code" class="w-full max-w-xs mx-auto my-4">
-                <p class="font-bold text-2xl">Total: Rp 75.000</p>
-                <p class="text-xs text-gray-500 mt-2">Pastikan nama merchant adalah "Kas RT 003".</p>
+            
+            <!-- Riwayat Pembayaran (Hidden) -->
+            <div id="riwayat-pembayaran" class="hidden bg-white rounded-lg shadow-sm border overflow-x-auto">
+                 <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3">Bulan</th><th class="px-6 py-3">Total Bayar</th><th class="px-6 py-3">Tanggal Bayar</th><th class="px-6 py-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b"><td class="px-6 py-4 font-medium">Agustus 2025</td><td class="px-6 py-4">Rp 50.000</td><td class="px-6 py-4">05 Agu 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Lunas</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-medium">Juli 2025</td><td class="px-6 py-4">Rp 50.000</td><td class="px-6 py-4">02 Jul 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Lunas</span></td></tr>
+                    </tbody>
+                 </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Pembayaran -->
+    <div id="bayar-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="p-6 border-b flex justify-between items-center"><h3 class="text-xl font-bold">Metode Pembayaran</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+            <div class="p-6 space-y-6">
+                <div>
+                    <h4 class="font-semibold text-center">Scan QRIS</h4>
+                    <p class="text-sm text-center text-gray-500">Mendukung semua E-Wallet & Mobile Banking</p>
+                    <div class="w-48 h-48 bg-gray-200 mx-auto mt-2 flex items-center justify-center">[Gambar QRIS di sini]</div>
+                    <p class="text-xs text-center text-green-600 mt-2 font-medium">Pembayaran akan terkonfirmasi otomatis.</p>
+                </div>
+                <div class="text-center text-gray-500">atau</div>
+                <div>
+                     <h4 class="font-semibold text-center">Transfer Bank Manual</h4>
+                     <div class="mt-2 p-3 bg-blue-50 rounded-lg text-center">
+                        <p class="text-sm">Bank BCA</p>
+                        <p class="font-bold text-lg tracking-wider">123 456 7890</p>
+                        <p class="text-sm">a/n Bendahara RT 003</p>
+                     </div>
+                     <p class="text-xs text-center text-red-600 mt-2 font-medium">Wajib upload bukti transfer untuk verifikasi.</p>
+                     <button class="w-full mt-2 bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg hover:bg-gray-300 flex items-center justify-center gap-2">
+                        <i data-lucide="upload-cloud" class="w-4 h-4"></i> Upload Bukti Transfer
+                     </button>
+                </div>
             </div>
         </div>
     </div>
 
-
     <script>
         lucide.createIcons();
-
         // Tab functionality
-        const tabTagihan = document.getElementById('tab-tagihan');
+        const tabRincian = document.getElementById('tab-rincian');
         const tabRiwayat = document.getElementById('tab-riwayat');
-        const kontenTagihan = document.getElementById('konten-tagihan');
-        const kontenRiwayat = document.getElementById('konten-riwayat');
+        const rincianContent = document.getElementById('rincian-tagihan');
+        const riwayatContent = document.getElementById('riwayat-pembayaran');
 
-        tabTagihan.addEventListener('click', () => {
-            tabTagihan.classList.add('tab-active');
-            tabRiwayat.classList.remove('tab-active');
-            kontenTagihan.classList.remove('hidden');
-            kontenRiwayat.classList.add('hidden');
+        tabRincian.addEventListener('click', () => {
+            tabRincian.classList.add('tab-active'); tabRincian.classList.remove('tab-inactive');
+            tabRiwayat.classList.add('tab-inactive'); tabRiwayat.classList.remove('tab-active');
+            rincianContent.classList.remove('hidden');
+            riwayatContent.classList.add('hidden');
         });
-
         tabRiwayat.addEventListener('click', () => {
-            tabRiwayat.classList.add('tab-active');
-            tabTagihan.classList.remove('tab-active');
-            kontenRiwayat.classList.remove('hidden');
-            kontenTagihan.classList.add('hidden');
+            tabRiwayat.classList.add('tab-active'); tabRiwayat.classList.remove('tab-inactive');
+            tabRincian.classList.add('tab-inactive'); tabRincian.classList.remove('tab-active');
+            riwayatContent.classList.remove('hidden');
+            rincianContent.classList.add('hidden');
         });
+        // Modal Pembayaran
+        const bayarModal = document.getElementById('bayar-modal');
+        const openModalBtn = document.getElementById('bayar-sekarang-btn');
+        const closeModalBtn = bayarModal.querySelector('#close-modal-btn');
         
-        // Modal QRIS
-        const modal = document.getElementById('modal-qris');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const bayarQrisBtn = document.getElementById('bayar-qris');
+        function openBayarModal() { bayarModal.classList.remove('hidden'); }
+        function closeBayarModal() { bayarModal.classList.add('hidden'); }
 
-        function openModal() {
-            modal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            modal.classList.add('hidden');
-        }
-        
-        bayarQrisBtn.addEventListener('click', openModal);
-        closeModalBtn.addEventListener('click', closeModal);
-         modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
+        openModalBtn.addEventListener('click', openBayarModal);
+        closeModalBtn.addEventListener('click', closeBayarModal);
+        bayarModal.addEventListener('click', (e) => { if (e.target === bayarModal) closeBayarModal(); });
     </script>
 </body>
 </html>

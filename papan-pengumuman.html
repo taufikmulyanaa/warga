@@ -9,123 +9,124 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
-        .announcement-card { transition: all 0.3s ease; }
     </style>
 </head>
 <body class="bg-slate-50">
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                  <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
+                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
                     </div>
                 </a>
-                <h2 class="font-semibold">Papan Pengumuman</h2>
-                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </a>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
+                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Ketua RT</p></div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <!-- Filters -->
-        <div class="mb-6 bg-white p-2 rounded-lg border shadow-sm">
-            <div id="filters" class="flex gap-2 overflow-x-auto">
-                <button data-filter="semua" class="filter-btn bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-md whitespace-nowrap">Semua</button>
-                <button data-filter="umum" class="filter-btn bg-gray-100 text-gray-800 text-sm font-semibold px-4 py-2 rounded-md whitespace-nowrap">Umum</button>
-                <button data-filter="acara" class="filter-btn bg-gray-100 text-gray-800 text-sm font-semibold px-4 py-2 rounded-md whitespace-nowrap">Acara</button>
-                <button data-filter="iuran" class="filter-btn bg-gray-100 text-gray-800 text-sm font-semibold px-4 py-2 rounded-md whitespace-nowrap">Iuran</button>
-                <button data-filter="keamanan" class="filter-btn bg-gray-100 text-gray-800 text-sm font-semibold px-4 py-2 rounded-md whitespace-nowrap">Keamanan</button>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <header class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Papan Pengumuman Digital</h1>
+                <p class="text-gray-600 mt-1">Sumber informasi resmi, terstruktur, dan terdokumentasi.</p>
+            </div>
+            <button id="buat-pengumuman-btn" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap">
+                <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                <span>Buat Pengumuman</span>
+            </button>
+        </header>
+
+        <!-- Filter & Search -->
+        <div class="mb-6 flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-grow">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                <input type="text" placeholder="Cari pengumuman..." class="pl-10 pr-4 py-2 border rounded-lg w-full">
+            </div>
+            <select class="border rounded-lg py-2 px-3">
+                <option>Semua Kategori</option>
+                <option>Keamanan</option>
+                <option>Kebersihan</option>
+                <option>Keuangan</option>
+                <option>Kegiatan Warga</option>
+                <option>Administrasi</option>
+            </select>
+        </div>
+
+        <!-- Daftar Pengumuman -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Pengumuman 1: Kegiatan Warga -->
+            <div class="bg-white rounded-lg shadow-sm border flex flex-col">
+                <div class="p-4 border-b">
+                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Kegiatan Warga</span>
+                    <h3 class="font-semibold text-lg mt-2">Kerja Bakti Pembersihan Selokan</h3>
+                    <p class="text-sm text-gray-600 mt-1">Diberitahukan kepada seluruh warga untuk mengikuti kerja bakti yang akan dilaksanakan pada...</p>
+                </div>
+                <div class="p-4 flex-grow"><p class="text-xs text-gray-500 font-medium">LAMPIRAN:</p><a href="#" class="flex items-center gap-2 text-sm text-blue-600 hover:underline mt-1"><i data-lucide="image" class="w-4 h-4"></i> foto-kondisi-selokan.jpg</a></div>
+                <div class="p-4 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Ketua RT</span><span>14 Sep 2025</span></div>
+            </div>
+            
+            <!-- Pengumuman 2: Keuangan -->
+            <div class="bg-white rounded-lg shadow-sm border flex flex-col">
+                <div class="p-4 border-b">
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Keuangan</span>
+                    <h3 class="font-semibold text-lg mt-2">Laporan Keuangan Bulan Agustus 2025</h3>
+                    <p class="text-sm text-gray-600 mt-1">Berikut kami sampaikan laporan kas RT bulan Agustus 2025. Silakan unduh lampiran untuk detailnya.</p>
+                </div>
+                <div class="p-4 flex-grow"><p class="text-xs text-gray-500 font-medium">LAMPIRAN:</p><a href="laporan-keuangan.html" class="flex items-center gap-2 text-sm text-blue-600 hover:underline mt-1"><i data-lucide="file-text" class="w-4 h-4"></i> laporan_keuangan_agt_25.pdf</a></div>
+                <div class="p-4 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Bendahara RT</span><span>10 Sep 2025</span></div>
+            </div>
+            
+            <!-- Pengumuman 3: Keamanan -->
+             <div class="bg-white rounded-lg shadow-sm border flex flex-col">
+                <div class="p-4 border-b">
+                    <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Keamanan</span>
+                    <h3 class="font-semibold text-lg mt-2">Jadwal Ronda Baru Bulan Oktober</h3>
+                    <p class="text-sm text-gray-600 mt-1">Jadwal ronda untuk bulan Oktober sudah dirilis. Mohon untuk memeriksa jadwal masing-masing.</p>
+                </div>
+                <div class="p-4 flex-grow"><p class="text-xs text-gray-500 font-medium">TIDAK ADA LAMPIRAN</p></div>
+                <div class="p-4 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Seksi Keamanan</span><span>08 Sep 2025</span></div>
             </div>
         </div>
-        
-        <!-- Announcement List -->
-        <div id="announcement-list" class="space-y-4">
-            <!-- Announcement Card 1: Acara -->
-            <div class="announcement-card bg-white rounded-lg shadow-sm border p-4 flex gap-4 items-start" data-category="acara">
-                <div class="bg-purple-100 text-purple-600 p-3 rounded-full">
-                    <i data-lucide="calendar" class="w-5 h-5"></i>
+    </div>
+    
+    <!-- Modal Buat Pengumuman -->
+    <div id="pengumuman-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10"><h3 class="text-xl font-bold">Formulir Pengumuman</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+            <form id="pengumuman-form" class="p-6 space-y-6">
+                <div><label class="block text-sm font-medium">Judul Pengumuman</label><input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                <div><label class="block text-sm font-medium">Isi Pengumuman</label><textarea rows="5" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></textarea></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-medium">Kategori</label><select class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><option>Kegiatan Warga</option><option>Keamanan</option><option>Keuangan</option><option>Kebersihan</option><option>Administrasi</option></select></div>
+                    <div><label class="block text-sm font-medium">Prioritas Notifikasi</label><select class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><option>Biasa</option><option>Penting (Urgent)</option></select></div>
                 </div>
-                <div>
-                    <p class="text-xs text-purple-600 font-semibold">ACARA</p>
-                    <h3 class="font-bold text-gray-800 mt-1">Kerja Bakti Minggu Pagi</h3>
-                    <p class="text-sm text-gray-600 mt-2">Diberitahukan kepada seluruh warga untuk mengikuti kegiatan kerja bakti pembersihan selokan dan area taman yang akan dilaksanakan pada hari Minggu, 15 September 2025, pukul 07:00 WIB. Harap berkumpul di pos RT.</p>
-                    <p class="text-xs text-gray-500 mt-3">Diposting oleh <strong>Ketua RT</strong> • 12 September 2025</p>
-                </div>
-            </div>
-
-            <!-- Announcement Card 2: Iuran -->
-            <div class="announcement-card bg-white rounded-lg shadow-sm border p-4 flex gap-4 items-start" data-category="iuran">
-                <div class="bg-green-100 text-green-600 p-3 rounded-full">
-                    <i data-lucide="wallet" class="w-5 h-5"></i>
-                </div>
-                <div>
-                    <p class="text-xs text-green-600 font-semibold">IURAN</p>
-                    <h3 class="font-bold text-gray-800 mt-1">Pengingat Pembayaran Iuran September</h3>
-                    <p class="text-sm text-gray-600 mt-2">Bapak/Ibu warga RT 003, diingatkan kembali bahwa batas akhir pembayaran iuran keamanan dan kebersihan bulan September adalah tanggal 20. Pembayaran dapat dilakukan melalui QRIS atau langsung ke Bendahara.</p>
-                    <p class="text-xs text-gray-500 mt-3">Diposting oleh <strong>Bendahara RT</strong> • 10 September 2025</p>
-                </div>
-            </div>
-
-            <!-- Announcement Card 3: Keamanan -->
-            <div class="announcement-card bg-white rounded-lg shadow-sm border p-4 flex gap-4 items-start" data-category="keamanan">
-                <div class="bg-red-100 text-red-600 p-3 rounded-full">
-                    <i data-lucide="shield-alert" class="w-5 h-5"></i>
-                </div>
-                <div>
-                    <p class="text-xs text-red-600 font-semibold">KEAMANAN</p>
-                    <h3 class="font-bold text-gray-800 mt-1">Pemasangan CCTV Baru di Jalan Masuk</h3>
-                    <p class="text-sm text-gray-600 mt-2">Untuk meningkatkan keamanan bersama, telah dilakukan pemasangan unit CCTV baru di jalan masuk utama. Warga terverifikasi dapat mengakses siaran langsung melalui menu CCTV di aplikasi ini.</p>
-                    <p class="text-xs text-gray-500 mt-3">Diposting oleh <strong>Seksi Keamanan</strong> • 8 September 2025</p>
-                </div>
-            </div>
-
-            <!-- Announcement Card 4: Umum -->
-            <div class="announcement-card bg-white rounded-lg shadow-sm border p-4 flex gap-4 items-start" data-category="umum">
-                <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
-                    <i data-lucide="info" class="w-5 h-5"></i>
-                </div>
-                <div>
-                    <p class="text-xs text-blue-600 font-semibold">UMUM</p>
-                    <h3 class="font-bold text-gray-800 mt-1">Pendataan Ulang Warga</h3>
-                    <p class="text-sm text-gray-600 mt-2">Dalam rangka pembaruan data kependudukan di lingkungan RT, dimohon kepada seluruh Kepala Keluarga untuk mengisi formulir pendataan digital yang tersedia di menu "Pendataan Warga".</p>
-                    <p class="text-xs text-gray-500 mt-3">Diposting oleh <strong>Sekretaris RT</strong> • 5 September 2025</p>
-                </div>
-            </div>
+                <div><label class="block text-sm font-medium">Lampiran (Foto/PDF)</label><input type="file" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Terbitkan</button></div>
+            </form>
         </div>
-    </main>
-    <div class="h-16 lg:hidden"></div>
+    </div>
+
     <script>
         lucide.createIcons();
+        // Modal Pengumuman
+        const pengumumanModal = document.getElementById('pengumuman-modal');
+        const openModalBtn = document.getElementById('buat-pengumuman-btn');
+        const closeModalBtn = pengumumanModal.querySelector('#close-modal-btn');
+        const batalBtn = pengumumanModal.querySelector('#batal-btn');
 
-        const filterContainer = document.getElementById('filters');
-        const announcementList = document.getElementById('announcement-list');
-        const announcementCards = announcementList.querySelectorAll('.announcement-card');
-        
-        filterContainer.addEventListener('click', (event) => {
-            if (event.target.tagName !== 'BUTTON') return;
-
-            const filterValue = event.target.dataset.filter;
-
-            // Update button styles
-            filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-blue-600', 'text-white');
-                btn.classList.add('bg-gray-100', 'text-gray-800');
-            });
-            event.target.classList.add('bg-blue-600', 'text-white');
-            event.target.classList.remove('bg-gray-100', 'text-gray-800');
-
-            // Filter announcements
-            announcementCards.forEach(card => {
-                if (filterValue === 'semua' || card.dataset.category === filterValue) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
+        openModalBtn.addEventListener('click', () => pengumumanModal.classList.remove('hidden'));
+        closeModalBtn.addEventListener('click', () => pengumumanModal.classList.add('hidden'));
+        batalBtn.addEventListener('click', () => pengumumanModal.classList.add('hidden'));
+        pengumumanModal.addEventListener('click', (e) => { if (e.target === pengumumanModal) pengumumanModal.classList.add('hidden'); });
     </script>
 </body>
 </html>

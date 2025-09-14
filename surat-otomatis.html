@@ -7,108 +7,165 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>:root { font-family: 'Inter', sans-serif; }</style>
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        .tab-active { border-color: #2563eb; color: #2563eb; }
+        .tab-inactive { border-color: transparent; color: #6b7280; }
+    </style>
 </head>
 <body class="bg-slate-50">
-     <nav class="bg-white shadow-sm sticky top-0 z-50">
-         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                  <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
+                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
                     </div>
                 </a>
-                <h2 class="font-semibold">Buat Surat</h2>
-                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </a>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
+                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
+                </div>
             </div>
         </div>
     </nav>
-    <main class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div class="bg-white rounded-lg shadow-sm border p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Form Pengajuan Surat Pengantar</h3>
-            <form id="suratForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                    <input type="text" value="Budi Santoso" class="mt-1 block w-full p-2 border bg-gray-100 rounded-md" readonly>
-                </div>
-                 <div>
-                    <label class="block text-sm font-medium text-gray-700">NIK</label>
-                    <input type="text" value="327xxxxxxxxxxxxx" class="mt-1 block w-full p-2 border bg-gray-100 rounded-md" readonly>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <header class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Surat Otomatis RT/RW</h1>
+                <p class="text-gray-600 mt-1">Ajukan surat pengantar dan administrasi lainnya secara online.</p>
+            </div>
+            <button id="buat-surat-btn" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap">
+                <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                <span>Buat Pengajuan Baru</span>
+            </button>
+        </header>
+
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                <button id="tab-saat-ini" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Pengajuan Saat Ini</button>
+                <button id="tab-riwayat" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Riwayat Pengajuan</button>
+            </nav>
+        </div>
+        
+        <!-- Konten Surat -->
+        <div>
+            <!-- Pengajuan Saat Ini -->
+            <div id="pengajuan-saat-ini" class="space-y-4">
+                <!-- Contoh Disetujui -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                        <label for="tempat_lahir" class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
-                        <input type="text" id="tempat_lahir" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        <p class="font-semibold">Surat Pengantar SKCK</p>
+                        <p class="text-sm text-gray-500">Diajukan pada 10 September 2025</p>
                     </div>
+                    <div class="flex items-center gap-4 w-full sm:w-auto">
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Disetujui</span>
+                        <button class="flex-1 sm:flex-none bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 text-sm flex items-center justify-center gap-2">
+                            <i data-lucide="download" class="w-4 h-4"></i> Download PDF
+                        </button>
+                    </div>
+                </div>
+                <!-- Contoh Diproses -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                        <label for="tanggal_lahir" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
-                        <input type="date" id="tanggal_lahir" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        <p class="font-semibold">Surat Keterangan Domisili</p>
+                        <p class="text-sm text-gray-500">Diajukan pada 14 September 2025</p>
                     </div>
+                     <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Sedang Diproses</span>
                 </div>
-                 <div>
-                    <label for="jenis_kelamin" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
-                    <select id="jenis_kelamin" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-                        <option>Laki-laki</option>
-                        <option>Perempuan</option>
-                    </select>
+                 <!-- Contoh Ditolak -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <p class="font-semibold">Surat Pengantar KTP</p>
+                        <p class="text-sm text-gray-500">Diajukan pada 08 September 2025</p>
+                         <p class="text-xs text-red-600 mt-1">Alasan: Scan KK kurang jelas, harap upload ulang.</p>
+                    </div>
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Ditolak</span>
                 </div>
-                <div>
-                    <label for="agama" class="block text-sm font-medium text-gray-700">Agama</label>
-                    <select id="agama" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-                        <option>Islam</option>
-                        <option>Kristen Protestan</option>
-                        <option>Katolik</option>
-                        <option>Hindu</option>
-                        <option>Buddha</option>
-                        <option>Khonghucu</option>
-                    </select>
+            </div>
+
+            <!-- Riwayat Pengajuan (Hidden) -->
+            <div id="riwayat-pengajuan" class="hidden bg-white rounded-lg shadow-sm border overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr><th class="px-6 py-3">Jenis Surat</th><th class="px-6 py-3">Tanggal Selesai</th><th class="px-6 py-3">Status</th></tr>
+                    </thead>
+                    <tbody>
+                         <tr class="border-b"><td class="px-6 py-4 font-medium">Surat Pengantar KK</td><td class="px-6 py-4">05 Agustus 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Disetujui</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Buat Surat -->
+    <div id="surat-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10"><h3 class="text-xl font-bold">Formulir Pengajuan Surat</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+            <form id="surat-form" class="p-6 space-y-6">
+                <!-- Jenis Surat -->
+                <div><label class="block text-sm font-medium text-gray-700">Jenis Surat yang Diajukan</label><select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"><option>Surat Keterangan Domisili</option><option>Surat Pengantar KTP/KK</option><option>Surat Pengantar SKCK</option><option>Surat Keterangan Usaha</option></select></div>
+                <!-- Data Pemohon -->
+                <div class="space-y-4 p-4 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold">Data Pemohon (Otomatis Terisi)</h4>
+                    <p class="text-sm"><strong>Nama:</strong> Budi Santoso</p>
+                    <p class="text-sm"><strong>NIK:</strong> 327601...</p>
+                    <p class="text-sm"><strong>Alamat:</strong> Blok A No. 15, Kel. Depok, Kec. Pancoran Mas</p>
                 </div>
-                 <div>
-                    <label for="status_perkawinan" class="block text-sm font-medium text-gray-700">Status Perkawinan</label>
-                    <select id="status_perkawinan" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-                        <option>Belum Kawin</option>
-                        <option>Kawin</option>
-                        <option>Cerai Hidup</option>
-                        <option>Cerai Mati</option>
-                    </select>
-                </div>
-                 <div>
-                    <label for="pekerjaan" class="block text-sm font-medium text-gray-700">Pekerjaan</label>
-                    <input type="text" id="pekerjaan" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Contoh: Karyawan Swasta" required>
-                </div>
-                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Alamat</label>
-                    <textarea rows="2" class="mt-1 block w-full p-2 border bg-gray-100 rounded-md" readonly>Blok A No. 15, Kelurahan Depok, RT 003/RW 012</textarea>
-                </div>
-                <hr class="my-4">
-                <div>
-                    <label for="jenis" class="block text-sm font-medium text-gray-700">Jenis Surat</label>
-                    <select id="jenis" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-                        <option>Surat Keterangan Domisili</option>
-                        <option>Surat Pengantar Pembuatan KTP</option>
-                        <option>Surat Pengantar Pembuatan KK</option>
-                        <option>Surat Pengantar SKCK</option>
-                    </select>
-                </div>
-                 <div>
-                    <label for="keperluan" class="block text-sm font-medium text-gray-700">Keperluan</label>
-                    <textarea id="keperluan" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Contoh: Untuk melamar pekerjaan"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold flex items-center justify-center gap-2">
-                    <i data-lucide="download"></i>
-                    Ajukan & Cetak Surat
-                </button>
+                <!-- Detail Keperluan -->
+                <div><label class="block text-sm font-medium text-gray-700">Tujuan / Keperluan Surat</label><textarea rows="3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Contoh: Untuk melamar pekerjaan di PT. ABC"></textarea></div>
+                <!-- Dokumen Pendukung -->
+                <div><label class="block text-sm font-medium text-gray-700">Upload Dokumen Pendukung (jika perlu)</label><input type="file" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Kirim Pengajuan</button></div>
             </form>
         </div>
-    </main>
-    <div class="h-16 lg:hidden"></div>
+    </div>
+
     <script>
         lucide.createIcons();
-        document.getElementById('suratForm').addEventListener('submit', function(e) {
+        // Tab functionality
+        const tabSaatIni = document.getElementById('tab-saat-ini');
+        const tabRiwayat = document.getElementById('tab-riwayat');
+        const pengajuanSaatIni = document.getElementById('pengajuan-saat-ini');
+        const riwayatPengajuan = document.getElementById('riwayat-pengajuan');
+
+        tabSaatIni.addEventListener('click', () => {
+            tabSaatIni.classList.add('tab-active'); tabSaatIni.classList.remove('tab-inactive');
+            tabRiwayat.classList.add('tab-inactive'); tabRiwayat.classList.remove('tab-active');
+            pengajuanSaatIni.classList.remove('hidden');
+            riwayatPengajuan.classList.add('hidden');
+        });
+        tabRiwayat.addEventListener('click', () => {
+            tabRiwayat.classList.add('tab-active'); tabRiwayat.classList.remove('tab-inactive');
+            tabSaatIni.classList.add('tab-inactive'); tabSaatIni.classList.remove('tab-active');
+            riwayatPengajuan.classList.remove('hidden');
+            pengajuanSaatIni.classList.add('hidden');
+        });
+
+        // Modal Buat Surat
+        const suratModal = document.getElementById('surat-modal');
+        const openModalBtn = document.getElementById('buat-surat-btn');
+        const closeModalBtn = suratModal.querySelector('#close-modal-btn');
+        const batalBtn = suratModal.querySelector('#batal-btn');
+        const suratForm = document.getElementById('surat-form');
+
+        openModalBtn.addEventListener('click', () => suratModal.classList.remove('hidden'));
+        closeModalBtn.addEventListener('click', () => suratModal.classList.add('hidden'));
+        batalBtn.addEventListener('click', () => suratModal.classList.add('hidden'));
+        suratModal.addEventListener('click', (e) => { if (e.target === suratModal) suratModal.classList.add('hidden'); });
+        
+        suratForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Pengajuan berhasil! Surat akan segera diproses dan dapat diunduh.');
+            alert('Pengajuan surat berhasil dikirim! Silakan tunggu notifikasi dari Ketua RT.');
+            suratModal.classList.add('hidden');
+            suratForm.reset();
         });
     </script>
 </body>

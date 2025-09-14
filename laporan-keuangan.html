@@ -5,162 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warga Connect - Laporan Keuangan</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
-        .tab-active {
-            border-color: #3b82f6;
-            color: #2563eb;
-        }
     </style>
 </head>
 <body class="bg-slate-50">
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                  <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
+                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
                     </div>
                 </a>
-                <h2 class="font-semibold">Laporan Keuangan RT</h2>
-                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </a>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
+                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Bendahara RT</p></div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <!-- Filter and Summary -->
-        <div class="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-             <div>
-                <label for="bulan" class="text-sm font-medium text-gray-700">Pilih Bulan:</label>
-                <select id="bulan" name="bulan" class="mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                    <option>September 2025</option>
-                    <option>Agustus 2025</option>
-                    <option>Juli 2025</option>
-                </select>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <header class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Laporan Keuangan Transparan</h1>
+                <p class="text-gray-600 mt-1">Pantau pemasukan, pengeluaran, dan saldo kas RT secara real-time.</p>
             </div>
-            <button class="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold text-sm">
-                <i data-lucide="download" class="w-4 h-4"></i>
-                Download Laporan
-            </button>
+            <div class="flex items-center gap-2">
+                 <button class="bg-white border border-gray-300 text-gray-700 font-medium py-2 px-3 rounded-lg hover:bg-gray-50 text-sm flex items-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download Laporan
+                </button>
+                <button id="tambah-transaksi-btn" class="bg-blue-600 text-white font-medium py-2 px-3 rounded-lg hover:bg-blue-700 text-sm flex items-center gap-2">
+                    <i data-lucide="plus" class="w-4 h-4"></i> Tambah Transaksi
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Keuangan -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg"><p class="text-sm text-green-700">Total Pemasukan (September)</p><p class="text-2xl font-bold text-green-800">Rp 3.500.000</p></div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg"><p class="text-sm text-red-700">Total Pengeluaran (September)</p><p class="text-2xl font-bold text-red-800">Rp 650.000</p></div>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg"><p class="text-sm text-blue-700">Saldo Kas Terkini</p><p class="text-2xl font-bold text-blue-800">Rp 2.850.000</p></div>
+        </div>
+        
+        <!-- Grafik -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white p-4 rounded-lg shadow-sm border"><h3 class="font-semibold mb-2">Grafik Pemasukan vs Pengeluaran</h3><canvas id="barChart"></canvas></div>
+            <div class="bg-white p-4 rounded-lg shadow-sm border"><h3 class="font-semibold mb-2">Distribusi Pengeluaran</h3><canvas id="pieChart"></canvas></div>
         </div>
 
-        <!-- Summary Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div class="bg-white border p-4 rounded-lg">
-                <p class="text-sm text-gray-500">Saldo Awal Bulan</p>
-                <p class="text-xl font-bold text-gray-800">Rp 2.500.000</p>
-            </div>
-            <div class="bg-white border p-4 rounded-lg">
-                <p class="text-sm text-gray-500">Total Pemasukan</p>
-                <p class="text-xl font-bold text-green-600">+ Rp 500.000</p>
-            </div>
-            <div class="bg-white border p-4 rounded-lg">
-                <p class="text-sm text-gray-500">Total Pengeluaran</p>
-                <p class="text-xl font-bold text-red-600">- Rp 150.000</p>
-            </div>
-            <div class="bg-blue-600 text-white p-4 rounded-lg">
-                <p class="text-sm text-blue-200">Saldo Akhir</p>
-                <p class="text-xl font-bold">Rp 2.850.000</p>
-            </div>
-        </div>
-
-        <!-- Tabs -->
-        <div class="mb-6">
-            <div class="border-b border-gray-200">
-                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                    <button id="tab-pemasukan" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                        Rincian Pemasukan
-                    </button>
-                    <button id="tab-pengeluaran" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                        Rincian Pengeluaran
-                    </button>
-                </nav>
+        <!-- Riwayat Transaksi -->
+        <div class="bg-white rounded-lg shadow-sm border">
+            <div class="p-4 border-b"><h3 class="font-semibold text-lg">Riwayat Transaksi - September 2025</h3></div>
+            <div class="overflow-x-auto">
+                 <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3">Tanggal</th><th class="px-6 py-3">Keterangan</th><th class="px-6 py-3">Kategori</th><th class="px-6 py-3">Jumlah</th><th class="px-6 py-3">Bukti</th><th class="px-6 py-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b"><td class="px-6 py-4">10 Sep</td><td class="px-6 py-4">Bayar Gaji Satpam</td><td class="px-6 py-4">Keamanan</td><td class="px-6 py-4 text-red-600">- Rp 500.000</td><td class="px-6 py-4"><button class="text-blue-600 hover:underline lihat-bukti-btn">Lihat</button></td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Verified</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4">05 Sep</td><td class="px-6 py-4">Iuran Warga Bulanan</td><td class="px-6 py-4">Iuran Rutin</td><td class="px-6 py-4 text-green-600">+ Rp 2.500.000</td><td class="px-6 py-4">-</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Verified</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4">02 Sep</td><td class="px-6 py-4">Beli Lampu Jalan</td><td class="px-6 py-4">Fasilitas Umum</td><td class="px-6 py-4 text-red-600">- Rp 150.000</td><td class="px-6 py-4"><button class="text-blue-600 hover:underline lihat-bukti-btn">Lihat</button></td><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Pending</span></td></tr>
+                    </tbody>
+                 </table>
             </div>
         </div>
-
-        <!-- Konten Pemasukan -->
-        <div id="konten-pemasukan" class="bg-white rounded-lg shadow-sm border overflow-hidden">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
-                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5 Sep 2025</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Iuran Keamanan & Kebersihan (40 KK)</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 text-right font-semibold">+ Rp 400.000</td>
-                    </tr>
-                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10 Sep 2025</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sumbangan Acara 17an</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 text-right font-semibold">+ Rp 100.000</td>
-                    </tr>
-                </tbody>
-            </table>
+    </div>
+    
+    <!-- Modal Tambah Transaksi -->
+    <div id="transaksi-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="p-6 border-b flex justify-between items-center"><h3 class="text-xl font-bold">Formulir Transaksi</h3><button id="close-transaksi-modal" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+            <form class="p-6 space-y-4">
+                <div><label class="block text-sm font-medium">Jenis Transaksi</label><select class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><option>Pemasukan</option><option>Pengeluaran</option></select></div>
+                <div><label class="block text-sm font-medium">Jumlah (Rp)</label><input type="number" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                <div><label class="block text-sm font-medium">Keterangan</label><input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                <div><label class="block text-sm font-medium">Upload Bukti (Struk/Nota)</label><input type="file" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50" id="batal-transaksi-btn">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Simpan Transaksi</button></div>
+            </form>
         </div>
-
-        <!-- Konten Pengeluaran -->
-        <div id="konten-pengeluaran" class="hidden bg-white rounded-lg shadow-sm border overflow-hidden">
-             <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
-                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8 Sep 2025</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Pembelian Lampu Jalan (2 unit)</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 text-right font-semibold">- Rp 100.000</td>
-                    </tr>
-                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15 Sep 2025</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Konsumsi Kerja Bakti</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 text-right font-semibold">- Rp 50.000</td>
-                    </tr>
-                </tbody>
-            </table>
+    </div>
+    
+    <!-- Modal Lihat Bukti -->
+    <div id="bukti-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg p-4 relative">
+             <button id="close-bukti-modal" class="absolute -top-4 -right-4 bg-white rounded-full p-1 text-gray-700"><i data-lucide="x" class="w-6 h-6"></i></button>
+             <img src="https://placehold.co/400x600/e2e8f0/64748b?text=Contoh+Bukti" alt="Bukti Transaksi" class="max-w-full max-h-[80vh] rounded-md">
         </div>
-    </main>
+    </div>
 
     <script>
         lucide.createIcons();
+        // ChartJS Init
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Juni', 'Juli', 'Agustus', 'September'],
+                datasets: [{
+                    label: 'Pemasukan',
+                    data: [2800000, 3200000, 3000000, 3500000],
+                    backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Pengeluaran',
+                    data: [500000, 750000, 600000, 650000],
+                    backgroundColor: 'rgba(239, 68, 68, 0.5)',
+                    borderColor: 'rgba(239, 68, 68, 1)',
+                    borderWidth: 1
+                }]
+            }, options: { responsive: true }
+        });
+
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Keamanan', 'Kebersihan', 'Fasilitas Umum', 'Sosial'],
+                datasets: [{
+                    data: [500000, 100000, 150000, 50000],
+                    backgroundColor: ['#ef4444', '#22c55e', '#3b82f6', '#f97316']
+                }]
+            }, options: { responsive: true }
+        });
         
-        // Tab functionality
-        const tabPemasukan = document.getElementById('tab-pemasukan');
-        const tabPengeluaran = document.getElementById('tab-pengeluaran');
-        const kontenPemasukan = document.getElementById('konten-pemasukan');
-        const kontenPengeluaran = document.getElementById('konten-pengeluaran');
+        // Modal Transaksi
+        const transaksiModal = document.getElementById('transaksi-modal');
+        document.getElementById('tambah-transaksi-btn').addEventListener('click', () => transaksiModal.classList.remove('hidden'));
+        document.getElementById('close-transaksi-modal').addEventListener('click', () => transaksiModal.classList.add('hidden'));
+        document.getElementById('batal-transaksi-btn').addEventListener('click', () => transaksiModal.classList.add('hidden'));
 
-        tabPemasukan.addEventListener('click', () => {
-            tabPemasukan.classList.add('tab-active');
-            tabPengeluaran.classList.remove('tab-active');
-            kontenPemasukan.classList.remove('hidden');
-            kontenPengeluaran.classList.add('hidden');
+        // Modal Bukti
+        const buktiModal = document.getElementById('bukti-modal');
+        document.querySelectorAll('.lihat-bukti-btn').forEach(btn => {
+            btn.addEventListener('click', () => buktiModal.classList.remove('hidden'));
         });
-
-        tabPengeluaran.addEventListener('click', () => {
-            tabPengeluaran.classList.add('tab-active');
-            tabPemasukan.classList.remove('tab-active');
-            kontenPengeluaran.classList.remove('hidden');
-            kontenPemasukan.classList.add('hidden');
-        });
-
-        // Download button
-        document.querySelector('button.bg-blue-600').addEventListener('click', () => {
-            alert('Fitur download laporan akan segera tersedia!');
-        });
+        document.getElementById('close-bukti-modal').addEventListener('click', () => buktiModal.classList.add('hidden'));
     </script>
 </body>
 </html>
