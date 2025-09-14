@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Connect - Tombol Darurat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        #panic-button {
+            transition: all 0.2s ease;
+            box-shadow: 0 10px 0 #b91c1c, 0 15px 20px rgba(0,0,0,0.3);
+        }
+        #panic-button:active {
+            transform: translateY(5px);
+            box-shadow: 0 5px 0 #b91c1c, 0 10px 15px rgba(0,0,0,0.2);
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.3s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                 <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
+                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                    </div>
+                </a>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
+                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+        <header class="mb-8">
+            <h1 class="text-4xl font-extrabold text-red-600">Tombol Darurat</h1>
+            <p class="text-gray-600 mt-2">Gunakan tombol ini HANYA dalam kondisi darurat yang mengancam jiwa atau properti.</p>
+        </header>
+
+        <!-- Panic Button -->
+        <div class="relative w-64 h-64 mx-auto">
+             <svg id="progress-ring" class="absolute inset-0 w-full h-full" viewBox="0 0 120 120">
+                <circle class="text-gray-200" stroke-width="8" stroke="currentColor" fill="transparent" r="56" cx="60" cy="60"/>
+                <circle id="progress-circle" class="progress-ring__circle text-red-600"
+                        stroke-width="8"
+                        stroke-dasharray="351.858"
+                        stroke-dashoffset="351.858"
+                        stroke="currentColor" fill="transparent" r="56" cx="60" cy="60"/>
+            </svg>
+            <button id="panic-button" class="relative w-64 h-64 bg-red-600 text-white rounded-full flex flex-col items-center justify-center">
+                <i data-lucide="alert-triangle" class="w-24 h-24"></i>
+                <span id="button-text" class="font-bold text-lg mt-2">TEKAN & TAHAN</span>
+            </button>
+        </div>
+        <p id="instruction-text" class="mt-8 text-gray-700 font-medium">Tekan dan tahan tombol selama 3 detik untuk mengirim sinyal darurat.</p>
+
+    </div>
+    
+    <!-- Modal Konfirmasi -->
+    <div id="confirm-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg text-center p-6">
+            <h3 class="text-xl font-bold">Pilih Jenis Keadaan Darurat</h3>
+            <p class="text-gray-600 mt-2 mb-6">Laporan Anda akan segera dikirim ke pihak berwenang.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <button class="emergency-type-btn bg-red-100 text-red-700 p-4 rounded-lg font-semibold hover:bg-red-200">Kebakaran</button>
+                <button class="emergency-type-btn bg-yellow-100 text-yellow-700 p-4 rounded-lg font-semibold hover:bg-yellow-200">Pencurian</button>
+                <button class="emergency-type-btn bg-blue-100 text-blue-700 p-4 rounded-lg font-semibold hover:bg-blue-200">Medis Darurat</button>
+                <button class="emergency-type-btn bg-gray-100 text-gray-700 p-4 rounded-lg font-semibold hover:bg-gray-200">Lainnya</button>
+            </div>
+            <button id="cancel-btn" class="mt-6 text-gray-600 hover:underline">Batal</button>
+        </div>
+    </div>
+    
+    <!-- Modal Terkirim -->
+    <div id="sent-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg text-center p-6">
+            <i data-lucide="check-circle" class="w-16 h-16 text-green-500 mx-auto"></i>
+            <h3 class="text-2xl font-bold mt-4">Laporan Terkirim!</h3>
+            <p class="text-gray-600 mt-2">Bantuan sedang dalam perjalanan ke lokasi Anda.</p>
+            <div class="my-4 p-3 bg-gray-100 rounded-lg text-left text-sm">
+                <p><strong>Lokasi Anda:</strong> Blok A No. 15 (GPS Terkirim)</p>
+                <p class="mt-1"><strong>Notifikasi terkirim ke:</strong> Ketua RT, Satpam, Polsek Terdekat</p>
+            </div>
+            <button id="close-sent-modal" class="bg-blue-600 text-white font-medium py-2 px-6 rounded-lg hover:bg-blue-700">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        const panicButton = document.getElementById('panic-button');
+        const confirmModal = document.getElementById('confirm-modal');
+        const sentModal = document.getElementById('sent-modal');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const closeSentModal = document.getElementById('close-sent-modal');
+        const progressCircle = document.getElementById('progress-circle');
+        const buttonText = document.getElementById('button-text');
+        
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const offset = circumference - (percent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        let pressTimer;
+        let progressInterval;
+        let progress = 0;
+
+        const startPress = () => {
+            progress = 0;
+            setProgress(0);
+            
+            pressTimer = setTimeout(() => {
+                clearInterval(progressInterval);
+                confirmModal.classList.remove('hidden');
+            }, 3000);
+
+            progressInterval = setInterval(() => {
+                progress += 1;
+                setProgress((progress / 300) * 100); 
+                if (progress >= 300) clearInterval(progressInterval);
+            }, 10);
+            
+            buttonText.textContent = "TAHAN...";
+        };
+
+        const cancelPress = () => {
+            clearTimeout(pressTimer);
+            clearInterval(progressInterval);
+            progress = 0;
+            setProgress(0);
+            buttonText.textContent = "TEKAN & TAHAN";
+        };
+
+        panicButton.addEventListener('mousedown', startPress);
+        panicButton.addEventListener('mouseup', cancelPress);
+        panicButton.addEventListener('mouseleave', cancelPress);
+        panicButton.addEventListener('touchstart', (e) => { e.preventDefault(); startPress(); });
+        panicButton.addEventListener('touchend', cancelPress);
+
+        cancelBtn.addEventListener('click', () => {
+            confirmModal.classList.add('hidden');
+            cancelPress();
+        });
+        
+        document.querySelectorAll('.emergency-type-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                confirmModal.classList.add('hidden');
+                sentModal.classList.remove('hidden');
+            });
+        });
+        
+        closeSentModal.addEventListener('click', () => {
+             sentModal.classList.add('hidden');
+             cancelPress();
+        });
+
+    </script>
+</body>
+</html>
