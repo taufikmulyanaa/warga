@@ -10,7 +10,7 @@
     <style>
         :root { font-family: 'Inter', sans-serif; }
         .card-hover { transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-        .card-hover:hover { transform: translateY(-4pxa); box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -83,10 +83,10 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Arisan RT</p>
-                        <p class="text-lg font-bold text-orange-600">Minggu Ini</p>
-                        <p class="text-xs text-gray-500">Giliran: Pak Joko</p>
+                        <p class="text-lg font-bold text-orange-600">Undian Berikutnya</p>
+                        <p class="text-xs text-gray-500">15 Oktober 2025</p>
                     </div>
-                    <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="dice-1" class="w-5 h-5 text-orange-600"></i></div>
+                    <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center"><i data-lucide="dice-5" class="w-5 h-5 text-orange-600"></i></div>
                 </div>
             </a>
         </div>
@@ -120,67 +120,34 @@
             <!-- Right Column -->
             <div class="space-y-6">
                 <div class="bg-white rounded-lg shadow-sm border">
-                    <div class="p-4 border-b"><h3 class="text-lg font-semibold text-gray-900">⚡ Akses Cepat</h3></div>
-                    <div class="p-4 grid grid-cols-3 gap-3">
-                        <a href="surat-otomatis.html" class="flex flex-col items-center gap-2 p-3 bg-blue-50 rounded-lg hover:bg-blue-100"><i data-lucide="file-text" class="w-6 h-6 text-blue-600"></i><span class="text-xs text-center font-medium text-blue-700">Buat Surat</span></a>
-                        <a href="iuran-warga.html" class="flex flex-col items-center gap-2 p-3 bg-green-50 rounded-lg hover:bg-green-100"><i data-lucide="credit-card" class="w-6 h-6 text-green-600"></i><span class="text-xs text-center font-medium text-green-700">Bayar Iuran</span></a>
-                        <a href="#" id="lapor-insiden-btn" class="flex flex-col items-center gap-2 p-3 bg-orange-50 rounded-lg hover:bg-orange-100"><i data-lucide="alert-triangle" class="w-6 h-6 text-orange-600"></i><span class="text-xs text-center font-medium text-orange-700">Lapor Insiden</span></a>
-                        <a href="cctv-sharing.html" class="flex flex-col items-center gap-2 p-3 bg-purple-50 rounded-lg hover:bg-purple-100"><i data-lucide="camera" class="w-6 h-6 text-purple-600"></i><span class="text-xs text-center font-medium text-purple-700">Lihat CCTV</span></a>
-                        <a href="peminjaman-barang.html" class="flex flex-col items-center gap-2 p-3 bg-red-50 rounded-lg hover:bg-red-100"><i data-lucide="package" class="w-6 h-6 text-red-600"></i><span class="text-xs text-center font-medium text-red-700">Pinjam Barang</span></a>
-                        <a href="polling-voting.html" class="flex flex-col items-center gap-2 p-3 bg-yellow-50 rounded-lg hover:bg-yellow-100"><i data-lucide="vote" class="w-6 h-6 text-yellow-600"></i><span class="text-xs text-center font-medium text-yellow-700">Voting RT</span></a>
+                    <div class="p-4 border-b"><h3 class="text-lg font-semibold text-gray-900">🚨 Layanan Darurat & Laporan</h3></div>
+                    <div class="p-4 grid grid-cols-2 gap-3">
+                         <a href="panic-button.html" class="flex flex-col items-center justify-center gap-2 p-3 bg-red-100 rounded-lg hover:bg-red-200"><i data-lucide="siren" class="w-8 h-8 text-red-600"></i><span class="text-sm text-center font-bold text-red-700">Tombol Darurat</span></a>
+                        <div class="flex flex-col gap-3">
+                           <a href="laporan-keamanan.html" class="flex items-center gap-2 p-2 bg-orange-50 rounded-lg hover:bg-orange-100"><i data-lucide="shield-alert" class="w-5 h-5 text-orange-600"></i><span class="text-xs font-medium text-orange-700">Lapor Keamanan</span></a>
+                           <a href="laporan-fasilitas-rusak.html" class="flex items-center gap-2 p-2 bg-yellow-50 rounded-lg hover:bg-yellow-100"><i data-lucide="wrench" class="w-5 h-5 text-yellow-600"></i><span class="text-xs font-medium text-yellow-700">Lapor Fasilitas</span></a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-lg shadow-sm border">
-                    <div class="p-4 border-b"><h3 class="text-lg font-semibold text-gray-900">ℹ️ Info RT</h3></div>
-                    <div class="p-4 space-y-3">
-                        <a href="pendataan-warga.html" class="flex items-center gap-3 group"><i data-lucide="users" class="w-4 h-4 text-gray-500"></i><div><p class="text-sm text-gray-600">Total Warga</p><p class="font-semibold text-gray-900 group-hover:underline">45 KK</p></div></a>
-                        <a href="laporan-keuangan.html" class="flex items-center gap-3 group"><i data-lucide="wallet" class="w-4 h-4 text-gray-500"></i><div><p class="text-sm text-gray-600">Kas RT</p><p class="font-semibold text-green-600 group-hover:underline">Rp 2.850.000</p></div></a>
-                        <div class="flex items-center gap-3"><i data-lucide="shield-check" class="w-4 h-4 text-gray-500"></i><div><p class="text-sm text-gray-600">Status Keamanan</p><p class="font-semibold text-green-600">Aman</p></div></div>
+                    <div class="p-4 border-b"><h3 class="text-lg font-semibold text-gray-900">Semua Layanan Warga</h3></div>
+                    <div class="p-4 grid grid-cols-3 gap-3">
+                        <a href="surat-otomatis.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="file-text" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Buat Surat</span></a>
+                        <a href="iuran-warga.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="credit-card" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Iuran Warga</span></a>
+                        <a href="laporan-keuangan.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="wallet" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Kas RT</span></a>
+                        <a href="jadwal-ronda.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="shield" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Jadwal Ronda</span></a>
+                        <a href="cctv-sharing.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="camera" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Lihat CCTV</span></a>
+                        <a href="polling-voting.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="vote" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Voting RT</span></a>
+                        <a href="kalender-acara.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="calendar-days" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Kalender Acara</span></a>
+                        <a href="peminjaman-barang.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="package" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Pinjam Barang</span></a>
+                        <a href="posyandu-digital.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="baby" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Posyandu</span></a>
+                        <a href="grup-chat.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="messages-square" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Grup Chat</span></a>
+                         <a href="pendataan-warga.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="users" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Data Warga</span></a>
+                         <a href="dashboard-rt-pintar.html" class="flex flex-col items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"><i data-lucide="layout-dashboard" class="w-6 h-6 text-gray-600"></i><span class="text-xs text-center font-medium text-gray-700">Dashboard RT</span></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Modal Lapor Insiden -->
-    <div id="lapor-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
-            <div class="p-6 border-b flex justify-between items-center">
-                <h3 class="text-xl font-bold">Buat Laporan Keamanan</h3>
-                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <form id="lapor-form" class="p-6 space-y-4">
-                <div>
-                    <label for="jenis-laporan" class="block text-sm font-medium text-gray-700">Jenis Laporan</label>
-                    <select id="jenis-laporan" name="jenis-laporan" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                        <option>Pencurian</option>
-                        <option>Keributan</option>
-                        <option>Tamu Asing</option>
-                        <option>Fasilitas Rusak</option>
-                        <option>Lainnya</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="deskripsi-laporan" class="block text-sm font-medium text-gray-700">Deskripsi Kejadian</label>
-                    <textarea id="deskripsi-laporan" name="deskripsi-laporan" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Jelaskan kejadian secara rinci..."></textarea>
-                </div>
-                <div class="flex items-start">
-                    <div class="flex items-center h-5">
-                        <input id="anonim" name="anonim" type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                    </div>
-                    <div class="ml-3 text-sm">
-                        <label for="anonim" class="font-medium text-gray-700">Kirim sebagai anonim</label>
-                        <p class="text-gray-500">Nama Anda tidak akan ditampilkan dalam laporan.</p>
-                    </div>
-                </div>
-                <div class="pt-4 flex justify-end gap-3">
-                    <button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Batal</button>
-                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Kirim Laporan</button>
-                </div>
-            </form>
         </div>
     </div>
 
@@ -191,45 +158,12 @@
             <a href="pendataan-warga.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="users" class="w-5 h-5"></i><span class="text-xs">Warga</span></a>
             <a href="laporan-keamanan.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="shield" class="w-5 h-5"></i><span class="text-xs">Keamanan</span></a>
             <a href="marketplace.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="shopping-bag" class="w-5 h-5"></i><span class="text-xs">Market</span></a>
-            <a href="grup-chat.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="message-circle" class="w-5 h-5"></i><span class="text-xs">Chat</span></a>
+            <a href="grup-chat.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="message-square" class="w-5 h-5"></i><span class="text-xs">Chat</span></a>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-        
-        // Modal Lapor Insiden
-        const laporModal = document.getElementById('lapor-modal');
-        const openModalBtn = document.getElementById('lapor-insiden-btn');
-        const closeModalBtn = laporModal.querySelector('#close-modal-btn');
-        const batalBtn = laporModal.querySelector('#batal-btn');
-        const laporForm = document.getElementById('lapor-form');
-
-        function openLaporModal() { laporModal.classList.remove('hidden'); }
-        function closeLaporModal() { laporModal.classList.add('hidden'); }
-
-        openModalBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah pindah halaman
-            openLaporModal();
-        });
-        
-        closeModalBtn.addEventListener('click', closeLaporModal);
-        batalBtn.addEventListener('click', closeLaporModal);
-
-        laporModal.addEventListener('click', (event) => {
-            // Menutup modal jika klik di area luar konten
-            if (event.target === laporModal) {
-                closeLaporModal();
-            }
-        });
-
-        laporForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Laporan berhasil dikirim! Terima kasih atas partisipasi Anda dalam menjaga keamanan lingkungan.');
-            closeLaporModal();
-            laporForm.reset();
-        });
     </script>
 </body>
 </html>
-
