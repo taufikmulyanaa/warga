@@ -6,16 +6,17 @@
     <title>Warga Connect - Tombol Darurat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
+        body { background-color: #F7F7F9; }
         #panic-button {
             transition: all 0.2s ease;
-            box-shadow: 0 10px 0 #b91c1c, 0 15px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 0 #b91c1c, 0 12px 20px rgba(0,0,0,0.2);
         }
         #panic-button:active {
-            transform: translateY(5px);
-            box-shadow: 0 5px 0 #b91c1c, 0 10px 15px rgba(0,0,0,0.2);
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #b91c1c, 0 8px 15px rgba(0,0,0,0.15);
         }
         .progress-ring__circle {
             transition: stroke-dashoffset 0.3s;
@@ -24,56 +25,50 @@
         }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-gray-800">
 
     <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
                     <div>
-                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
-                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                        <h1 class="text-xl font-bold text-gray-900">Tombol Darurat</h1>
+                        <p class="text-sm text-gray-500">Panggilan Bantuan Cepat</p>
                     </div>
                 </a>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
-                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+    <main class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
         <header class="mb-8">
-            <h1 class="text-4xl font-extrabold text-red-600">Tombol Darurat</h1>
-            <p class="text-gray-600 mt-2">Gunakan tombol ini HANYA dalam kondisi darurat yang mengancam jiwa atau properti.</p>
+            <h1 class="text-4xl font-extrabold text-red-600">Peringatan Darurat</h1>
+            <p class="text-gray-600 mt-2 max-w-md mx-auto">Gunakan tombol ini <span class="font-bold">HANYA</span> dalam kondisi darurat yang mengancam jiwa atau properti.</p>
         </header>
 
         <!-- Panic Button -->
         <div class="relative w-64 h-64 mx-auto">
              <svg id="progress-ring" class="absolute inset-0 w-full h-full" viewBox="0 0 120 120">
                 <circle class="text-gray-200" stroke-width="8" stroke="currentColor" fill="transparent" r="56" cx="60" cy="60"/>
-                <circle id="progress-circle" class="progress-ring__circle text-red-600"
-                        stroke-width="8"
-                        stroke-dasharray="351.858"
-                        stroke-dashoffset="351.858"
-                        stroke="currentColor" fill="transparent" r="56" cx="60" cy="60"/>
+                <circle id="progress-circle" class="progress-ring__circle text-red-600" stroke-width="8" stroke-dasharray="351.858" stroke-dashoffset="351.858" stroke="currentColor" fill="transparent" r="56" cx="60" cy="60"/>
             </svg>
             <button id="panic-button" class="relative w-64 h-64 bg-red-600 text-white rounded-full flex flex-col items-center justify-center">
-                <i data-lucide="alert-triangle" class="w-24 h-24"></i>
+                <i data-lucide="siren" class="w-24 h-24"></i>
                 <span id="button-text" class="font-bold text-lg mt-2">TEKAN & TAHAN</span>
             </button>
         </div>
-        <p id="instruction-text" class="mt-8 text-gray-700 font-medium">Tekan dan tahan tombol selama 3 detik untuk mengirim sinyal darurat.</p>
-
-    </div>
+        <p id="instruction-text" class="mt-8 text-gray-700 font-medium">Tekan dan tahan tombol selama 3 detik untuk mengirim sinyal.</p>
+    </main>
     
     <!-- Modal Konfirmasi -->
     <div id="confirm-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg text-center p-6">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg text-center p-6">
             <h3 class="text-xl font-bold">Pilih Jenis Keadaan Darurat</h3>
             <p class="text-gray-600 mt-2 mb-6">Laporan Anda akan segera dikirim ke pihak berwenang.</p>
             <div class="grid grid-cols-2 gap-4">
@@ -88,7 +83,7 @@
     
     <!-- Modal Terkirim -->
     <div id="sent-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg text-center p-6">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg text-center p-6">
             <i data-lucide="check-circle" class="w-16 h-16 text-green-500 mx-auto"></i>
             <h3 class="text-2xl font-bold mt-4">Laporan Terkirim!</h3>
             <p class="text-gray-600 mt-2">Bantuan sedang dalam perjalanan ke lokasi Anda.</p>
@@ -128,21 +123,17 @@
         const startPress = () => {
             progress = 0;
             setProgress(0);
-            
             pressTimer = setTimeout(() => {
                 clearInterval(progressInterval);
                 confirmModal.classList.remove('hidden');
             }, 3000);
-
             progressInterval = setInterval(() => {
                 progress += 1;
                 setProgress((progress / 300) * 100); 
                 if (progress >= 300) clearInterval(progressInterval);
             }, 10);
-            
             buttonText.textContent = "TAHAN...";
         };
-
         const cancelPress = () => {
             clearTimeout(pressTimer);
             clearInterval(progressInterval);
@@ -156,24 +147,9 @@
         panicButton.addEventListener('mouseleave', cancelPress);
         panicButton.addEventListener('touchstart', (e) => { e.preventDefault(); startPress(); });
         panicButton.addEventListener('touchend', cancelPress);
-
-        cancelBtn.addEventListener('click', () => {
-            confirmModal.classList.add('hidden');
-            cancelPress();
-        });
-        
-        document.querySelectorAll('.emergency-type-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                confirmModal.classList.add('hidden');
-                sentModal.classList.remove('hidden');
-            });
-        });
-        
-        closeSentModal.addEventListener('click', () => {
-             sentModal.classList.add('hidden');
-             cancelPress();
-        });
-
+        cancelBtn.addEventListener('click', () => { confirmModal.classList.add('hidden'); cancelPress(); });
+        document.querySelectorAll('.emergency-type-btn').forEach(btn => { btn.addEventListener('click', () => { confirmModal.classList.add('hidden'); sentModal.classList.remove('hidden'); }); });
+        closeSentModal.addEventListener('click', () => { sentModal.classList.add('hidden'); cancelPress(); });
     </script>
 </body>
 </html>

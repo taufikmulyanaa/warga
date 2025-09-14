@@ -6,206 +6,117 @@
     <title>Warga Connect - Kalender Acara</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
+        body { background-color: #F7F7F9; }
     </style>
 </head>
-<body class="bg-slate-50">
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+<body class="text-gray-800">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">Kalender Acara</h1>
+                        <p class="text-sm text-gray-500">Kegiatan & Agenda Warga</p>
                     </div>
                 </a>
-                <h2 class="font-semibold">Kalender Acara Warga</h2>
-                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </a>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <!-- Kolom Kalender -->
-            <div class="lg:col-span-2 bg-white rounded-lg shadow-sm border p-4">
-                <!-- Header Kalender -->
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm p-4">
                 <div class="flex items-center justify-between mb-4">
-                    <button class="p-2 rounded-full hover:bg-gray-100">
-                        <i data-lucide="chevron-left" class="w-5 h-5 text-gray-600"></i>
-                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-100"><i data-lucide="chevron-left" class="w-5 h-5 text-gray-600"></i></button>
                     <h3 class="text-lg font-semibold text-gray-800">September 2025</h3>
-                    <button class="p-2 rounded-full hover:bg-gray-100">
-                        <i data-lucide="chevron-right" class="w-5 h-5 text-gray-600"></i>
-                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-100"><i data-lucide="chevron-right" class="w-5 h-5 text-gray-600"></i></button>
                 </div>
-
-                <!-- Grid Kalender -->
                 <div class="grid grid-cols-7 gap-1 text-center">
-                    <!-- Header Hari -->
-                    <div class="text-xs font-bold text-gray-500 py-2">MIN</div>
-                    <div class="text-xs font-bold text-gray-500 py-2">SEN</div>
-                    <div class="text-xs font-bold text-gray-500 py-2">SEL</div>
-                    <div class="text-xs font-bold text-gray-500 py-2">RAB</div>
-                    <div class="text-xs font-bold text-gray-500 py-2">KAM</div>
-                    <div class="text-xs font-bold text-gray-500 py-2">JUM</div>
-                    <div class="text-xs font-bold text-gray-500 py-2">SAB</div>
-                    
-                    <!-- Tanggal (Contoh bulan September 2025) -->
-                    <div class="py-2 text-gray-400"></div> <!-- Placeholder -->
-                    <div class="py-2">1</div>
-                    <div class="py-2">2</div>
-                    <div class="py-2">3</div>
-                    <div class="py-2">4</div>
-                    <div class="py-2">5</div>
-                    <div class="py-2">6</div>
-                    <div class="py-2 relative">
-                        <span>7</span>
-                        <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                    </div>
-                    <div class="py-2">8</div>
-                    <div class="py-2">9</div>
-                    <div class="py-2">10</div>
-                    <div class="py-2">11</div>
-                    <div class="py-2">12</div>
-                    <div class="py-2">13</div>
+                    <div class="text-xs font-bold text-gray-500 py-2">MIN</div><div class="text-xs font-bold text-gray-500 py-2">SEN</div><div class="text-xs font-bold text-gray-500 py-2">SEL</div><div class="text-xs font-bold text-gray-500 py-2">RAB</div><div class="text-xs font-bold text-gray-500 py-2">KAM</div><div class="text-xs font-bold text-gray-500 py-2">JUM</div><div class="text-xs font-bold text-gray-500 py-2">SAB</div>
+                    <div class="py-2 text-gray-400"></div><div class="py-2">1</div><div class="py-2">2</div><div class="py-2">3</div><div class="py-2">4</div><div class="py-2">5</div><div class="py-2">6</div>
+                    <div class="py-2 relative"><span>7</span><span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></span></div>
+                    <div class="py-2">8</div><div class="py-2">9</div><div class="py-2">10</div><div class="py-2">11</div><div class="py-2">12</div><div class="py-2">13</div>
                     <div class="py-2 bg-blue-600 text-white rounded-full font-bold">14</div>
-                    <div class="py-2 relative">
-                        <span>15</span>
-                        <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                    </div>
+                    <div class="py-2 relative"><span>15</span><span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-green-500 rounded-full"></span></div>
                     <div class="py-2">16</div>
-                    <div class="py-2 relative">
-                        <span>17</span>
-                         <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                    </div>
-                    <div class="py-2">18</div>
-                    <div class="py-2">19</div>
-                    <div class="py-2">20</div>
-                    <div class="py-2">21</div>
-                    <div class="py-2">22</div>
-                    <div class="py-2">23</div>
-                    <div class="py-2">24</div>
-                    <div class="py-2">25</div>
-                    <div class="py-2">26</div>
-                    <div class="py-2">27</div>
-                    <div class="py-2">28</div>
-                    <div class="py-2">29</div>
-                    <div class="py-2">30</div>
+                    <div class="py-2 relative"><span>17</span><span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-purple-500 rounded-full"></span></div>
+                    <div class="py-2">18</div><div class="py-2">19</div><div class="py-2">20</div><div class="py-2">21</div><div class="py-2">22</div><div class="py-2">23</div><div class="py-2">24</div><div class="py-2">25</div><div class="py-2">26</div><div class="py-2">27</div><div class="py-2">28</div><div class="py-2">29</div><div class="py-2">30</div>
                 </div>
             </div>
 
             <!-- Kolom Daftar Acara -->
             <div class="space-y-4">
-                <button id="tambah-acara-btn" class="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 font-semibold text-sm">
-                    <i data-lucide="plus" class="w-5 h-5"></i>
-                    Buat Acara Baru
+                <button id="tambah-acara-btn" class="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 font-semibold text-sm shadow-sm hover:shadow-lg transition-shadow">
+                    <i data-lucide="plus" class="w-5 h-5"></i>Buat Acara Baru
                 </button>
-                <div class="bg-white rounded-lg shadow-sm border p-4">
+                <div class="bg-white rounded-2xl shadow-sm p-4">
                     <h3 class="font-bold text-gray-800 mb-4">Acara Mendatang</h3>
                     <div class="space-y-4">
-                         <!-- Acara 1 -->
-                        <div class="flex items-start gap-3">
-                            <div class="w-12 text-center flex-shrink-0">
-                                <p class="text-sm font-bold text-green-600">15</p>
-                                <p class="text-xs text-gray-500">SEP</p>
-                            </div>
-                            <div class="border-l-2 border-green-500 pl-3">
-                                <p class="font-semibold text-gray-900">Kerja Bakti</p>
-                                <p class="text-xs text-gray-600"><i data-lucide="clock" class="inline w-3 h-3 mr-1"></i>07:00 WIB - Selesai</p>
-                                <p class="text-xs text-gray-600"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>Pos Ronda & Sekitarnya</p>
-                            </div>
-                        </div>
-                         <!-- Acara 2 -->
-                         <div class="flex items-start gap-3">
-                            <div class="w-12 text-center flex-shrink-0">
-                                <p class="text-sm font-bold text-purple-600">17</p>
-                                <p class="text-xs text-gray-500">SEP</p>
-                            </div>
-                            <div class="border-l-2 border-purple-500 pl-3">
-                                <p class="font-semibold text-gray-900">Arisan Bulanan RT</p>
-                                <p class="text-xs text-gray-600"><i data-lucide="clock" class="inline w-3 h-3 mr-1"></i>19:30 WIB</p>
-                                <p class="text-xs text-gray-600"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>Rumah Bapak Joko (B-08)</p>
-                            </div>
-                        </div>
-                        <!-- Acara 3 -->
-                         <div class="flex items-start gap-3">
-                            <div class="w-12 text-center flex-shrink-0">
-                                <p class="text-sm font-bold text-blue-600">20</p>
-                                <p class="text-xs text-gray-500">SEP</p>
-                            </div>
-                            <div class="border-l-2 border-blue-500 pl-3">
-                                <p class="font-semibold text-gray-900">Pengajian Rutin</p>
-                                <p class="text-xs text-gray-600"><i data-lucide="clock" class="inline w-3 h-3 mr-1"></i>20:00 WIB</p>
-                                <p class="text-xs text-gray-600"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>Masjid Al-Ikhlas</p>
-                            </div>
-                        </div>
+                        <div class="flex items-start gap-3"><div class="w-12 text-center flex-shrink-0"><p class="text-sm font-bold text-green-600">15</p><p class="text-xs text-gray-500">SEP</p></div><div class="border-l-2 border-green-500 pl-3"><p class="font-semibold text-gray-900">Kerja Bakti</p><p class="text-xs text-gray-600"><i data-lucide="clock" class="inline w-3 h-3 mr-1"></i>07:00 WIB - Selesai</p><p class="text-xs text-gray-600"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>Pos Ronda & Sekitarnya</p></div></div>
+                        <div class="flex items-start gap-3"><div class="w-12 text-center flex-shrink-0"><p class="text-sm font-bold text-purple-600">17</p><p class="text-xs text-gray-500">SEP</p></div><div class="border-l-2 border-purple-500 pl-3"><p class="font-semibold text-gray-900">Arisan Bulanan RT</p><p class="text-xs text-gray-600"><i data-lucide="clock" class="inline w-3 h-3 mr-1"></i>19:30 WIB</p><p class="text-xs text-gray-600"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>Rumah Bapak Joko (B-08)</p></div></div>
+                        <div class="flex items-start gap-3"><div class="w-12 text-center flex-shrink-0"><p class="text-sm font-bold text-blue-600">20</p><p class="text-xs text-gray-500">SEP</p></div><div class="border-l-2 border-blue-500 pl-3"><p class="font-semibold text-gray-900">Pengajian Rutin</p><p class="text-xs text-gray-600"><i data-lucide="clock" class="inline w-3 h-3 mr-1"></i>20:00 WIB</p><p class="text-xs text-gray-600"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>Masjid Al-Ikhlas</p></div></div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="h-24 lg:hidden"></div>
     </main>
 
     <!-- Modal Tambah Acara -->
     <div id="modal-acara" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
-             <div class="p-4 border-b flex justify-between items-center">
-                <h3 class="text-lg font-bold">Buat Acara Baru</h3>
-                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg">
+             <div class="p-6 border-b flex justify-between items-center"><h3 class="text-lg font-bold">Buat Acara Baru</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-5 h-5"></i></button></div>
             <form class="p-6 space-y-4">
-                <div>
-                    <label for="nama_acara" class="block text-sm font-medium text-gray-700">Nama Acara</label>
-                    <input type="text" id="nama_acara" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
-                </div>
+                <div><label for="nama_acara" class="block text-sm font-medium text-gray-700 mb-1">Nama Acara</label><input type="text" id="nama_acara" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label for="tanggal" class="block text-sm font-medium text-gray-700">Tanggal</label>
-                        <input type="date" id="tanggal" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
-                    </div>
-                     <div>
-                        <label for="waktu" class="block text-sm font-medium text-gray-700">Waktu</label>
-                        <input type="time" id="waktu" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
-                    </div>
+                    <div><label for="tanggal" class="block text-sm font-medium text-gray-700 mb-1">Tanggal</label><input type="date" id="tanggal" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"></div>
+                    <div><label for="waktu" class="block text-sm font-medium text-gray-700 mb-1">Waktu</label><input type="time" id="waktu" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"></div>
                 </div>
-                <div>
-                    <label for="lokasi_acara" class="block text-sm font-medium text-gray-700">Lokasi</label>
-                    <input type="text" id="lokasi_acara" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
-                </div>
-                <div class="pt-4 flex justify-end">
-                    <button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Batal</button>
-                    <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Simpan Acara</button>
-                </div>
+                <div><label for="lokasi_acara" class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label><input type="text" id="lokasi_acara" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-200">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Simpan Acara</button></div>
             </form>
         </div>
     </div>
-
+     <!-- Bottom Navigation (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
+        <div class="grid grid-cols-5 h-20">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span>
+            </a>
+            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span>
+            </a>
+            <a href="laporan-keamanan.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                 <i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Lapor</span>
+            </a>
+            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span>
+            </a>
+             <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span>
+            </a>
+        </div>
+    </div>
     <script>
         lucide.createIcons();
-
-        // Modal functionality
         const modal = document.getElementById('modal-acara');
         const openModalBtn = document.getElementById('tambah-acara-btn');
         const closeModalBtn = document.getElementById('close-modal-btn');
         const batalBtn = document.getElementById('batal-btn');
-
         function openModal() { modal.classList.remove('hidden'); }
         function closeModal() { modal.classList.add('hidden'); }
-
         openModalBtn.addEventListener('click', openModal);
         closeModalBtn.addEventListener('click', closeModal);
         batalBtn.addEventListener('click', closeModal);
-        
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Form submission
+        modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
         modal.querySelector('form').addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Acara baru berhasil disimpan dan akan ditampilkan di kalender.');
@@ -214,4 +125,3 @@
     </script>
 </body>
 </html>
-

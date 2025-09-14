@@ -10,194 +10,147 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
-        .tab-active { border-color: #2563eb; color: #2563eb; background-color: #eff6ff; }
-        .tab-inactive { border-color: transparent; color: #6b7280; }
-        .chart-container { position: relative; height: 300px; width: 100%; }
+        body { background-color: #F7F7F9; }
+        .card { border-radius: 1.5rem; /* 24px */ }
+        .tab-btn.active {
+            border-color: #3b82f6;
+            color: #2563eb;
+            font-weight: 600;
+        }
     </style>
 </head>
-<body class="bg-slate-100">
+<body class="text-gray-800">
 
     <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="layout-dashboard" class="w-5 h-5 text-white"></i></div>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
                     <div>
-                        <h1 class="text-lg font-semibold text-gray-900">Dashboard RT Pintar</h1>
-                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                        <h1 class="text-xl font-bold text-gray-900">Dashboard RT Pintar</h1>
+                        <p class="text-sm text-gray-500">Analisis Data Warga RT 003</p>
                     </div>
                 </a>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
-                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Ketua RT</p></div>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         
         <!-- KPI Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <div class="bg-white p-4 rounded-lg shadow-sm border"><p class="text-sm text-gray-600">Total Warga</p><p class="text-2xl font-bold">245 Jiwa</p><p class="text-xs text-gray-500">67 KK Aktif</p></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border"><p class="text-sm text-gray-600">Kehadiran Ronda</p><p class="text-2xl font-bold text-green-600">85%</p><p class="text-xs text-green-500">↑ 15% vs bulan lalu</p></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border"><p class="text-sm text-gray-600">Iuran Terkumpul</p><p class="text-2xl font-bold text-blue-600">85%</p><p class="text-xs text-gray-500">Rp 3.4jt / 4jt</p></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border"><p class="text-sm text-gray-600">Tingkat Partisipasi</p><p class="text-2xl font-bold text-purple-600">72%</p><p class="text-xs text-purple-500">↑ 8% vs bulan lalu</p></div>
-        </div>
-
-        <!-- Alerts & Quick Charts -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <div class="lg:col-span-1 bg-white p-4 rounded-lg shadow-sm border">
-                <h3 class="font-semibold mb-3">Status Alerts Real-Time</h3>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-sm"><span class="w-3 h-3 bg-red-500 rounded-full flex-shrink-0"></span><p><b>3 Warga</b> belum bayar iuran bulan ini.</p></div>
-                    <div class="flex items-center gap-3 text-sm"><span class="w-3 h-3 bg-yellow-500 rounded-full flex-shrink-0"></span><p><b>2 shift ronda</b> masih kosong minggu depan.</p></div>
-                    <div class="flex items-center gap-3 text-sm"><span class="w-3 h-3 bg-green-500 rounded-full flex-shrink-0"></span><p><b>Kerja Bakti:</b> 45 warga confirm hadir.</p></div>
-                </div>
-            </div>
-            <div class="lg:col-span-2 bg-white p-4 rounded-lg shadow-sm border">
-                <h3 class="font-semibold mb-3">Tren Partisipasi Kegiatan (6 Bulan Terakhir)</h3>
-                <div class="chart-container h-40"><canvas id="participationTrendChart"></canvas></div>
-            </div>
+            <div class="card bg-white p-5 shadow-sm"><p class="text-sm font-medium text-gray-500">Total Warga</p><p class="text-3xl font-bold mt-1">245</p><p class="text-xs text-gray-500">67 KK Aktif</p></div>
+            <div class="card bg-white p-5 shadow-sm"><p class="text-sm font-medium text-gray-500">Kehadiran Ronda</p><p class="text-3xl font-bold text-green-600 mt-1">85%</p><p class="text-xs text-green-500 font-semibold">↑ 15% dari bulan lalu</p></div>
+            <div class="card bg-white p-5 shadow-sm"><p class="text-sm font-medium text-gray-500">Iuran Terkumpul</p><p class="text-3xl font-bold text-blue-600 mt-1">92%</p><p class="text-xs text-gray-500">Rp 3.68Jt / 4Jt</p></div>
+            <div class="card bg-white p-5 shadow-sm"><p class="text-sm font-medium text-gray-500">Partisipasi Warga</p><p class="text-3xl font-bold text-purple-600 mt-1">72%</p><p class="text-xs text-purple-500 font-semibold">↑ 8% dari bulan lalu</p></div>
         </div>
 
         <!-- Main Analytics Section -->
-        <div class="bg-white rounded-lg shadow-sm border">
+        <div class="card bg-white shadow-sm overflow-hidden">
             <!-- Tabs -->
             <div class="border-b border-gray-200">
-                <nav class="flex flex-wrap -mb-px text-sm font-medium text-center" aria-label="Tabs">
-                    <button class="tab-btn tab-active p-4 border-b-2 rounded-t-lg" data-tab="warga">Statistik Warga</button>
-                    <button class="tab-btn tab-inactive p-4 border-b-2" data-tab="ronda">Kinerja Ronda</button>
-                    <button class="tab-btn tab-inactive p-4 border-b-2" data-tab="kegiatan">Partisipasi Kegiatan</button>
-                    <button class="tab-btn tab-inactive p-4 border-b-2" data-tab="keuangan">Analisis Keuangan</button>
-                    <button class="tab-btn tab-inactive p-4 border-b-2" data-tab="insights">Smart Insights</button>
+                <nav class="flex flex-wrap -mb-px px-6" aria-label="Tabs">
+                    <button class="tab-btn active p-4 border-b-2" data-tab="warga">Statistik Warga</button>
+                    <button class="tab-btn p-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700" data-tab="keuangan">Analisis Keuangan</button>
+                    <button class="tab-btn p-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700" data-tab="insights">Smart Insights</button>
                 </nav>
             </div>
             
             <!-- Tab Content -->
             <div id="tab-content" class="p-6">
                 <!-- Statistik Warga -->
-                <div id="warga-content" class="tab-pane space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="chart-container"><h4 class="text-center font-medium text-sm mb-2">Sebaran Usia</h4><canvas id="agePieChart"></canvas></div>
-                        <div class="chart-container"><h4 class="text-center font-medium text-sm mb-2">Status Pernikahan</h4><canvas id="maritalDoughnutChart"></canvas></div>
-                        <div class="chart-container"><h4 class="text-center font-medium text-sm mb-2">Sebaran Profesi</h4><canvas id="professionBarChart"></canvas></div>
+                <div id="warga-content" class="tab-pane">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="h-64"><h4 class="text-center font-semibold text-sm mb-2">Sebaran Usia</h4><canvas id="agePieChart"></canvas></div>
+                        <div class="h-64"><h4 class="text-center font-semibold text-sm mb-2">Status Hunian</h4><canvas id="maritalDoughnutChart"></canvas></div>
+                        <div class="h-64"><h4 class="text-center font-semibold text-sm mb-2">Sebaran Profesi</h4><canvas id="professionBarChart"></canvas></div>
                     </div>
-                </div>
-
-                <!-- Kinerja Ronda -->
-                <div id="ronda-content" class="tab-pane hidden space-y-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div><h4 class="font-medium text-sm mb-2">Analisis Kehadiran Bulanan</h4><div class="chart-container"><canvas id="attendanceLineChart"></canvas></div></div>
-                        <div><h4 class="font-medium text-sm mb-2">Warga Paling Aktif Ronda</h4><ul class="text-sm space-y-2 mt-4"><li>1. Bpk. Agus Setiawan (12 kali)</li><li>2. Bpk. Joko (10 kali)</li><li>3. Bpk. Eko (9 kali)</li></ul></div>
-                    </div>
-                </div>
-
-                <!-- Partisipasi Kegiatan -->
-                <div id="kegiatan-content" class="tab-pane hidden space-y-6">
-                     <h4 class="font-medium text-sm mb-2">Partisipasi per Jenis Kegiatan</h4>
-                     <div class="space-y-3">
-                         <div><p class="text-sm font-medium">Kerja Bakti</p><div class="w-full bg-gray-200 rounded-full h-4 mt-1"><div class="bg-blue-600 h-4 rounded-full" style="width: 80%"><span class="text-xs text-white pl-2">80%</span></div></div></div>
-                         <div><p class="text-sm font-medium">Rapat RT</p><div class="w-full bg-gray-200 rounded-full h-4 mt-1"><div class="bg-blue-600 h-4 rounded-full" style="width: 60%"><span class="text-xs text-white pl-2">60%</span></div></div></div>
-                     </div>
                 </div>
 
                 <!-- Analisis Keuangan -->
-                <div id="keuangan-content" class="tab-pane hidden space-y-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div><h4 class="font-medium text-sm mb-2">Status Iuran Bulan Ini</h4><div class="chart-container"><canvas id="iuranDoughnutChart"></canvas></div></div>
-                        <div><h4 class="font-medium text-sm mb-2">Preferensi Metode Pembayaran</h4><div class="chart-container"><canvas id="paymentPieChart"></canvas></div></div>
+                <div id="keuangan-content" class="tab-pane hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="h-64"><h4 class="font-semibold text-sm mb-2">Status Iuran Bulan Ini</h4><canvas id="iuranDoughnutChart"></canvas></div>
+                        <div class="h-64"><h4 class="font-semibold text-sm mb-2">Metode Pembayaran Favorit</h4><canvas id="paymentPieChart"></canvas></div>
                     </div>
                 </div>
 
                 <!-- Smart Insights -->
-                <div id="insights-content" class="tab-pane hidden space-y-6">
-                    <h4 class="font-semibold text-lg">Rekomendasi Cerdas</h4>
+                <div id="insights-content" class="tab-pane hidden space-y-4">
+                    <h3 class="text-lg font-bold">Rekomendasi Cerdas untuk RT 003</h3>
                     <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                        <p class="font-bold text-blue-800">Prediksi Partisipasi</p>
-                        <p class="text-sm text-blue-900 mt-1">"Berdasarkan pola 6 bulan terakhir, kegiatan Minggu pagi memiliki tingkat kehadiran 25% lebih tinggi dari jadwal lain."</p>
+                        <p class="font-bold text-blue-800 flex items-center gap-2"><i data-lucide="bar-chart"></i> Prediksi Partisipasi</p>
+                        <p class="text-sm text-blue-900 mt-1 pl-7">Berdasarkan pola 6 bulan terakhir, kegiatan pada <span class="font-semibold">Minggu pagi</span> memiliki tingkat kehadiran 25% lebih tinggi dari jadwal lain. Pertimbangkan untuk mengadakan acara penting di waktu ini.</p>
                     </div>
                     <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
-                        <p class="font-bold text-yellow-800">Penjadwalan Optimal</p>
-                        <p class="text-sm text-yellow-900 mt-1">"Jadwal ronda Selasa pukul 22:00-02:00 sering kosong. Pertimbangkan untuk memberikan insentif khusus pada shift ini."</p>
+                        <p class="font-bold text-yellow-800 flex items-center gap-2"><i data-lucide="shield"></i> Penjadwalan Ronda Optimal</p>
+                        <p class="text-sm text-yellow-900 mt-1 pl-7">Jadwal ronda pada <span class="font-semibold">Selasa pukul 22:00-02:00</span> sering kosong. Pertimbangkan untuk memberikan insentif khusus atau melakukan pendekatan personal kepada warga yang belum pernah ronda.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
 
-        // --- Tab Logic ---
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabPanes = document.querySelectorAll('.tab-pane');
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('tab-inactive');
-                });
-                button.classList.add('tab-active');
-                button.classList.remove('tab-inactive');
-                
-                tabPanes.forEach(pane => {
-                    if (pane.id === `${button.dataset.tab}-content`) {
-                        pane.classList.remove('hidden');
-                    } else {
-                        pane.classList.add('hidden');
-                    }
+            // --- Tab Logic ---
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    tabPanes.forEach(pane => {
+                        pane.style.display = pane.id === `${button.dataset.tab}-content` ? 'block' : 'none';
+                    });
                 });
             });
-        });
 
-        // --- ChartJS Implementations ---
-        let charts = {};
+            // --- ChartJS Implementations ---
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            Chart.defaults.plugins.legend.position = 'bottom';
+            Chart.defaults.plugins.legend.labels.usePointStyle = true;
+            Chart.defaults.plugins.legend.labels.boxWidth = 8;
+            Chart.defaults.maintainAspectRatio = false;
 
-        // Helper to destroy old chart before creating new one
-        const renderChart = (ctx, config) => {
-            const chartId = ctx.canvas.id;
-            if (charts[chartId]) {
-                charts[chartId].destroy();
+            const chartConfigs = {
+                agePieChart: {
+                    type: 'pie',
+                    data: { labels: ['Balita', 'Anak', 'Dewasa', 'Lansia'], datasets: [{ data: [15, 20, 50, 15], backgroundColor: ['#60a5fa', '#34d399', '#fbbf24', '#f87171'] }] }
+                },
+                maritalDoughnutChart: {
+                    type: 'doughnut',
+                    data: { labels: ['Milik Pribadi', 'Kontrak', 'Lainnya'], datasets: [{ data: [70, 25, 5], backgroundColor: ['#3b82f6', '#a78bfa', '#9ca3af'] }] },
+                    options: { cutout: '50%' }
+                },
+                professionBarChart: {
+                    type: 'bar',
+                    data: { labels: ['PNS', 'Swasta', 'Wirausaha', 'IRT'], datasets: [{ label: 'Jumlah', data: [15, 45, 25, 15], backgroundColor: '#818cf8' }] },
+                    options: { indexAxis: 'y', plugins: { legend: { display: false } } }
+                },
+                iuranDoughnutChart: {
+                    type: 'doughnut',
+                    data: { labels: ['Sudah Bayar', 'Pending', 'Belum Bayar'], datasets: [{ data: [85, 10, 5], backgroundColor: ['#22c55e', '#f59e0b', '#ef4444'] }] },
+                    options: { cutout: '50%' }
+                },
+                paymentPieChart: {
+                    type: 'pie',
+                    data: { labels: ['Cash', 'Transfer', 'QRIS'], datasets: [{ data: [30, 50, 20], backgroundColor: ['#06b6d4', '#6366f1', '#ec4899'] }] }
+                }
+            };
+            
+            for (const chartId in chartConfigs) {
+                const ctx = document.getElementById(chartId)?.getContext('2d');
+                if (ctx) new Chart(ctx, chartConfigs[chartId]);
             }
-            charts[chartId] = new Chart(ctx, config);
-        };
-        
-        // Participation Trend Chart (Header)
-        const participationCtx = document.getElementById('participationTrendChart').getContext('2d');
-        renderChart(participationCtx, {
-            type: 'line',
-            data: { labels: ['Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep'], datasets: [{ label: 'Partisipasi', data: [65, 68, 70, 66, 70, 72], borderColor: '#4f46e5', tension: 0.2, fill: false }] },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
         });
-
-        // Age Pie Chart
-        const ageCtx = document.getElementById('agePieChart').getContext('2d');
-        renderChart(ageCtx, { type: 'pie', data: { labels: ['Balita', 'Anak', 'Dewasa', 'Lansia'], datasets: [{ data: [15, 20, 50, 15], backgroundColor: ['#60a5fa', '#34d399', '#fbbf24', '#f87171'] }] }, options: { responsive: true, maintainAspectRatio: false } });
-        
-        // Marital Doughnut Chart
-        const maritalCtx = document.getElementById('maritalDoughnutChart').getContext('2d');
-        renderChart(maritalCtx, { type: 'doughnut', data: { labels: ['Menikah', 'Single', 'Lainnya'], datasets: [{ data: [70, 25, 5], backgroundColor: ['#3b82f6', '#a78bfa', '#9ca3af'] }] }, options: { responsive: true, maintainAspectRatio: false } });
-
-        // Profession Bar Chart
-        const professionCtx = document.getElementById('professionBarChart').getContext('2d');
-        renderChart(professionCtx, { type: 'bar', data: { labels: ['PNS', 'Swasta', 'Wirausaha', 'IRT'], datasets: [{ label: 'Jumlah', data: [15, 45, 25, 15], backgroundColor: '#818cf8' }] }, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y' } });
-
-        // Attendance Line Chart
-        const attendanceCtx = document.getElementById('attendanceLineChart').getContext('2d');
-        renderChart(attendanceCtx, { type: 'line', data: { labels: ['Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep'], datasets: [{ label: 'Kehadiran (%)', data: [75, 78, 80, 70, 82, 85], borderColor: '#10b981', tension: 0.1 }] }, options: { responsive: true, maintainAspectRatio: false } });
-        
-        // Iuran Doughnut Chart
-        const iuranCtx = document.getElementById('iuranDoughnutChart').getContext('2d');
-        renderChart(iuranCtx, { type: 'doughnut', data: { labels: ['Sudah Bayar', 'Pending', 'Belum Bayar'], datasets: [{ data: [85, 10, 5], backgroundColor: ['#22c55e', '#f59e0b', '#ef4444'] }] }, options: { responsive: true, maintainAspectRatio: false } });
-        
-        // Payment Pie Chart
-        const paymentCtx = document.getElementById('paymentPieChart').getContext('2d');
-        renderChart(paymentCtx, { type: 'pie', data: { labels: ['Cash', 'Transfer', 'QRIS'], datasets: [{ data: [30, 50, 20], backgroundColor: ['#06b6d4', '#6366f1', '#ec4899'] }] }, options: { responsive: true, maintainAspectRatio: false } });
-
     </script>
 </body>
 </html>

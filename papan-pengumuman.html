@@ -6,40 +6,48 @@
     <title>Warga Connect - Papan Pengumuman</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
+        body { background-color: #F7F7F9; }
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-radius: 1.5rem; /* 24px */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+        }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-gray-800">
 
     <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
                     <div>
-                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
-                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                        <h1 class="text-xl font-bold text-gray-900">Papan Pengumuman</h1>
+                        <p class="text-sm text-gray-500">Informasi Resmi Warga</p>
                     </div>
                 </a>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
-                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Ketua RT</p></div>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <header class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900">Papan Pengumuman Digital</h1>
+                <h1 class="text-3xl font-bold text-gray-900">Pengumuman Digital</h1>
                 <p class="text-gray-600 mt-1">Sumber informasi resmi, terstruktur, dan terdokumentasi.</p>
             </div>
-            <button id="buat-pengumuman-btn" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap">
+            <button id="buat-pengumuman-btn" class="bg-blue-600 text-white font-medium py-3 px-5 rounded-xl hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap shadow-sm hover:shadow-lg transition-shadow">
                 <i data-lucide="plus-circle" class="w-5 h-5"></i>
                 <span>Buat Pengumuman</span>
             </button>
@@ -51,73 +59,75 @@
                 <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
                 <input type="text" placeholder="Cari pengumuman..." class="pl-10 pr-4 py-2 border rounded-lg w-full">
             </div>
-            <select class="border rounded-lg py-2 px-3">
-                <option>Semua Kategori</option>
-                <option>Keamanan</option>
-                <option>Kebersihan</option>
-                <option>Keuangan</option>
-                <option>Kegiatan Warga</option>
-                <option>Administrasi</option>
-            </select>
+            <select class="border rounded-lg py-2 px-3 bg-white"><option>Semua Kategori</option><option>Keamanan</option><option>Kebersihan</option><option>Keuangan</option><option>Kegiatan Warga</option><option>Administrasi</option></select>
         </div>
 
         <!-- Daftar Pengumuman -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Pengumuman 1: Kegiatan Warga -->
-            <div class="bg-white rounded-lg shadow-sm border flex flex-col">
-                <div class="p-4 border-b">
+            <div class="card bg-white shadow-sm flex flex-col">
+                <div class="p-6 flex-grow">
                     <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Kegiatan Warga</span>
                     <h3 class="font-semibold text-lg mt-2">Kerja Bakti Pembersihan Selokan</h3>
-                    <p class="text-sm text-gray-600 mt-1">Diberitahukan kepada seluruh warga untuk mengikuti kerja bakti yang akan dilaksanakan pada...</p>
+                    <p class="text-sm text-gray-600 mt-1 line-clamp-3">Diberitahukan kepada seluruh warga untuk mengikuti kerja bakti yang akan dilaksanakan pada hari Minggu, 15 September 2025...</p>
                 </div>
-                <div class="p-4 flex-grow"><p class="text-xs text-gray-500 font-medium">LAMPIRAN:</p><a href="#" class="flex items-center gap-2 text-sm text-blue-600 hover:underline mt-1"><i data-lucide="image" class="w-4 h-4"></i> foto-kondisi-selokan.jpg</a></div>
-                <div class="p-4 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Ketua RT</span><span>14 Sep 2025</span></div>
+                <div class="p-6 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Ketua RT</span><span>14 Sep 2025</span></div>
             </div>
             
             <!-- Pengumuman 2: Keuangan -->
-            <div class="bg-white rounded-lg shadow-sm border flex flex-col">
-                <div class="p-4 border-b">
+            <div class="card bg-white shadow-sm flex flex-col">
+                <div class="p-6 flex-grow">
                     <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Keuangan</span>
                     <h3 class="font-semibold text-lg mt-2">Laporan Keuangan Bulan Agustus 2025</h3>
-                    <p class="text-sm text-gray-600 mt-1">Berikut kami sampaikan laporan kas RT bulan Agustus 2025. Silakan unduh lampiran untuk detailnya.</p>
+                    <p class="text-sm text-gray-600 mt-1 line-clamp-3">Berikut kami sampaikan laporan kas RT bulan Agustus 2025. Silakan unduh lampiran untuk detailnya.</p>
+                     <a href="laporan-keuangan.html" class="flex items-center gap-2 text-sm text-blue-600 hover:underline mt-2 font-semibold"><i data-lucide="file-text" class="w-4 h-4"></i> laporan_keuangan_agt_25.pdf</a>
                 </div>
-                <div class="p-4 flex-grow"><p class="text-xs text-gray-500 font-medium">LAMPIRAN:</p><a href="laporan-keuangan.html" class="flex items-center gap-2 text-sm text-blue-600 hover:underline mt-1"><i data-lucide="file-text" class="w-4 h-4"></i> laporan_keuangan_agt_25.pdf</a></div>
-                <div class="p-4 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Bendahara RT</span><span>10 Sep 2025</span></div>
+                <div class="p-6 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Bendahara RT</span><span>10 Sep 2025</span></div>
             </div>
             
             <!-- Pengumuman 3: Keamanan -->
-             <div class="bg-white rounded-lg shadow-sm border flex flex-col">
-                <div class="p-4 border-b">
+             <div class="card bg-white shadow-sm flex flex-col">
+                <div class="p-6 flex-grow">
                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Keamanan</span>
                     <h3 class="font-semibold text-lg mt-2">Jadwal Ronda Baru Bulan Oktober</h3>
-                    <p class="text-sm text-gray-600 mt-1">Jadwal ronda untuk bulan Oktober sudah dirilis. Mohon untuk memeriksa jadwal masing-masing.</p>
+                    <p class="text-sm text-gray-600 mt-1 line-clamp-3">Jadwal ronda untuk bulan Oktober sudah dirilis. Mohon untuk memeriksa jadwal masing-masing di halaman Jadwal Ronda.</p>
                 </div>
-                <div class="p-4 flex-grow"><p class="text-xs text-gray-500 font-medium">TIDAK ADA LAMPIRAN</p></div>
-                <div class="p-4 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Seksi Keamanan</span><span>08 Sep 2025</span></div>
+                <div class="p-6 border-t text-xs text-gray-500 flex justify-between items-center"><span>Oleh: Seksi Keamanan</span><span>08 Sep 2025</span></div>
             </div>
         </div>
-    </div>
+        <div class="h-24 lg:hidden"></div>
+    </main>
     
     <!-- Modal Buat Pengumuman -->
     <div id="pengumuman-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10"><h3 class="text-xl font-bold">Formulir Pengumuman</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10 rounded-t-2xl"><h3 class="text-xl font-bold">Formulir Pengumuman</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
             <form id="pengumuman-form" class="p-6 space-y-6">
-                <div><label class="block text-sm font-medium">Judul Pengumuman</label><input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
-                <div><label class="block text-sm font-medium">Isi Pengumuman</label><textarea rows="5" class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></textarea></div>
+                <div><label class="block text-sm font-medium mb-1">Judul Pengumuman</label><input type="text" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div>
+                <div><label class="block text-sm font-medium mb-1">Isi Pengumuman</label><textarea rows="5" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></textarea></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div><label class="block text-sm font-medium">Kategori</label><select class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><option>Kegiatan Warga</option><option>Keamanan</option><option>Keuangan</option><option>Kebersihan</option><option>Administrasi</option></select></div>
-                    <div><label class="block text-sm font-medium">Prioritas Notifikasi</label><select class="mt-1 w-full border-gray-300 rounded-md shadow-sm"><option>Biasa</option><option>Penting (Urgent)</option></select></div>
+                    <div><label class="block text-sm font-medium mb-1">Kategori</label><select class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><option>Kegiatan Warga</option><option>Keamanan</option><option>Keuangan</option><option>Kebersihan</option><option>Administrasi</option></select></div>
+                    <div><label class="block text-sm font-medium mb-1">Prioritas Notifikasi</label><select class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><option>Biasa</option><option>Penting (Urgent)</option></select></div>
                 </div>
-                <div><label class="block text-sm font-medium">Lampiran (Foto/PDF)</label><input type="file" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
-                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Terbitkan</button></div>
+                <div><label class="block text-sm font-medium mb-1">Lampiran (Foto/PDF)</label><input type="file" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-200">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Terbitkan</button></div>
             </form>
+        </div>
+    </div>
+    
+     <!-- Bottom Navigation (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
+        <div class="grid grid-cols-5 h-20">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span></a>
+            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span></a>
+            <a href="laporan-keamanan.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Lapor</span></a>
+            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span></a>
+            <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span></a>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-        // Modal Pengumuman
         const pengumumanModal = document.getElementById('pengumuman-modal');
         const openModalBtn = document.getElementById('buat-pengumuman-btn');
         const closeModalBtn = pengumumanModal.querySelector('#close-modal-btn');
@@ -130,4 +140,3 @@
     </script>
 </body>
 </html>
-

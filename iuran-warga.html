@@ -6,163 +6,138 @@
     <title>Warga Connect - Iuran Warga</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
-        .tab-active { border-color: #2563eb; color: #2563eb; }
-        .tab-inactive { border-color: transparent; color: #6b7280; }
+        body { background-color: #F7F7F9; }
+        .tab-active { 
+            border-color: #3b82f6; /* blue-600 */
+            color: #2563eb; /* blue-700 */
+            font-weight: 600;
+        }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-gray-800">
 
-    <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
                     <div>
-                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
-                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                        <h1 class="text-xl font-bold text-gray-900">Iuran Warga</h1>
+                        <p class="text-sm text-gray-500">Pembayaran & Riwayat</p>
                     </div>
                 </a>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
-                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <header class="mb-6">
             <h1 class="text-3xl font-bold text-gray-900">Iuran Warga Online</h1>
             <p class="text-gray-600 mt-1">Bayar iuran lebih mudah, transparan, dan tercatat.</p>
         </header>
 
-        <!-- Ringkasan & Notifikasi -->
-        <div class="bg-white rounded-lg shadow-sm border p-6 mb-6">
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-lg font-semibold">Total Tagihan Bulan September</h2>
-                    <p class="text-3xl font-bold text-red-600">Rp 75.000</p>
+                    <p class="text-4xl font-bold text-red-600">Rp 75.000</p>
                     <p class="text-sm text-gray-500">Jatuh tempo pada <span class="font-medium">20 September 2025</span></p>
                 </div>
-                <button id="bayar-sekarang-btn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 flex items-center gap-2 w-full md:w-auto">
+                <button id="bayar-sekarang-btn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 flex items-center gap-2 w-full md:w-auto shadow-sm hover:shadow-lg transition-shadow">
                     <i data-lucide="credit-card" class="w-5 h-5"></i>
                     <span>Bayar Sekarang</span>
                 </button>
             </div>
-             <div class="mt-4 p-3 bg-yellow-50 text-yellow-800 rounded-lg text-sm flex items-center gap-3">
+             <div class="mt-4 p-3 bg-yellow-100 text-yellow-800 rounded-lg text-sm flex items-center gap-3">
                 <i data-lucide="bell" class="w-5 h-5 flex-shrink-0"></i>
                 <span>Pengingat: Tagihan Anda akan jatuh tempo dalam 3 hari.</span>
             </div>
         </div>
         
-        <!-- Tabs -->
         <div class="border-b border-gray-200 mb-6">
             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <button id="tab-rincian" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Rincian Tagihan</button>
-                <button id="tab-riwayat" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Riwayat Pembayaran</button>
+                <button id="tab-rincian" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 text-sm">Rincian Tagihan</button>
+                <button id="tab-riwayat" class="text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm">Riwayat Pembayaran</button>
             </nav>
         </div>
 
-        <!-- Konten Iuran -->
         <div id="konten-iuran">
-            <!-- Rincian Tagihan -->
             <div id="rincian-tagihan" class="space-y-4">
-                <div class="bg-white p-4 rounded-lg shadow-sm border">
-                    <h3 class="font-semibold text-gray-800">Iuran Rutin Bulanan</h3>
-                    <div class="flex justify-between items-center mt-2"><span>Keamanan & Kebersihan</span><span class="font-bold">Rp 50.000</span></div>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm border">
-                    <h3 class="font-semibold text-gray-800">Iuran Insidental</h3>
-                    <div class="flex justify-between items-center mt-2"><span>Perbaikan Jalan Blok A</span><span class="font-bold">Rp 25.000</span></div>
-                </div>
-                 <div class="bg-white p-4 rounded-lg shadow-sm border">
-                    <h3 class="font-semibold text-gray-800">Donasi Sukarela (Opsional)</h3>
-                    <div class="flex justify-between items-center mt-2"><span>Bantuan Warga Sakit (Bpk. Joko)</span><a href="#" class="text-blue-600 hover:underline font-medium">Beri Donasi</a></div>
-                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border flex justify-between items-center"><div><h3 class="font-semibold text-gray-800">Iuran Rutin Bulanan</h3><p class="text-sm text-gray-500">Keamanan & Kebersihan</p></div><span class="font-bold text-lg">Rp 50.000</span></div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border flex justify-between items-center"><div><h3 class="font-semibold text-gray-800">Iuran Insidental</h3><p class="text-sm text-gray-500">Perbaikan Jalan Blok A</p></div><span class="font-bold text-lg">Rp 25.000</span></div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border flex justify-between items-center"><div><h3 class="font-semibold text-gray-800">Donasi Sukarela (Opsional)</h3><p class="text-sm text-gray-500">Bantuan Warga Sakit (Bpk. Joko)</p></div><a href="#" class="text-blue-600 hover:underline font-medium">Beri Donasi</a></div>
             </div>
             
-            <!-- Riwayat Pembayaran (Hidden) -->
-            <div id="riwayat-pembayaran" class="hidden bg-white rounded-lg shadow-sm border overflow-x-auto">
+            <div id="riwayat-pembayaran" class="hidden bg-white rounded-2xl shadow-sm overflow-hidden">
                  <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3">Bulan</th><th class="px-6 py-3">Total Bayar</th><th class="px-6 py-3">Tanggal Bayar</th><th class="px-6 py-3">Status</th>
-                        </tr>
-                    </thead>
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50"><tr><th class="px-6 py-3">Bulan</th><th class="px-6 py-3">Total Bayar</th><th class="px-6 py-3">Tanggal Bayar</th><th class="px-6 py-3">Status</th></tr></thead>
                     <tbody>
-                        <tr class="border-b"><td class="px-6 py-4 font-medium">Agustus 2025</td><td class="px-6 py-4">Rp 50.000</td><td class="px-6 py-4">05 Agu 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Lunas</span></td></tr>
-                        <tr class="border-b"><td class="px-6 py-4 font-medium">Juli 2025</td><td class="px-6 py-4">Rp 50.000</td><td class="px-6 py-4">02 Jul 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Lunas</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-medium">Agustus 2025</td><td class="px-6 py-4">Rp 50.000</td><td class="px-6 py-4">05 Agu 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Lunas</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-medium">Juli 2025</td><td class="px-6 py-4">Rp 50.000</td><td class="px-6 py-4">02 Jul 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Lunas</span></td></tr>
                     </tbody>
                  </table>
             </div>
         </div>
-    </div>
+        <div class="h-24 lg:hidden"></div>
+    </main>
     
-    <!-- Modal Pembayaran -->
     <div id="bayar-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg">
             <div class="p-6 border-b flex justify-between items-center"><h3 class="text-xl font-bold">Metode Pembayaran</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
             <div class="p-6 space-y-6">
-                <div>
-                    <h4 class="font-semibold text-center">Scan QRIS</h4>
-                    <p class="text-sm text-center text-gray-500">Mendukung semua E-Wallet & Mobile Banking</p>
-                    <div class="w-48 h-48 bg-gray-200 mx-auto mt-2 flex items-center justify-center">[Gambar QRIS di sini]</div>
-                    <p class="text-xs text-center text-green-600 mt-2 font-medium">Pembayaran akan terkonfirmasi otomatis.</p>
-                </div>
+                <div><h4 class="font-semibold text-center">Scan QRIS</h4><p class="text-sm text-center text-gray-500">Mendukung semua E-Wallet & Mobile Banking</p><div class="w-48 h-48 bg-gray-200 mx-auto mt-2 rounded-lg flex items-center justify-center">[Gambar QRIS di sini]</div><p class="text-xs text-center text-green-600 mt-2 font-medium">Pembayaran akan terkonfirmasi otomatis.</p></div>
                 <div class="text-center text-gray-500">atau</div>
-                <div>
-                     <h4 class="font-semibold text-center">Transfer Bank Manual</h4>
-                     <div class="mt-2 p-3 bg-blue-50 rounded-lg text-center">
-                        <p class="text-sm">Bank BCA</p>
-                        <p class="font-bold text-lg tracking-wider">123 456 7890</p>
-                        <p class="text-sm">a/n Bendahara RT 003</p>
-                     </div>
-                     <p class="text-xs text-center text-red-600 mt-2 font-medium">Wajib upload bukti transfer untuk verifikasi.</p>
-                     <button class="w-full mt-2 bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg hover:bg-gray-300 flex items-center justify-center gap-2">
-                        <i data-lucide="upload-cloud" class="w-4 h-4"></i> Upload Bukti Transfer
-                     </button>
-                </div>
+                <div><h4 class="font-semibold text-center">Transfer Bank Manual</h4><div class="mt-2 p-3 bg-blue-50 rounded-lg text-center"><p class="text-sm">Bank BCA</p><p class="font-bold text-lg tracking-wider">123 456 7890</p><p class="text-sm">a/n Bendahara RT 003</p></div><p class="text-xs text-center text-red-600 mt-2 font-medium">Wajib upload bukti transfer untuk verifikasi.</p><button class="w-full mt-2 bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg hover:bg-gray-300 flex items-center justify-center gap-2"><i data-lucide="upload-cloud" class="w-4 h-4"></i> Upload Bukti Transfer</button></div>
             </div>
         </div>
     </div>
-
+    
+     <!-- Bottom Navigation (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
+        <div class="grid grid-cols-5 h-20">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span>
+            </a>
+            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span>
+            </a>
+            <a href="laporan-keamanan.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                 <i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Lapor</span>
+            </a>
+            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span>
+            </a>
+             <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span>
+            </a>
+        </div>
+    </div>
     <script>
         lucide.createIcons();
-        // Tab functionality
         const tabRincian = document.getElementById('tab-rincian');
         const tabRiwayat = document.getElementById('tab-riwayat');
         const rincianContent = document.getElementById('rincian-tagihan');
         const riwayatContent = document.getElementById('riwayat-pembayaran');
-
         tabRincian.addEventListener('click', () => {
-            tabRincian.classList.add('tab-active'); tabRincian.classList.remove('tab-inactive');
-            tabRiwayat.classList.add('tab-inactive'); tabRiwayat.classList.remove('tab-active');
-            rincianContent.classList.remove('hidden');
-            riwayatContent.classList.add('hidden');
+            tabRincian.classList.add('tab-active'); tabRiwayat.classList.remove('tab-active');
+            rincianContent.classList.remove('hidden'); riwayatContent.classList.add('hidden');
         });
         tabRiwayat.addEventListener('click', () => {
-            tabRiwayat.classList.add('tab-active'); tabRiwayat.classList.remove('tab-inactive');
-            tabRincian.classList.add('tab-inactive'); tabRincian.classList.remove('tab-active');
-            riwayatContent.classList.remove('hidden');
-            rincianContent.classList.add('hidden');
+            tabRiwayat.classList.add('tab-active'); tabRincian.classList.remove('tab-active');
+            riwayatContent.classList.remove('hidden'); rincianContent.classList.add('hidden');
         });
-        // Modal Pembayaran
         const bayarModal = document.getElementById('bayar-modal');
         const openModalBtn = document.getElementById('bayar-sekarang-btn');
         const closeModalBtn = bayarModal.querySelector('#close-modal-btn');
-        
-        function openBayarModal() { bayarModal.classList.remove('hidden'); }
-        function closeBayarModal() { bayarModal.classList.add('hidden'); }
-
-        openModalBtn.addEventListener('click', openBayarModal);
-        closeModalBtn.addEventListener('click', closeBayarModal);
-        bayarModal.addEventListener('click', (e) => { if (e.target === bayarModal) closeBayarModal(); });
+        openModalBtn.addEventListener('click', () => bayarModal.classList.remove('hidden'));
+        closeModalBtn.addEventListener('click', () => bayarModal.classList.add('hidden'));
+        bayarModal.addEventListener('click', (e) => { if (e.target === bayarModal) bayarModal.classList.add('hidden'); });
     </script>
 </body>
 </html>
-

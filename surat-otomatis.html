@@ -6,42 +6,57 @@
     <title>Warga Connect - Surat Otomatis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { font-family: 'Inter', sans-serif; }
-        .tab-active { border-color: #2563eb; color: #2563eb; }
-        .tab-inactive { border-color: transparent; color: #6b7280; }
+        :root { 
+            font-family: 'Inter', sans-serif; 
+        }
+        body {
+            background-color: #F7F7F9;
+        }
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-radius: 1.5rem; /* 24px */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+        }
+        .tab-active { 
+            border-color: #3b82f6; /* blue-600 */
+            color: #2563eb; /* blue-700 */
+            font-weight: 600;
+        }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-gray-800">
 
     <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
                     <div>
-                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
-                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                        <h1 class="text-xl font-bold text-gray-900">Surat Otomatis</h1>
+                        <p class="text-sm text-gray-500">Administrasi Warga</p>
                     </div>
                 </a>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
-                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <header class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900">Surat Otomatis RT/RW</h1>
+                <h1 class="text-3xl font-bold text-gray-900">Layanan Surat RT/RW</h1>
                 <p class="text-gray-600 mt-1">Ajukan surat pengantar dan administrasi lainnya secara online.</p>
             </div>
-            <button id="buat-surat-btn" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap">
+            <button id="buat-surat-btn" class="bg-blue-600 text-white font-medium py-3 px-5 rounded-xl hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap shadow-sm hover:shadow-lg transition-shadow">
                 <i data-lucide="plus-circle" class="w-5 h-5"></i>
                 <span>Buat Pengajuan Baru</span>
             </button>
@@ -50,8 +65,8 @@
         <!-- Tabs -->
         <div class="border-b border-gray-200 mb-6">
             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <button id="tab-saat-ini" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Pengajuan Saat Ini</button>
-                <button id="tab-riwayat" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Riwayat Pengajuan</button>
+                <button id="tab-saat-ini" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 text-sm">Pengajuan Saat Ini</button>
+                <button id="tab-riwayat" class="text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm">Riwayat Pengajuan</button>
             </nav>
         </div>
         
@@ -60,71 +75,100 @@
             <!-- Pengajuan Saat Ini -->
             <div id="pengajuan-saat-ini" class="space-y-4">
                 <!-- Contoh Disetujui -->
-                <div class="bg-white p-4 rounded-lg shadow-sm border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="card bg-white p-4 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                        <p class="font-semibold">Surat Pengantar SKCK</p>
+                        <p class="font-semibold text-lg">Surat Pengantar SKCK</p>
                         <p class="text-sm text-gray-500">Diajukan pada 10 September 2025</p>
                     </div>
                     <div class="flex items-center gap-4 w-full sm:w-auto">
-                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Disetujui</span>
-                        <button class="flex-1 sm:flex-none bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 text-sm flex items-center justify-center gap-2">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Disetujui</span>
+                        <button class="flex-1 sm:flex-none bg-blue-100 text-blue-700 font-semibold py-2 px-4 rounded-lg hover:bg-blue-200 text-sm flex items-center justify-center gap-2">
                             <i data-lucide="download" class="w-4 h-4"></i> Download PDF
                         </button>
                     </div>
                 </div>
                 <!-- Contoh Diproses -->
-                <div class="bg-white p-4 rounded-lg shadow-sm border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="card bg-white p-4 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                        <p class="font-semibold">Surat Keterangan Domisili</p>
+                        <p class="font-semibold text-lg">Surat Keterangan Domisili</p>
                         <p class="text-sm text-gray-500">Diajukan pada 14 September 2025</p>
                     </div>
-                     <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Sedang Diproses</span>
+                     <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Sedang Diproses</span>
                 </div>
                  <!-- Contoh Ditolak -->
-                <div class="bg-white p-4 rounded-lg shadow-sm border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="card bg-white p-4 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                        <p class="font-semibold">Surat Pengantar KTP</p>
+                        <p class="font-semibold text-lg">Surat Pengantar KTP</p>
                         <p class="text-sm text-gray-500">Diajukan pada 08 September 2025</p>
-                         <p class="text-xs text-red-600 mt-1">Alasan: Scan KK kurang jelas, harap upload ulang.</p>
+                         <p class="text-xs text-red-600 mt-1 italic">Alasan: Scan KK kurang jelas, harap upload ulang.</p>
                     </div>
-                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Ditolak</span>
+                     <span class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">Ditolak</span>
                 </div>
             </div>
 
             <!-- Riwayat Pengajuan (Hidden) -->
-            <div id="riwayat-pengajuan" class="hidden bg-white rounded-lg shadow-sm border overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr><th class="px-6 py-3">Jenis Surat</th><th class="px-6 py-3">Tanggal Selesai</th><th class="px-6 py-3">Status</th></tr>
-                    </thead>
-                    <tbody>
-                         <tr class="border-b"><td class="px-6 py-4 font-medium">Surat Pengantar KK</td><td class="px-6 py-4">05 Agustus 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Disetujui</span></td></tr>
-                    </tbody>
-                </table>
+            <div id="riwayat-pengajuan" class="hidden card bg-white shadow-sm overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-600">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3">Jenis Surat</th>
+                                <th class="px-6 py-3">Tanggal Selesai</th>
+                                <th class="px-6 py-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr class="border-b"><td class="px-6 py-4 font-medium text-gray-900">Surat Pengantar KK</td><td class="px-6 py-4">05 Agustus 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Disetujui</span></td></tr>
+                             <tr class="border-b"><td class="px-6 py-4 font-medium text-gray-900">Surat Keterangan Usaha</td><td class="px-6 py-4">12 Juli 2025</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Disetujui</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="h-24 lg:hidden"></div>
+    </main>
     
     <!-- Modal Buat Surat -->
     <div id="surat-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10"><h3 class="text-xl font-bold">Formulir Pengajuan Surat</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10 rounded-t-2xl"><h3 class="text-xl font-bold">Formulir Pengajuan Surat</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
             <form id="surat-form" class="p-6 space-y-6">
                 <!-- Jenis Surat -->
-                <div><label class="block text-sm font-medium text-gray-700">Jenis Surat yang Diajukan</label><select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"><option>Surat Keterangan Domisili</option><option>Surat Pengantar KTP/KK</option><option>Surat Pengantar SKCK</option><option>Surat Keterangan Usaha</option></select></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Jenis Surat yang Diajukan</label><select class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"><option>Surat Keterangan Domisili</option><option>Surat Pengantar KTP/KK</option><option>Surat Pengantar SKCK</option><option>Surat Keterangan Usaha</option></select></div>
                 <!-- Data Pemohon -->
-                <div class="space-y-4 p-4 bg-gray-50 rounded-lg">
-                    <h4 class="font-semibold">Data Pemohon (Otomatis Terisi)</h4>
-                    <p class="text-sm"><strong>Nama:</strong> Budi Santoso</p>
-                    <p class="text-sm"><strong>NIK:</strong> 327601...</p>
-                    <p class="text-sm"><strong>Alamat:</strong> Blok A No. 15, Kel. Depok, Kec. Pancoran Mas</p>
+                <div class="space-y-2 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold text-blue-800">Data Pemohon (Otomatis Terisi)</h4>
+                    <p class="text-sm text-blue-700"><strong>Nama:</strong> Budi Santoso</p>
+                    <p class="text-sm text-blue-700"><strong>NIK:</strong> 327601...</p>
+                    <p class="text-sm text-blue-700"><strong>Alamat:</strong> Blok A No. 15, Kel. Depok, Kec. Pancoran Mas</p>
                 </div>
                 <!-- Detail Keperluan -->
-                <div><label class="block text-sm font-medium text-gray-700">Tujuan / Keperluan Surat</label><textarea rows="3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Contoh: Untuk melamar pekerjaan di PT. ABC"></textarea></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Tujuan / Keperluan Surat</label><textarea rows="3" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: Untuk melamar pekerjaan di PT. ABC"></textarea></div>
                 <!-- Dokumen Pendukung -->
-                <div><label class="block text-sm font-medium text-gray-700">Upload Dokumen Pendukung (jika perlu)</label><input type="file" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
-                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Kirim Pengajuan</button></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Upload Dokumen Pendukung (jika perlu)</label><input type="file" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-200">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Kirim Pengajuan</button></div>
             </form>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
+        <div class="grid grid-cols-5 h-20">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span>
+            </a>
+            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span>
+            </a>
+            <a href="laporan-keamanan.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                 <i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Lapor</span>
+            </a>
+            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span>
+            </a>
+             <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span>
+            </a>
         </div>
     </div>
 
@@ -137,14 +181,16 @@
         const riwayatPengajuan = document.getElementById('riwayat-pengajuan');
 
         tabSaatIni.addEventListener('click', () => {
-            tabSaatIni.classList.add('tab-active'); tabSaatIni.classList.remove('tab-inactive');
-            tabRiwayat.classList.add('tab-inactive'); tabRiwayat.classList.remove('tab-active');
+            tabSaatIni.classList.add('tab-active');
+            tabRiwayat.classList.remove('tab-active');
+            tabRiwayat.classList.add('text-gray-500', 'hover:text-gray-700');
             pengajuanSaatIni.classList.remove('hidden');
             riwayatPengajuan.classList.add('hidden');
         });
         tabRiwayat.addEventListener('click', () => {
-            tabRiwayat.classList.add('tab-active'); tabRiwayat.classList.remove('tab-inactive');
-            tabSaatIni.classList.add('tab-inactive'); tabSaatIni.classList.remove('tab-active');
+            tabRiwayat.classList.add('tab-active');
+            tabRiwayat.classList.remove('text-gray-500', 'hover:text-gray-700');
+            tabSaatIni.classList.remove('tab-active');
             riwayatPengajuan.classList.remove('hidden');
             pengajuanSaatIni.classList.add('hidden');
         });
@@ -170,4 +216,3 @@
     </script>
 </body>
 </html>
-

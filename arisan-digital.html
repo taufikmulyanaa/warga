@@ -6,96 +6,80 @@
     <title>Warga Connect - Arisan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
-        .tab-active { border-color: #2563eb; color: #2563eb; }
-        .tab-inactive { border-color: transparent; color: #6b7280; }
-        @keyframes prize-draw {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
+        body { background-color: #F7F7F9; }
+        .tab-active { 
+            border-color: #3b82f6; /* blue-600 */
+            color: #2563eb; /* blue-700 */
+            font-weight: 600;
         }
-        .prize-draw-animation {
-            animation: prize-draw 0.1s linear infinite;
-        }
+        .prize-draw-animation { animation: prize-draw 0.1s linear infinite; }
+        @keyframes prize-draw { 0% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-gray-800">
 
-    <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
                     <div>
-                        <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
-                        <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
+                        <h1 class="text-xl font-bold text-gray-900">Arisan Digital</h1>
+                        <p class="text-sm text-gray-500">Praktis, Transparan & Adil</p>
                     </div>
                 </a>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"><i data-lucide="user" class="w-4 h-4 text-gray-600"></i></div>
-                    <div class="hidden sm:block"><p class="text-sm font-medium text-gray-900">Budi Santoso</p></div>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <header class="mb-6">
-            <h1 class="text-3xl font-bold text-gray-900">Arisan Digital RT 003</h1>
+            <h1 class="text-3xl font-bold text-gray-900">Arisan RT 003 Periode 2025</h1>
             <p class="text-gray-600 mt-1">Sistem arisan yang praktis, transparan, dan adil untuk semua.</p>
         </header>
 
-        <!-- Ringkasan Arisan -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-white p-4 rounded-lg shadow-sm border"><p class="text-sm text-gray-600">Pemenang Bulan Ini</p><p class="text-xl font-bold">Bpk. Agus Setiawan</p></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border"><p class="text-sm text-gray-600">Jadwal Undian Berikutnya</p><p class="text-xl font-bold">15 Oktober 2025</p></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border"><p class="text-sm text-gray-600">Total Kas Arisan Terkumpul</p><p class="text-xl font-bold text-green-600">Rp 2.500.000</p></div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border"><p class="text-sm text-gray-600">Pemenang Bulan Ini</p><p class="text-xl font-bold">Bpk. Agus Setiawan</p></div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border"><p class="text-sm text-gray-600">Undian Berikutnya</p><p class="text-xl font-bold">15 Oktober 2025</p></div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border"><p class="text-sm text-gray-600">Kas Arisan Terkumpul</p><p class="text-xl font-bold text-green-600">Rp 2.500.000</p></div>
         </div>
         
-        <!-- Aksi Utama -->
-        <div class="bg-white rounded-lg shadow-sm border p-4 mb-6 flex flex-col sm:flex-row gap-3 items-center justify-between">
-            <p class="text-gray-700"><span class="font-semibold">Status Iuran Anda:</span> <span class="text-green-600 font-bold">Sudah Setor</span></p>
+        <div class="bg-white rounded-2xl shadow-sm p-4 mb-6 flex flex-col sm:flex-row gap-3 items-center justify-between">
+            <p class="text-gray-700"><span class="font-semibold">Status Iuran Anda (September):</span> <span class="text-green-600 font-bold">Sudah Lunas</span></p>
             <div class="flex gap-3 w-full sm:w-auto">
                 <a href="iuran-warga.html" class="flex-1 text-center bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Bayar Iuran</a>
-                <button id="undi-btn" class="flex-1 text-center bg-gray-800 text-white font-medium py-2 px-4 rounded-lg hover:bg-gray-900 flex items-center justify-center gap-2">
-                    <i data-lucide="dice-5" class="w-5 h-5"></i><span>Kocok Undian</span>
-                </button>
+                <button id="undi-btn" class="flex-1 text-center bg-gray-800 text-white font-medium py-2 px-4 rounded-lg hover:bg-gray-900 flex items-center justify-center gap-2"><i data-lucide="dice-5" class="w-5 h-5"></i><span>Kocok Undian</span></button>
             </div>
         </div>
 
-        <!-- Tabs -->
         <div class="border-b border-gray-200 mb-6">
             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <button id="tab-status" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Status Iuran Peserta</button>
-                <button id="tab-riwayat" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Riwayat Pemenang</button>
+                <button id="tab-status" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 text-sm">Status Iuran Peserta</button>
+                <button id="tab-riwayat" class="text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm">Riwayat Pemenang</button>
             </nav>
         </div>
 
-        <!-- Konten -->
         <div>
-            <!-- Status Iuran Peserta -->
-            <div id="status-iuran" class="bg-white rounded-lg shadow-sm border overflow-x-auto">
+            <div id="status-iuran" class="bg-white rounded-2xl shadow-sm overflow-hidden">
                  <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr><th class="px-6 py-3">Nama Peserta</th><th class="px-6 py-3">No. Rumah</th><th class="px-6 py-3">Status Iuran September</th></tr>
-                    </thead>
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50"><tr><th class="px-6 py-3">Nama Peserta</th><th class="px-6 py-3">No. Rumah</th><th class="px-6 py-3">Status Iuran September</th></tr></thead>
                     <tbody>
-                        <tr class="border-b"><td class="px-6 py-4 font-medium">Budi Santoso</td><td class="px-6 py-4">A-15</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Sudah Setor</span></td></tr>
-                        <tr class="border-b"><td class="px-6 py-4 font-medium">Agus Setiawan</td><td class="px-6 py-4">B-08</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Sudah Setor</span></td></tr>
-                         <tr class="border-b"><td class="px-6 py-4 font-medium">Siti Aminah</td><td class="px-6 py-4">A-15</td><td class="px-6 py-4"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Belum Setor</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-medium text-gray-800">Budi Santoso</td><td class="px-6 py-4">A-15</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Sudah Setor</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-medium text-gray-800">Agus Setiawan</td><td class="px-6 py-4">B-08</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Sudah Setor</span></td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-medium text-gray-800">Siti Aminah</td><td class="px-6 py-4">A-15</td><td class="px-6 py-4"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Belum Setor</span></td></tr>
                     </tbody>
                  </table>
             </div>
             
-            <!-- Riwayat Pemenang (Hidden) -->
-            <div id="riwayat-pemenang" class="hidden bg-white rounded-lg shadow-sm border overflow-x-auto">
+            <div id="riwayat-pemenang" class="hidden bg-white rounded-2xl shadow-sm overflow-hidden">
                  <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr><th class="px-6 py-3">Periode</th><th class="px-6 py-3">Pemenang</th><th class="px-6 py-3">No. Rumah</th></tr>
-                    </thead>
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50"><tr><th class="px-6 py-3">Periode</th><th class="px-6 py-3">Pemenang</th><th class="px-6 py-3">No. Rumah</th></tr></thead>
                     <tbody>
                         <tr class="border-b"><td class="px-6 py-4 font-medium">September 2025</td><td class="px-6 py-4">Bpk. Agus Setiawan</td><td class="px-6 py-4">B-08</td></tr>
                         <tr class="border-b"><td class="px-6 py-4 font-medium">Agustus 2025</td><td class="px-6 py-4">Ibu Rina</td><td class="px-6 py-4">C-01</td></tr>
@@ -104,91 +88,64 @@
                  </table>
             </div>
         </div>
+        <div class="h-24 lg:hidden"></div>
+    </main>
+    
+    <div id="undian-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm text-center p-8">
+            <h3 class="text-2xl font-bold">Mengundi Pemenang...</h3>
+            <div id="prize-draw-roller" class="h-24 my-6 text-4xl font-black overflow-hidden relative"><div class="absolute inset-x-0"></div></div>
+            <div id="winner-announcement" class="hidden"><p class="text-lg">Pemenang Arisan Bulan Ini Adalah</p><p id="winner-name" class="text-4xl font-black text-blue-600 my-4"></p><button id="close-modal-btn" class="bg-blue-600 text-white font-medium py-2 px-6 rounded-lg hover:bg-blue-700">Tutup</button></div>
+        </div>
     </div>
     
-    <!-- Modal Undian -->
-    <div id="undian-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-sm text-center p-8">
-            <h3 class="text-2xl font-bold">Mengundi Pemenang...</h3>
-            <div id="prize-draw-roller" class="h-24 my-6 text-4xl font-black overflow-hidden relative">
-                <div class="absolute inset-x-0">
-                    <!-- This div will be populated by JS -->
-                </div>
-            </div>
-            <div id="winner-announcement" class="hidden">
-                 <p class="text-lg">Pemenang Arisan Bulan Ini Adalah</p>
-                 <p id="winner-name" class="text-4xl font-black text-blue-600 my-4"></p>
-                 <button id="close-modal-btn" class="bg-blue-600 text-white font-medium py-2 px-6 rounded-lg hover:bg-blue-700">Tutup</button>
-            </div>
+     <!-- Bottom Navigation (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
+        <div class="grid grid-cols-5 h-20">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span>
+            </a>
+            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span>
+            </a>
+            <a href="laporan-keamanan.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                 <i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Lapor</span>
+            </a>
+            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span>
+            </a>
+             <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600">
+                <i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span>
+            </a>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-        // Tab functionality
-        const tabStatus = document.getElementById('tab-status');
-        const tabRiwayat = document.getElementById('tab-riwayat');
-        const statusContent = document.getElementById('status-iuran');
-        const riwayatContent = document.getElementById('riwayat-pemenang');
+        const tabStatus = document.getElementById('tab-status'), tabRiwayat = document.getElementById('tab-riwayat'), statusContent = document.getElementById('status-iuran'), riwayatContent = document.getElementById('riwayat-pemenang');
+        tabStatus.addEventListener('click', () => { tabStatus.classList.add('tab-active'); tabRiwayat.classList.remove('tab-active'); statusContent.classList.remove('hidden'); riwayatContent.classList.add('hidden'); });
+        tabRiwayat.addEventListener('click', () => { tabRiwayat.classList.add('tab-active'); tabStatus.classList.remove('tab-active'); riwayatContent.classList.remove('hidden'); statusContent.classList.add('hidden'); });
 
-        tabStatus.addEventListener('click', () => {
-            tabStatus.classList.add('tab-active'); tabStatus.classList.remove('tab-inactive');
-            tabRiwayat.classList.add('tab-inactive'); tabRiwayat.classList.remove('tab-active');
-            statusContent.classList.remove('hidden');
-            riwayatContent.classList.add('hidden');
-        });
-        tabRiwayat.addEventListener('click', () => {
-            tabRiwayat.classList.add('tab-active'); tabRiwayat.classList.remove('tab-inactive');
-            tabStatus.classList.add('tab-inactive'); tabStatus.classList.remove('tab-active');
-            riwayatContent.classList.remove('hidden');
-            statusContent.classList.add('hidden');
-        });
-
-        // Modal Undian
-        const undianModal = document.getElementById('undian-modal');
-        const undiBtn = document.getElementById('undi-btn');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const roller = document.querySelector('#prize-draw-roller > div');
-        const winnerAnnouncement = document.getElementById('winner-announcement');
-        const winnerNameEl = document.getElementById('winner-name');
-        
+        const undianModal = document.getElementById('undian-modal'), undiBtn = document.getElementById('undi-btn'), closeModalBtn = document.getElementById('close-modal-btn'), roller = document.querySelector('#prize-draw-roller > div'), winnerAnnouncement = document.getElementById('winner-announcement'), winnerNameEl = document.getElementById('winner-name');
         const participants = ["Budi Santoso", "Siti Aminah", "Eko Prasetyo", "Dewi Lestari", "Rudi Hartono"];
-        let animationInterval;
 
-        function startDrawing() {
-            undianModal.classList.remove('hidden');
-            winnerAnnouncement.classList.add('hidden');
-            roller.parentElement.classList.remove('hidden');
-
-            // Populate roller
+        undiBtn.addEventListener('click', () => {
+            undianModal.classList.remove('hidden'); winnerAnnouncement.classList.add('hidden'); roller.parentElement.classList.remove('hidden');
             roller.innerHTML = '';
             for (let i = 0; i < 20; i++) {
-                const randomName = participants[Math.floor(Math.random() * participants.length)];
                 const p = document.createElement('p');
-                p.textContent = randomName;
+                p.textContent = participants[Math.floor(Math.random() * participants.length)];
                 roller.appendChild(p);
             }
-            
             roller.classList.add('prize-draw-animation');
-
-            setTimeout(stopDrawing, 3000); // Stop after 3 seconds
-        }
-
-        function stopDrawing() {
-            roller.classList.remove('prize-draw-animation');
-            roller.parentElement.classList.add('hidden');
-            const winner = participants[Math.floor(Math.random() * participants.length)];
-            winnerNameEl.textContent = winner;
-            winnerAnnouncement.classList.remove('hidden');
-        }
-
-        function closeUndianModal() {
-             undianModal.classList.add('hidden');
-        }
-
-        undiBtn.addEventListener('click', startDrawing);
-        closeModalBtn.addEventListener('click', closeUndianModal);
+            setTimeout(() => {
+                roller.classList.remove('prize-draw-animation');
+                roller.parentElement.classList.add('hidden');
+                winnerNameEl.textContent = participants[Math.floor(Math.random() * participants.length)];
+                winnerAnnouncement.classList.remove('hidden');
+            }, 3000);
+        });
+        closeModalBtn.addEventListener('click', () => undianModal.classList.add('hidden'));
     </script>
 </body>
 </html>
-

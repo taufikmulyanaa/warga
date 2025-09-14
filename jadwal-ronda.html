@@ -6,251 +6,122 @@
     <title>Warga Connect - Jadwal Ronda</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
-        .calendar-day {
-            transition: all 0.2s ease-in-out;
-        }
-        .calendar-day:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .has-ronda {
-            background-color: #ecfdf5; /* green-50 */
-            border-color: #10b981; /* green-500 */
-        }
-        .is-today {
-            background-color: #eff6ff; /* blue-50 */
-            border-color: #3b82f6; /* blue-600 */
-        }
+        body { background-color: #F7F7F9; }
+        .calendar-day { transition: all 0.2s ease-in-out; }
+        .calendar-day:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .has-ronda { background-color: #ecfdf5; border-color: #10b981; }
+        .is-today { background-color: #eff6ff; border-color: #3b82f6; font-weight: bold; }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-gray-800">
 
-    <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-3">
-                    <a href="index.html" class="flex items-center gap-3">
-                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                            <i data-lucide="home" class="w-5 h-5 text-white"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
-                            <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="flex items-center gap-2">
-                     <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                        <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">Jadwal Ronda</h1>
+                        <p class="text-sm text-gray-500">Keamanan Lingkungan</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <p class="text-sm font-medium text-gray-900">Budi Santoso</p>
-                    </div>
+                </a>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <header class="mb-6">
-            <h1 class="text-3xl font-bold text-gray-900">Jadwal Ronda</h1>
+            <h1 class="text-3xl font-bold text-gray-900">Jaga Keamanan Bersama</h1>
             <p class="text-gray-600 mt-1">Monitor, kelola, dan laporkan kegiatan keamanan lingkungan.</p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Left Column -->
             <div class="lg:col-span-2 space-y-6">
-                <!-- Kalender Jadwal Ronda -->
-                <div class="bg-white rounded-lg shadow-sm border">
-                    <div class="p-4 border-b flex justify-between items-center">
-                        <h3 class="text-lg font-semibold text-gray-900">📅 Kalender Ronda - September 2025</h3>
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Kalender Ronda - September 2025</h3>
                         <div class="flex items-center gap-2">
                              <button class="p-1 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
                              <button class="p-1 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <div class="grid grid-cols-7 gap-2 text-center text-sm font-medium text-gray-500 mb-2">
-                            <div>Sen</div><div>Sel</div><div>Rab</div><div>Kam</div><div>Jum</div><div>Sab</div><div>Min</div>
-                        </div>
-                        <div class="grid grid-cols-7 gap-2">
-                            <!-- Days of the calendar -->
-                            <div class="calendar-day p-2 border rounded-lg text-gray-400">28</div>
-                            <div class="calendar-day p-2 border rounded-lg text-gray-400">29</div>
-                            <div class="calendar-day p-2 border rounded-lg text-gray-400">30</div>
-                            <div class="calendar-day p-2 border rounded-lg text-gray-400">31</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">1</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">2</div>
-                            <div class="calendar-day p-2 border rounded-lg">3</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">4</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">5</div>
-                            <div class="calendar-day p-2 border rounded-lg">6</div>
-                            <div class="calendar-day p-2 border rounded-lg">7</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">8</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">9</div>
-                            <div class="calendar-day p-2 border rounded-lg">10</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda is-today">11</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">12</div>
-                            <div class="calendar-day p-2 border rounded-lg">13</div>
-                            <div class="calendar-day p-2 border rounded-lg">14</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">15</div>
-                            <div class="calendar-day p-2 border rounded-lg has-ronda">16</div>
-                            <!-- etc. -->
-                        </div>
+                    <div class="grid grid-cols-7 gap-2 text-center text-sm font-medium text-gray-500 mb-2"><div>SEN</div><div>SEL</div><div>RAB</div><div>KAM</div><div>JUM</div><div>SAB</div><div>MIN</div></div>
+                    <div class="grid grid-cols-7 gap-2">
+                        <div class="calendar-day p-2 border rounded-lg text-gray-400">28</div><div class="calendar-day p-2 border rounded-lg text-gray-400">29</div><div class="calendar-day p-2 border rounded-lg text-gray-400">30</div><div class="calendar-day p-2 border rounded-lg text-gray-400">31</div><div class="calendar-day p-2 border rounded-lg has-ronda">1</div><div class="calendar-day p-2 border rounded-lg has-ronda">2</div><div class="calendar-day p-2 border rounded-lg">3</div><div class="calendar-day p-2 border rounded-lg has-ronda">4</div><div class="calendar-day p-2 border rounded-lg has-ronda">5</div><div class="calendar-day p-2 border rounded-lg">6</div><div class="calendar-day p-2 border rounded-lg">7</div><div class="calendar-day p-2 border rounded-lg has-ronda">8</div><div class="calendar-day p-2 border rounded-lg has-ronda">9</div><div class="calendar-day p-2 border rounded-lg">10</div><div class="calendar-day p-2 border rounded-lg has-ronda is-today">11</div><div class="calendar-day p-2 border rounded-lg has-ronda">12</div><div class="calendar-day p-2 border rounded-lg">13</div><div class="calendar-day p-2 border rounded-lg">14</div><div class="calendar-day p-2 border rounded-lg has-ronda">15</div><div class="calendar-day p-2 border rounded-lg has-ronda">16</div>
                     </div>
                 </div>
 
-                <!-- Absensi Ronda & Laporan Kehadiran -->
-                <div class="bg-white rounded-lg shadow-sm border">
-                    <div class="p-4 border-b">
-                        <h3 class="text-lg font-semibold text-gray-900">📊 Absensi & Laporan</h3>
-                    </div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-blue-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-blue-800">Absensi Digital</h4>
-                            <p class="text-sm text-blue-700 mt-1 mb-3">Klik untuk konfirmasi kehadiran saat jadwal ronda Anda.</p>
-                            <button class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 w-full">
-                                <i data-lucide="qr-code" class="w-5 h-5"></i>
-                                <span>Scan QR Kehadiran</span>
-                            </button>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-green-800">Laporan Kehadiran</h4>
-                            <p class="text-sm text-green-700 mt-1 mb-3">Lihat rekapitulasi kehadiran ronda Anda setiap bulan.</p>
-                             <button class="bg-green-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-green-700 flex items-center justify-center gap-2 w-full">
-                                <i data-lucide="clipboard-list" class="w-5 h-5"></i>
-                                <span>Lihat Rekap Absensi</span>
-                            </button>
-                        </div>
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Absensi & Laporan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg text-center"><h4 class="font-semibold text-blue-800">Absensi Digital</h4><p class="text-sm text-blue-700 mt-1 mb-3">Klik untuk konfirmasi kehadiran saat jadwal ronda Anda.</p><button class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 w-full"><i data-lucide="qr-code" class="w-5 h-5"></i><span>Scan QR Kehadiran</span></button></div>
+                        <div class="bg-green-50 p-4 rounded-lg text-center"><h4 class="font-semibold text-green-800">Laporan Kehadiran</h4><p class="text-sm text-green-700 mt-1 mb-3">Lihat rekapitulasi kehadiran ronda Anda setiap bulan.</p><button class="bg-green-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-green-700 flex items-center justify-center gap-2 w-full"><i data-lucide="clipboard-list" class="w-5 h-5"></i><span>Lihat Rekap Absensi</span></button></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column -->
             <div class="space-y-6">
-                <!-- Jadwal Saya -->
-                <div class="bg-white rounded-lg shadow-sm border">
-                    <div class="p-4 border-b">
-                        <h3 class="text-lg font-semibold text-gray-900">👮 Jadwal Saya Berikutnya</h3>
-                    </div>
-                    <div class="p-4">
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                            <p class="text-sm text-yellow-800">Jadwal Anda adalah:</p>
-                            <p class="text-2xl font-bold text-yellow-900">Besok, 16 Sep</p>
-                            <p class="font-semibold text-yellow-900">23:00 - 02:00 WIB</p>
-                            <p class="text-xs text-yellow-700 mt-1">Tim: Bpk. Agus, Bpk. Eko</p>
-                        </div>
-                        <div class="mt-4 flex flex-col sm:flex-row gap-2">
-                             <button class="flex-1 bg-green-500 text-white font-medium py-2 px-3 rounded-lg hover:bg-green-600 text-sm flex items-center justify-center gap-1">
-                                <i data-lucide="check-circle" class="w-4 h-4"></i>
-                                <span>Konfirmasi Hadir</span>
-                            </button>
-                            <button id="tukar-jadwal-btn" class="flex-1 bg-gray-200 text-gray-800 font-medium py-2 px-3 rounded-lg hover:bg-gray-300 text-sm flex items-center justify-center gap-1">
-                                <i data-lucide="repeat" class="w-4 h-4"></i>
-                                <span>Tukar Jadwal</span>
-                            </button>
-                        </div>
-                         <div class="mt-4 text-xs text-gray-500 flex items-center gap-2">
-                            <i data-lucide="bell" class="w-4 h-4 text-blue-500"></i>
-                            <span>Notifikasi pengingat H-1 akan aktif.</span>
-                        </div>
-                    </div>
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Jadwal Saya Berikutnya</h3>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg"><p class="text-sm text-yellow-800">Jadwal Anda adalah:</p><p class="text-2xl font-bold text-yellow-900">Besok, 16 Sep</p><p class="font-semibold text-yellow-900">23:00 - 02:00 WIB</p><p class="text-xs text-yellow-700 mt-1">Tim: Bpk. Agus, Bpk. Eko</p></div>
+                    <div class="mt-4 flex flex-col sm:flex-row gap-2"><button class="flex-1 bg-green-500 text-white font-medium py-2 px-3 rounded-lg hover:bg-green-600 text-sm flex items-center justify-center gap-1"><i data-lucide="check-circle" class="w-4 h-4"></i><span>Konfirmasi Hadir</span></button><button id="tukar-jadwal-btn" class="flex-1 bg-gray-200 text-gray-800 font-medium py-2 px-3 rounded-lg hover:bg-gray-300 text-sm flex items-center justify-center gap-1"><i data-lucide="repeat" class="w-4 h-4"></i><span>Tukar Jadwal</span></button></div>
+                    <div class="mt-4 text-xs text-gray-500 flex items-center gap-2"><i data-lucide="bell" class="w-4 h-4 text-blue-500"></i><span>Notifikasi pengingat H-1 akan aktif.</span></div>
                 </div>
 
-                <!-- Laporan Keamanan Terintegrasi -->
-                <div class="bg-white rounded-lg shadow-sm border">
-                    <div class="p-4 border-b">
-                        <h3 class="text-lg font-semibold text-gray-900">🚨 Laporan Kejadian</h3>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-sm text-gray-600 mb-3">Temukan hal mencurigakan saat ronda? Laporkan langsung dari sini.</p>
-                        <a href="laporan-keamanan.html" class="w-full bg-red-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2">
-                            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
-                            <span>Buat Laporan Keamanan</span>
-                        </a>
-                    </div>
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Laporan Kejadian</h3>
+                    <p class="text-sm text-gray-600 mb-3">Temukan hal mencurigakan saat ronda? Laporkan langsung dari sini.</p>
+                    <a href="laporan-keamanan.html" class="w-full bg-red-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2"><i data-lucide="alert-triangle" class="w-5 h-5"></i><span>Buat Laporan Keamanan</span></a>
                 </div>
             </div>
         </div>
-    </div>
+         <div class="h-24 lg:hidden"></div>
+    </main>
     
-    <!-- Modal Tukar Jadwal -->
     <div id="tukar-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
-            <div class="p-6 border-b flex justify-between items-center">
-                <h3 class="text-xl font-bold">Ajukan Tukar Jadwal</h3>
-                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg">
+            <div class="p-6 border-b flex justify-between items-center"><h3 class="text-xl font-bold">Ajukan Tukar Jadwal</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
             <form id="tukar-form" class="p-6 space-y-4">
-                <div>
-                    <p class="text-sm">Jadwal Anda: <span class="font-semibold">Selasa, 16 September 2025</span></p>
-                </div>
-                <div>
-                    <label for="tukar-dengan" class="block text-sm font-medium text-gray-700">Tukar dengan Warga</label>
-                    <select id="tukar-dengan" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                        <option>Pilih warga...</option>
-                        <option>Bpk. Joko (Jadwal: 18 Sep)</option>
-                        <option>Bpk. Rudi (Jadwal: 20 Sep)</option>
-                        <option>Bpk. Heri (Jadwal: 22 Sep)</option>
-                    </select>
-                </div>
-                 <div>
-                    <label for="alasan" class="block text-sm font-medium text-gray-700">Alasan (Opsional)</label>
-                    <textarea id="alasan" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Contoh: Ada keperluan keluarga mendadak..."></textarea>
-                </div>
-                <div class="pt-4 flex justify-end gap-3">
-                    <button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Batal</button>
-                    <button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Kirim Permintaan</button>
-                </div>
+                <p class="text-sm">Jadwal Anda: <span class="font-semibold">Selasa, 16 September 2025</span></p>
+                <div><label for="tukar-dengan" class="block text-sm font-medium text-gray-700 mb-1">Tukar dengan Warga</label><select id="tukar-dengan" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-lg"><option>Pilih warga...</option><option>Bpk. Joko (Jadwal: 18 Sep)</option><option>Bpk. Rudi (Jadwal: 20 Sep)</option><option>Bpk. Heri (Jadwal: 22 Sep)</option></select></div>
+                <div><label for="alasan" class="block text-sm font-medium text-gray-700 mb-1">Alasan (Opsional)</label><textarea id="alasan" rows="3" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-2" placeholder="Contoh: Ada keperluan keluarga mendadak..."></textarea></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-200">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Kirim Permintaan</button></div>
             </form>
         </div>
     </div>
 
-    <!-- Bottom Navigation (Mobile) -->
-    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-30">
-        <div class="grid grid-cols-5">
-            <a href="index.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="home" class="w-5 h-5"></i><span class="text-xs">Beranda</span></a>
-            <a href="pendataan-warga.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="users" class="w-5 h-5"></i><span class="text-xs">Warga</span></a>
-            <a href="jadwal-ronda.html" class="flex flex-col items-center gap-1 py-2 text-blue-600"><i data-lucide="shield" class="w-5 h-5"></i><span class="text-xs">Ronda</span></a>
-            <a href="marketplace.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="shopping-bag" class="w-5 h-5"></i><span class="text-xs">Market</span></a>
-            <a href="grup-chat.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="message-circle" class="w-5 h-5"></i><span class="text-xs">Chat</span></a>
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
+        <div class="grid grid-cols-5 h-20">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span></a>
+            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span></a>
+            <a href="jadwal-ronda.html" class="flex flex-col items-center justify-center gap-1 text-blue-600"><i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Ronda</span></a>
+            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span></a>
+            <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span></a>
         </div>
     </div>
     <script>
         lucide.createIcons();
-
-        // Modal Tukar Jadwal
         const tukarModal = document.getElementById('tukar-modal');
         const openModalBtn = document.getElementById('tukar-jadwal-btn');
         const closeModalBtn = tukarModal.querySelector('#close-modal-btn');
         const batalBtn = tukarModal.querySelector('#batal-btn');
         const tukarForm = document.getElementById('tukar-form');
-
-        function openTukarModal() { tukarModal.classList.remove('hidden'); }
-        function closeTukarModal() { tukarModal.classList.add('hidden'); }
-
-        openModalBtn.addEventListener('click', openTukarModal);
-        closeModalBtn.addEventListener('click', closeTukarModal);
-        batalBtn.addEventListener('click', closeTukarModal);
-
-        tukarModal.addEventListener('click', (event) => {
-            if (event.target === tukarModal) {
-                closeTukarModal();
-            }
-        });
-
+        openModalBtn.addEventListener('click', () => tukarModal.classList.remove('hidden'));
+        closeModalBtn.addEventListener('click', () => tukarModal.classList.add('hidden'));
+        batalBtn.addEventListener('click', () => tukarModal.classList.add('hidden'));
+        tukarModal.addEventListener('click', (event) => { if (event.target === tukarModal) tukarModal.classList.add('hidden'); });
         tukarForm.addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Permintaan tukar jadwal berhasil dikirim! Menunggu konfirmasi dari warga yang bersangkutan.');
-            closeTukarModal();
+            tukarModal.classList.add('hidden');
             tukarForm.reset();
         });
     </script>
 </body>
 </html>
-

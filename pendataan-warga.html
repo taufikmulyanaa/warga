@@ -6,93 +6,57 @@
     <title>Warga Connect - Pendataan Warga</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { font-family: 'Inter', sans-serif; }
+        body { background-color: #F7F7F9; }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-gray-800">
 
     <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-3">
-                    <a href="index.html" class="flex items-center gap-3">
-                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                            <i data-lucide="home" class="w-5 h-5 text-white"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-lg font-semibold text-gray-900">Warga Connect</h1>
-                            <p class="text-xs text-gray-500">RT 003/RW 012 Kelurahan Depok</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="flex items-center gap-2">
-                     <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                        <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-4">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-gray-500"></i>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">Pendataan Warga</h1>
+                        <p class="text-sm text-gray-500">Database Kependudukan</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <p class="text-sm font-medium text-gray-900">Admin RT</p>
-                    </div>
+                </a>
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <header class="mb-6">
-            <h1 class="text-3xl font-bold text-gray-900">Pendataan Warga Digital</h1>
-            <p class="text-gray-600 mt-1">Database terpusat untukelola data warga, domisili, dan status rumah.</p>
+            <h1 class="text-3xl font-bold text-gray-900">Database Warga Digital</h1>
+            <p class="text-gray-600 mt-1">Kelola data warga, domisili, dan status rumah secara terpusat.</p>
         </header>
 
         <!-- Statistik Otomatis -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div class="bg-white p-4 rounded-lg shadow-sm border flex items-center gap-4">
-                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center"><i data-lucide="users" class="w-5 h-5 text-blue-600"></i></div>
-                <div>
-                    <p class="text-sm text-gray-600">Total Warga</p>
-                    <p class="text-xl font-bold">125 Jiwa</p>
-                </div>
-            </div>
-             <div class="bg-white p-4 rounded-lg shadow-sm border flex items-center gap-4">
-                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-green-600"></i></div>
-                <div>
-                    <p class="text-sm text-gray-600">Rumah Pribadi</p>
-                    <p class="text-xl font-bold">35 KK</p>
-                </div>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border flex items-center gap-4">
-                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center"><i data-lucide="key-round" class="w-5 h-5 text-yellow-600"></i></div>
-                <div>
-                    <p class="text-sm text-gray-600">Rumah Kontrakan</p>
-                    <p class="text-xl font-bold">10 KK</p>
-                </div>
-            </div>
-             <div class="bg-white p-4 rounded-lg shadow-sm border flex items-center gap-4">
-                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center"><i data-lucide="user-plus" class="w-5 h-5 text-purple-600"></i></div>
-                <div>
-                    <p class="text-sm text-gray-600">Warga Baru Bulan Ini</p>
-                    <p class="text-xl font-bold">2 Jiwa</p>
-                </div>
-            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border flex items-center gap-4"><div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center"><i data-lucide="users" class="w-6 h-6 text-blue-600"></i></div><div><p class="text-sm text-gray-600">Total Warga</p><p class="text-2xl font-bold">125</p></div></div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border flex items-center gap-4"><div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center"><i data-lucide="home" class="w-6 h-6 text-green-600"></i></div><div><p class="text-sm text-gray-600">Rumah Pribadi</p><p class="text-2xl font-bold">35</p></div></div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border flex items-center gap-4"><div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center"><i data-lucide="key-round" class="w-6 h-6 text-yellow-600"></i></div><div><p class="text-sm text-gray-600">Rumah Kontrak</p><p class="text-2xl font-bold">10</p></div></div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border flex items-center gap-4"><div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center"><i data-lucide="user-plus" class="w-6 h-6 text-purple-600"></i></div><div><p class="text-sm text-gray-600">Warga Baru</p><p class="text-2xl font-bold">2</p></div></div>
         </div>
         
         <!-- Database Warga -->
-        <div class="bg-white rounded-lg shadow-sm border">
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
             <div class="p-4 border-b flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div class="relative w-full sm:w-auto">
+                <div class="relative w-full sm:w-auto flex-grow">
                     <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
-                    <input type="text" placeholder="Cari nama, NIK, atau no. rumah..." class="pl-10 pr-4 py-2 border rounded-lg w-full sm:w-80">
+                    <input type="text" placeholder="Cari nama, NIK, atau no. rumah..." class="pl-10 pr-4 py-2 border rounded-lg w-full">
                 </div>
                 <div class="flex items-center gap-2 w-full sm:w-auto">
-                    <button class="flex-1 bg-gray-200 text-gray-800 font-medium py-2 px-3 rounded-lg hover:bg-gray-300 text-sm flex items-center justify-center gap-1">
-                        <i data-lucide="download" class="w-4 h-4"></i> Export PDF/Excel
-                    </button>
-                    <button id="tambah-warga-btn" class="flex-1 bg-blue-600 text-white font-medium py-2 px-3 rounded-lg hover:bg-blue-700 text-sm flex items-center justify-center gap-1">
-                        <i data-lucide="plus" class="w-4 h-4"></i> Tambah Warga
-                    </button>
+                    <button class="flex-1 bg-gray-100 text-gray-800 font-medium py-2 px-3 rounded-lg hover:bg-gray-200 text-sm flex items-center justify-center gap-1"><i data-lucide="download" class="w-4 h-4"></i> Export</button>
+                    <button id="tambah-warga-btn" class="flex-1 bg-blue-600 text-white font-medium py-2 px-3 rounded-lg hover:bg-blue-700 text-sm flex items-center justify-center gap-1"><i data-lucide="plus" class="w-4 h-4"></i> Tambah Warga</button>
                 </div>
             </div>
 
@@ -101,189 +65,57 @@
                 <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
-                            <th scope="col" class="px-6 py-3">Nama Lengkap / NIK</th>
-                            <th scope="col" class="px-6 py-3">No. Rumah</th>
-                            <th scope="col" class="px-6 py-3">Status Hunian</th>
-                            <th scope="col" class="px-6 py-3">Status Warga</th>
-                            <th scope="col" class="px-6 py-3">Aksi</th>
+                            <th scope="col" class="px-6 py-3">Nama Lengkap / NIK</th><th scope="col" class="px-6 py-3">No. Rumah</th><th scope="col" class="px-6 py-3">Status Hunian</th><th scope="col" class="px-6 py-3">Status Warga</th><th scope="col" class="px-6 py-3">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                         <tr class="bg-white border-b">
-                            <td class="px-6 py-4">
-                                <div class="font-medium text-gray-900">Budi Santoso</div>
-                                <div class="text-xs text-gray-500">327601...</div>
-                            </td>
-                            <td class="px-6 py-4">Blok A No. 15</td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Milik Pribadi</span></td>
-                            <td class="px-6 py-4">Kepala Keluarga</td>
-                            <td class="px-6 py-4 flex gap-2">
-                                <button class="text-blue-600 hover:underline">Detail</button>
-                                <button class="text-yellow-600 hover:underline">Edit</button>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4">
-                                <div class="font-medium text-gray-900">Agus Setiawan</div>
-                                <div class="text-xs text-gray-500">327602...</div>
-                            </td>
-                            <td class="px-6 py-4">Blok B No. 08</td>
-                            <td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Kontrak</span></td>
-                            <td class="px-6 py-4">Kepala Keluarga</td>
-                             <td class="px-6 py-4 flex gap-2">
-                                <button class="text-blue-600 hover:underline">Detail</button>
-                                <button class="text-yellow-600 hover:underline">Edit</button>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4">
-                                <div class="font-medium text-gray-900">Siti Aminah</div>
-                                <div class="text-xs text-gray-500">327603...</div>
-                            </td>
-                            <td class="px-6 py-4">Blok A No. 15</td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Milik Pribadi</span></td>
-                            <td class="px-6 py-4">Anggota Keluarga</td>
-                            <td class="px-6 py-4 flex gap-2">
-                                <button class="text-blue-600 hover:underline">Detail</button>
-                                <button class="text-yellow-600 hover:underline">Edit</button>
-                            </td>
-                        </tr>
+                         <tr class="bg-white border-b"><td class="px-6 py-4"><div class="font-medium text-gray-900">Budi Santoso</div><div class="text-xs text-gray-500">327601...</div></td><td class="px-6 py-4">Blok A No. 15</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Milik Pribadi</span></td><td class="px-6 py-4">Kepala Keluarga</td><td class="px-6 py-4 flex gap-3"><button class="text-blue-600 hover:underline font-semibold">Detail</button><button class="text-yellow-600 hover:underline font-semibold">Edit</button></td></tr>
+                        <tr class="bg-white border-b"><td class="px-6 py-4"><div class="font-medium text-gray-900">Agus Setiawan</div><div class="text-xs text-gray-500">327602...</div></td><td class="px-6 py-4">Blok B No. 08</td><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Kontrak</span></td><td class="px-6 py-4">Kepala Keluarga</td><td class="px-6 py-4 flex gap-3"><button class="text-blue-600 hover:underline font-semibold">Detail</button><button class="text-yellow-600 hover:underline font-semibold">Edit</button></td></tr>
+                        <tr class="bg-white border-b"><td class="px-6 py-4"><div class="font-medium text-gray-900">Siti Aminah</div><div class="text-xs text-gray-500">327603...</div></td><td class="px-6 py-4">Blok A No. 15</td><td class="px-6 py-4"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Milik Pribadi</span></td><td class="px-6 py-4">Anggota Keluarga</td><td class="px-6 py-4 flex gap-3"><button class="text-blue-600 hover:underline font-semibold">Detail</button><button class="text-yellow-600 hover:underline font-semibold">Edit</button></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
+        <div class="h-24 lg:hidden"></div>
+    </main>
     
     <!-- Modal Tambah/Edit Warga -->
     <div id="warga-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10">
-                <h3 class="text-xl font-bold">Data Warga</h3>
-                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10 rounded-t-2xl"><h3 class="text-xl font-bold">Data Warga</h3><button id="close-modal-btn" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
             <form id="warga-form" class="p-6 space-y-6">
-                <!-- Identitas Warga -->
-                <div class="space-y-4">
-                    <h4 class="font-semibold border-b pb-2">Identitas Warga</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium">Nama Lengkap</label>
-                            <input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        </div>
-                         <div>
-                            <label class="block text-sm font-medium">NIK</label>
-                            <input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium">No. Kartu Keluarga</label>
-                            <input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium">Tanggal Lahir</label>
-                            <input type="date" class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        </div>
-                         <div>
-                            <label class="block text-sm font-medium">Status dalam Keluarga</label>
-                            <select class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                                <option>Kepala Keluarga</option>
-                                <option>Anggota Keluarga</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alamat & Domisili -->
-                 <div class="space-y-4">
-                    <h4 class="font-semibold border-b pb-2">Alamat & Domisili</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium">Nomor Rumah / Blok</label>
-                            <input type="text" class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        </div>
-                         <div>
-                            <label class="block text-sm font-medium">Status Domisili</label>
-                            <select class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                                <option>Tetap</option>
-                                <option>Kontrak</option>
-                                <option>Kos</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium">Status Kepemilikan Rumah</label>
-                            <select class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                                <option>Milik Pribadi</option>
-                                <option>Kontrakan</option>
-                                <option>Kos-kosan</option>
-                                <option>Rumah Kosong</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Kontak Darurat -->
-                <div class="space-y-4">
-                    <h4 class="font-semibold border-b pb-2">Kontak Darurat</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium">Nomor HP / WhatsApp</label>
-                            <input type="tel" class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium">Email</label>
-                            <input type="email" class="mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-4 flex justify-end gap-3">
-                    <button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Batal</button>
-                    <button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Simpan Data</button>
-                </div>
+                <!-- Identitas Warga --><div class="space-y-4"><h4 class="font-semibold border-b pb-2">Identitas Warga</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-sm font-medium mb-1">Nama Lengkap</label><input type="text" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div><div><label class="block text-sm font-medium mb-1">NIK</label><input type="text" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div><div><label class="block text-sm font-medium mb-1">No. Kartu Keluarga</label><input type="text" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div><div><label class="block text-sm font-medium mb-1">Tanggal Lahir</label><input type="date" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div><div><label class="block text-sm font-medium mb-1">Status dalam Keluarga</label><select class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><option>Kepala Keluarga</option><option>Anggota Keluarga</option></select></div></div></div>
+                <!-- Alamat & Domisili --><div class="space-y-4"><h4 class="font-semibold border-b pb-2">Alamat & Domisili</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-sm font-medium mb-1">Nomor Rumah / Blok</label><input type="text" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div><div><label class="block text-sm font-medium mb-1">Status Domisili</label><select class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><option>Tetap</option><option>Kontrak</option><option>Kos</option></select></div><div><label class="block text-sm font-medium mb-1">Status Kepemilikan Rumah</label><select class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"><option>Milik Pribadi</option><option>Kontrakan</option><option>Kos-kosan</option><option>Rumah Kosong</option></select></div></div></div>
+                <!-- Kontak Darurat --><div class="space-y-4"><h4 class="font-semibold border-b pb-2">Kontak Darurat</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-sm font-medium mb-1">Nomor HP / WhatsApp</label><input type="tel" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div><div><label class="block text-sm font-medium mb-1">Email</label><input type="email" class="mt-1 w-full border-gray-300 rounded-lg shadow-sm"></div></div></div>
+                <div class="pt-4 flex justify-end gap-3"><button type="button" id="batal-btn" class="bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-200">Batal</button><button type="submit" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700">Simpan Data</button></div>
             </form>
         </div>
     </div>
 
     <!-- Bottom Navigation (Mobile) -->
-    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-30">
-        <div class="grid grid-cols-5">
-             <a href="index.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="home" class="w-5 h-5"></i><span class="text-xs">Beranda</span></a>
-            <a href="pendataan-warga.html" class="flex flex-col items-center gap-1 py-2 text-blue-600"><i data-lucide="users" class="w-5 h-5"></i><span class="text-xs">Warga</span></a>
-            <a href="jadwal-ronda.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="shield" class="w-5 h-5"></i><span class="text-xs">Ronda</span></a>
-            <a href="marketplace.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="shopping-bag" class="w-5 h-5"></i><span class="text-xs">Market</span></a>
-            <a href="grup-chat.html" class="flex flex-col items-center gap-1 py-2 text-gray-500 hover:text-blue-600"><i data-lucide="message-circle" class="w-5 h-5"></i><span class="text-xs">Chat</span></a>
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 lg:hidden z-30">
+        <div class="grid grid-cols-5 h-20">
+             <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="home" class="w-6 h-6"></i><span class="text-xs font-medium">Beranda</span></a>
+            <a href="pendataan-warga.html" class="flex flex-col items-center justify-center gap-1 text-blue-600"><i data-lucide="users" class="w-6 h-6"></i><span class="text-xs font-medium">Warga</span></a>
+            <a href="laporan-keamanan.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="shield" class="w-6 h-6"></i><span class="text-xs font-medium">Lapor</span></a>
+            <a href="marketplace.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="shopping-bag" class="w-6 h-6"></i><span class="text-xs font-medium">Market</span></a>
+            <a href="grup-chat.html" class="flex flex-col items-center justify-center gap-1 text-gray-500 hover:text-blue-600"><i data-lucide="message-square" class="w-6 h-6"></i><span class="text-xs font-medium">Chat</span></a>
         </div>
     </div>
     <script>
         lucide.createIcons();
-
-        // Modal Warga
         const wargaModal = document.getElementById('warga-modal');
         const openModalBtn = document.getElementById('tambah-warga-btn');
         const closeModalBtn = wargaModal.querySelector('#close-modal-btn');
         const batalBtn = wargaModal.querySelector('#batal-btn');
         const wargaForm = document.getElementById('warga-form');
-
         function openWargaModal() { wargaModal.classList.remove('hidden'); }
         function closeWargaModal() { wargaModal.classList.add('hidden'); }
-
         openModalBtn.addEventListener('click', openWargaModal);
         closeModalBtn.addEventListener('click', closeWargaModal);
         batalBtn.addEventListener('click', closeWargaModal);
-
-        wargaModal.addEventListener('click', (event) => {
-            if (event.target === wargaModal) {
-                closeWargaModal();
-            }
-        });
-        
-        wargaForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Data warga berhasil disimpan!');
-            closeWargaModal();
-            wargaForm.reset();
-        });
-
+        wargaModal.addEventListener('click', (event) => { if (event.target === wargaModal) closeWargaModal(); });
+        wargaForm.addEventListener('submit', (e) => { e.preventDefault(); alert('Data warga berhasil disimpan!'); closeWargaModal(); wargaForm.reset(); });
     </script>
 </body>
 </html>
-
