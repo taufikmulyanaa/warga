@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Connect - Surat Otomatis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>:root { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50">
+     <nav class="bg-white shadow-sm sticky top-0 z-50">
+         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                 <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    </div>
+                </a>
+                <h2 class="font-semibold">Buat Surat</h2>
+                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="bg-white rounded-lg shadow-sm border p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Form Pengajuan Surat Pengantar</h3>
+            <form id="suratForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                    <input type="text" value="Budi Santoso" class="mt-1 block w-full p-2 border bg-gray-100 rounded-md" readonly>
+                </div>
+                 <div>
+                    <label class="block text-sm font-medium text-gray-700">NIK</label>
+                    <input type="text" value="327xxxxxxxxxxxxx" class="mt-1 block w-full p-2 border bg-gray-100 rounded-md" readonly>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="tempat_lahir" class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
+                        <input type="text" id="tempat_lahir" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                    </div>
+                    <div>
+                        <label for="tanggal_lahir" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
+                        <input type="date" id="tanggal_lahir" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                    </div>
+                </div>
+                 <div>
+                    <label for="jenis_kelamin" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                    <select id="jenis_kelamin" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option>Laki-laki</option>
+                        <option>Perempuan</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="agama" class="block text-sm font-medium text-gray-700">Agama</label>
+                    <select id="agama" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option>Islam</option>
+                        <option>Kristen Protestan</option>
+                        <option>Katolik</option>
+                        <option>Hindu</option>
+                        <option>Buddha</option>
+                        <option>Khonghucu</option>
+                    </select>
+                </div>
+                 <div>
+                    <label for="status_perkawinan" class="block text-sm font-medium text-gray-700">Status Perkawinan</label>
+                    <select id="status_perkawinan" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option>Belum Kawin</option>
+                        <option>Kawin</option>
+                        <option>Cerai Hidup</option>
+                        <option>Cerai Mati</option>
+                    </select>
+                </div>
+                 <div>
+                    <label for="pekerjaan" class="block text-sm font-medium text-gray-700">Pekerjaan</label>
+                    <input type="text" id="pekerjaan" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Contoh: Karyawan Swasta" required>
+                </div>
+                 <div>
+                    <label class="block text-sm font-medium text-gray-700">Alamat</label>
+                    <textarea rows="2" class="mt-1 block w-full p-2 border bg-gray-100 rounded-md" readonly>Blok A No. 15, Kelurahan Depok, RT 003/RW 012</textarea>
+                </div>
+                <hr class="my-4">
+                <div>
+                    <label for="jenis" class="block text-sm font-medium text-gray-700">Jenis Surat</label>
+                    <select id="jenis" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option>Surat Keterangan Domisili</option>
+                        <option>Surat Pengantar Pembuatan KTP</option>
+                        <option>Surat Pengantar Pembuatan KK</option>
+                        <option>Surat Pengantar SKCK</option>
+                    </select>
+                </div>
+                 <div>
+                    <label for="keperluan" class="block text-sm font-medium text-gray-700">Keperluan</label>
+                    <textarea id="keperluan" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Contoh: Untuk melamar pekerjaan"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold flex items-center justify-center gap-2">
+                    <i data-lucide="download"></i>
+                    Ajukan & Cetak Surat
+                </button>
+            </form>
+        </div>
+    </main>
+    <div class="h-16 lg:hidden"></div>
+    <script>
+        lucide.createIcons();
+        document.getElementById('suratForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pengajuan berhasil! Surat akan segera diproses dan dapat diunduh.');
+        });
+    </script>
+</body>
+</html>
+

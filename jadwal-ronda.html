@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Connect - Jadwal Ronda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                 <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    </div>
+                </a>
+                <h2 class="font-semibold">Jadwal Ronda</h2>
+                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Jadwal Anda Berikutnya -->
+        <div class="bg-blue-600 text-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm opacity-80">Jadwal Ronda Anda Berikutnya</p>
+                    <h3 class="text-2xl font-bold mt-1">Selasa, 16 September 2025</h3>
+                    <p class="text-sm mt-1">Pukul 23:00 - 03:00 WIB</p>
+                </div>
+                <div class="text-right">
+                     <p class="text-sm opacity-80 mb-1">Tim Anda (Tim B)</p>
+                     <div class="flex -space-x-2 overflow-hidden">
+                        <div class="inline-block h-8 w-8 rounded-full ring-2 ring-blue-500 bg-gray-200 flex items-center justify-center text-blue-800 font-bold text-xs">BS</div>
+                        <div class="inline-block h-8 w-8 rounded-full ring-2 ring-blue-500 bg-gray-200 flex items-center justify-center text-blue-800 font-bold text-xs">AS</div>
+                        <div class="inline-block h-8 w-8 rounded-full ring-2 ring-blue-500 bg-gray-200 flex items-center justify-center text-blue-800 font-bold text-xs">RH</div>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jadwal Lengkap Minggu Ini -->
+        <div class="bg-white rounded-lg shadow-sm border">
+            <div class="p-4 border-b">
+                 <h3 class="text-lg font-bold text-gray-800">Jadwal Ronda Minggu Ini (15 - 21 September 2025)</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hari & Tanggal</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tim</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Petugas Jaga</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4"><div class="font-semibold">Senin, 15 Sep</div></td>
+                            <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Tim A</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Joko Susilo, Ahmad, Eko Prasetyo</td>
+                            <td class="px-6 py-4">-</td>
+                        </tr>
+                        <tr class="bg-blue-50">
+                            <td class="px-6 py-4"><div class="font-semibold text-blue-700">Selasa, 16 Sep (Jadwal Anda)</div></td>
+                            <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Tim B</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600"><span class="font-bold text-blue-800">Budi Santoso</span>, Agus Salim, Rahmat Hidayat</td>
+                            <td class="px-6 py-4">
+                                <button id="tukar-jadwal-btn" class="text-sm font-medium text-blue-600 hover:text-blue-800">Ajukan Tukar</button>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td class="px-6 py-4"><div class="font-semibold">Rabu, 17 Sep</div></td>
+                            <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Tim C</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Slamet Riyadi, Heri, Udin</td>
+                            <td class="px-6 py-4">-</td>
+                        </tr>
+                         <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal Ajukan Tukar Jadwal -->
+    <div id="modal-tukar" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold">Ajukan Tukar Jadwal</h3>
+                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <form class="p-6 space-y-4">
+                 <div>
+                    <p class="text-sm text-gray-700">Jadwal Anda: <span class="font-semibold">Selasa, 16 September 2025</span></p>
+                </div>
+                <div>
+                    <label for="pengganti" class="block text-sm font-medium text-gray-700">Pilih Warga Pengganti</label>
+                    <select id="pengganti" name="pengganti" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                        <option>Joko Susilo (Tim A - Senin)</option>
+                        <option>Slamet Riyadi (Tim C - Rabu)</option>
+                        <option>Heri (Tim C - Rabu)</option>
+                        <option>Dan lain-lain</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="alasan" class="block text-sm font-medium text-gray-700">Alasan (Opsional)</label>
+                    <textarea id="alasan" name="alasan" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Contoh: Ada keperluan keluarga mendadak..."></textarea>
+                </div>
+                <div class="pt-4 flex justify-end">
+                    <button type="button" id="batal-btn" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Batal</button>
+                    <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Kirim Permintaan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        const modal = document.getElementById('modal-tukar');
+        const openModalBtn = document.getElementById('tukar-jadwal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const batalBtn = document.getElementById('batal-btn');
+
+        function openModal() { modal.classList.remove('hidden'); }
+        function closeModal() { modal.classList.add('hidden'); }
+
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        batalBtn.addEventListener('click', closeModal);
+        
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        modal.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Permintaan tukar jadwal berhasil dikirim! Menunggu konfirmasi dari warga pengganti.');
+            closeModal();
+        });
+    </script>
+</body>
+</html>
+

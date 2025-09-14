@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Connect - Laporan Keuangan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        .tab-active {
+            border-color: #3b82f6;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                 <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    </div>
+                </a>
+                <h2 class="font-semibold">Laporan Keuangan RT</h2>
+                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Filter and Summary -->
+        <div class="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+             <div>
+                <label for="bulan" class="text-sm font-medium text-gray-700">Pilih Bulan:</label>
+                <select id="bulan" name="bulan" class="mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                    <option>September 2025</option>
+                    <option>Agustus 2025</option>
+                    <option>Juli 2025</option>
+                </select>
+            </div>
+            <button class="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold text-sm">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                Download Laporan
+            </button>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white border p-4 rounded-lg">
+                <p class="text-sm text-gray-500">Saldo Awal Bulan</p>
+                <p class="text-xl font-bold text-gray-800">Rp 2.500.000</p>
+            </div>
+            <div class="bg-white border p-4 rounded-lg">
+                <p class="text-sm text-gray-500">Total Pemasukan</p>
+                <p class="text-xl font-bold text-green-600">+ Rp 500.000</p>
+            </div>
+            <div class="bg-white border p-4 rounded-lg">
+                <p class="text-sm text-gray-500">Total Pengeluaran</p>
+                <p class="text-xl font-bold text-red-600">- Rp 150.000</p>
+            </div>
+            <div class="bg-blue-600 text-white p-4 rounded-lg">
+                <p class="text-sm text-blue-200">Saldo Akhir</p>
+                <p class="text-xl font-bold">Rp 2.850.000</p>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="mb-6">
+            <div class="border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                    <button id="tab-pemasukan" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Rincian Pemasukan
+                    </button>
+                    <button id="tab-pengeluaran" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Rincian Pengeluaran
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Konten Pemasukan -->
+        <div id="konten-pemasukan" class="bg-white rounded-lg shadow-sm border overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
+                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5 Sep 2025</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Iuran Keamanan & Kebersihan (40 KK)</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 text-right font-semibold">+ Rp 400.000</td>
+                    </tr>
+                     <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10 Sep 2025</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sumbangan Acara 17an</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 text-right font-semibold">+ Rp 100.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Konten Pengeluaran -->
+        <div id="konten-pengeluaran" class="hidden bg-white rounded-lg shadow-sm border overflow-hidden">
+             <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
+                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8 Sep 2025</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Pembelian Lampu Jalan (2 unit)</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 text-right font-semibold">- Rp 100.000</td>
+                    </tr>
+                     <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15 Sep 2025</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Konsumsi Kerja Bakti</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 text-right font-semibold">- Rp 50.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        
+        // Tab functionality
+        const tabPemasukan = document.getElementById('tab-pemasukan');
+        const tabPengeluaran = document.getElementById('tab-pengeluaran');
+        const kontenPemasukan = document.getElementById('konten-pemasukan');
+        const kontenPengeluaran = document.getElementById('konten-pengeluaran');
+
+        tabPemasukan.addEventListener('click', () => {
+            tabPemasukan.classList.add('tab-active');
+            tabPengeluaran.classList.remove('tab-active');
+            kontenPemasukan.classList.remove('hidden');
+            kontenPengeluaran.classList.add('hidden');
+        });
+
+        tabPengeluaran.addEventListener('click', () => {
+            tabPengeluaran.classList.add('tab-active');
+            tabPemasukan.classList.remove('tab-active');
+            kontenPengeluaran.classList.remove('hidden');
+            kontenPemasukan.classList.add('hidden');
+        });
+
+        // Download button
+        document.querySelector('button.bg-blue-600').addEventListener('click', () => {
+            alert('Fitur download laporan akan segera tersedia!');
+        });
+    </script>
+</body>
+</html>
+

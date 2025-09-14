@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Connect - CCTV Lingkungan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                 <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    </div>
+                </a>
+                <h2 class="font-semibold">Akses CCTV</h2>
+                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-lg mb-6" role="alert">
+          <p class="font-bold">Perhatian</p>
+          <p class="text-sm">Fitur ini hanya untuk warga terverifikasi. Dilarang menyebarkan rekaman tanpa izin demi menjaga privasi bersama.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main CCTV View -->
+            <div class="lg:col-span-2 bg-white rounded-lg shadow-sm border">
+                <div class="aspect-video bg-black flex items-center justify-center rounded-t-lg relative">
+                    <img id="main-cctv-feed" src="https://placehold.co/1280x720/000000/FFFFFF?text=Gerbang+Utama" alt="CCTV Feed" class="w-full h-full object-cover rounded-t-lg">
+                    <div class="absolute top-2 left-2 flex items-center gap-2">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                        </span>
+                        <span class="text-white font-semibold text-sm">LIVE</span>
+                    </div>
+                    <div id="main-cctv-timestamp" class="absolute bottom-2 right-2 text-white text-xs bg-black bg-opacity-50 px-2 py-1 rounded">
+                        14/09/2025 07:28:15
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 id="main-cctv-title" class="font-bold text-xl">CCTV Gerbang Utama</h3>
+                    <p class="text-sm text-gray-600">Status: <span id="main-cctv-status" class="text-green-600 font-semibold">Online</span></p>
+                </div>
+            </div>
+
+            <!-- CCTV List -->
+            <div class="lg:col-span-1 bg-white rounded-lg shadow-sm border">
+                <div class="p-4 border-b">
+                    <h3 class="font-bold">Pilih Kamera</h3>
+                </div>
+                <div id="cctv-list" class="p-2 space-y-2 max-h-[60vh] overflow-y-auto">
+                    <!-- CCTV list will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const cctvData = [
+            { id: 1, title: 'CCTV Gerbang Utama', status: 'Online', imageUrl: 'https://placehold.co/1280x720/000000/FFFFFF?text=Gerbang+Utama' },
+            { id: 2, title: 'CCTV Taman Bermain', status: 'Online', imageUrl: 'https://placehold.co/1280x720/1a202c/FFFFFF?text=Taman+Bermain' },
+            { id: 3, title: 'CCTV Pos Ronda', status: 'Offline', imageUrl: 'https://placehold.co/1280x720/4a5568/FFFFFF?text=Offline' },
+            { id: 4, title: 'CCTV Jalan Blok B', status: 'Online', imageUrl: 'https://placehold.co/1280x720/2d3748/FFFFFF?text=Jalan+Blok+B' },
+        ];
+
+        const mainFeed = document.getElementById('main-cctv-feed');
+        const mainTitle = document.getElementById('main-cctv-title');
+        const mainStatus = document.getElementById('main-cctv-status');
+        const mainTimestamp = document.getElementById('main-cctv-timestamp');
+        const cctvListContainer = document.getElementById('cctv-list');
+        
+        let activeCctvId = 1;
+
+        function updateTimestamp() {
+            const now = new Date();
+            const date = now.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            const time = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            mainTimestamp.textContent = `${date} ${time.replace(/\./g, ':')}`;
+        }
+
+        function switchCctv(cctv) {
+            activeCctvId = cctv.id;
+            mainTitle.textContent = cctv.title;
+            mainFeed.src = cctv.imageUrl;
+            
+            if (cctv.status === 'Online') {
+                mainStatus.textContent = 'Online';
+                mainStatus.className = 'text-green-600 font-semibold';
+                mainFeed.style.filter = 'none';
+                mainTimestamp.style.display = 'block';
+
+            } else {
+                mainStatus.textContent = 'Offline';
+                mainStatus.className = 'text-red-600 font-semibold';
+                mainFeed.style.filter = 'grayscale(100%)';
+                mainTimestamp.style.display = 'none';
+            }
+            renderCctvList();
+        }
+
+        function renderCctvList() {
+            cctvListContainer.innerHTML = '';
+            cctvData.forEach(cctv => {
+                const isActive = cctv.id === activeCctvId;
+                const activeClasses = isActive ? 'bg-blue-50 border-blue-500' : 'border-transparent';
+                
+                const cctvItem = document.createElement('div');
+                cctvItem.className = `p-2 rounded-lg cursor-pointer hover:bg-slate-100 border-l-4 ${activeClasses} flex items-center gap-3`;
+                cctvItem.onclick = () => switchCctv(cctv);
+
+                const statusColor = cctv.status === 'Online' ? 'bg-green-500' : 'bg-red-500';
+                
+                cctvItem.innerHTML = `
+                    <div class="w-24 h-14 bg-black rounded-md flex-shrink-0">
+                        <img src="${cctv.imageUrl}" class="w-full h-full object-cover rounded-md" alt="thumbnail ${cctv.title}">
+                    </div>
+                    <div class="flex-grow">
+                        <p class="font-semibold text-sm text-gray-800">${cctv.title}</p>
+                        <div class="flex items-center gap-1.5 mt-1">
+                            <span class="w-2 h-2 ${statusColor} rounded-full"></span>
+                            <p class="text-xs text-gray-500">${cctv.status}</p>
+                        </div>
+                    </div>
+                `;
+                cctvListContainer.appendChild(cctvItem);
+            });
+        }
+        
+        // Initial load
+        switchCctv(cctvData[0]);
+        setInterval(updateTimestamp, 1000);
+
+    </script>
+</body>
+</html>
+

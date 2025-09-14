@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Connect - Peminjaman Barang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        .tab-active {
+            border-color: #3b82f6;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                 <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                    </div>
+                </a>
+                <h2 class="font-semibold">Peminjaman Barang</h2>
+                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Tabs -->
+        <div class="mb-6">
+            <div class="border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                    <button id="tab-tersedia" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Barang Tersedia
+                    </button>
+                    <button id="tab-riwayat" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Riwayat Peminjaman Saya
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Konten Barang Tersedia -->
+        <div id="konten-tersedia">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item Card 1 -->
+                <div class="bg-white rounded-lg shadow-sm border flex flex-col">
+                    <div class="aspect-video bg-gray-100 rounded-t-lg flex items-center justify-center p-4">
+                        <img src="https://placehold.co/200x150/E2E8F0/475569?text=Tenda" alt="Tenda" class="max-h-full">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-bold text-gray-800">Tenda Lipat (3x3m)</h3>
+                        <p class="text-sm text-gray-500 mt-1">Stok Tersedia: <span class="font-semibold text-green-600">2</span></p>
+                        <button class="pinjam-btn mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold text-sm">
+                            Pinjam
+                        </button>
+                    </div>
+                </div>
+                <!-- Item Card 2 -->
+                <div class="bg-white rounded-lg shadow-sm border flex flex-col">
+                    <div class="aspect-video bg-gray-100 rounded-t-lg flex items-center justify-center p-4">
+                         <img src="https://placehold.co/200x150/E2E8F0/475569?text=Kursi" alt="Kursi" class="max-h-full">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-bold text-gray-800">Kursi Plastik</h3>
+                        <p class="text-sm text-gray-500 mt-1">Stok Tersedia: <span class="font-semibold text-green-600">35</span></p>
+                        <button class="pinjam-btn mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold text-sm">
+                            Pinjam
+                        </button>
+                    </div>
+                </div>
+                <!-- Item Card 3 -->
+                <div class="bg-white rounded-lg shadow-sm border flex flex-col">
+                    <div class="aspect-video bg-gray-100 rounded-t-lg flex items-center justify-center p-4">
+                         <img src="https://placehold.co/200x150/E2E8F0/475569?text=Sound" alt="Sound System" class="max-h-full">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-bold text-gray-800">Sound System Portable</h3>
+                        <p class="text-sm text-gray-500 mt-1">Stok Tersedia: <span class="font-semibold text-green-600">1</span></p>
+                        <button class="pinjam-btn mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold text-sm">
+                            Pinjam
+                        </button>
+                    </div>
+                </div>
+                <!-- Item Card 4 (Habis) -->
+                <div class="bg-white rounded-lg shadow-sm border flex flex-col opacity-60">
+                    <div class="aspect-video bg-gray-100 rounded-t-lg flex items-center justify-center p-4">
+                        <img src="https://placehold.co/200x150/E2E8F0/475569?text=Proyektor" alt="Proyektor" class="max-h-full">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-bold text-gray-800">Proyektor & Layar</h3>
+                        <p class="text-sm text-gray-500 mt-1">Stok Tersedia: <span class="font-semibold text-red-600">0</span></p>
+                        <button disabled class="mt-4 w-full bg-gray-300 text-gray-500 py-2 px-4 rounded-lg font-semibold text-sm cursor-not-allowed">
+                            Stok Habis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konten Riwayat Peminjaman -->
+        <div id="konten-riwayat" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm border">
+                <ul role="list" class="divide-y divide-gray-200">
+                    <li class="p-4 flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-gray-800">2x Tenda Lipat</p>
+                            <p class="text-sm text-gray-500">10 Agu 2025 - 12 Agu 2025</p>
+                        </div>
+                        <span class="text-xs font-medium bg-green-100 text-green-800 px-2 py-1 rounded-full">Sudah Dikembalikan</span>
+                    </li>
+                    <li class="p-4 flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-gray-800">20x Kursi Plastik</p>
+                            <p class="text-sm text-gray-500">15 Sep 2025 - 17 Sep 2025</p>
+                        </div>
+                        <span class="text-xs font-medium bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Dipinjam</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Peminjaman -->
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold">Form Peminjaman</h3>
+                <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <form>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Jumlah</label>
+                        <input type="number" value="1" min="1" class="w-full p-2 border rounded-lg">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal Mulai Pinjam</label>
+                        <input type="date" class="w-full p-2 border rounded-lg">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal Selesai</label>
+                        <input type="date" class="w-full p-2 border rounded-lg">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-semibold">
+                        Ajukan Peminjaman
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="h-16 lg:hidden"></div>
+
+    <script>
+        lucide.createIcons();
+
+        // Tab functionality
+        const tabTersedia = document.getElementById('tab-tersedia');
+        const tabRiwayat = document.getElementById('tab-riwayat');
+        const kontenTersedia = document.getElementById('konten-tersedia');
+        const kontenRiwayat = document.getElementById('konten-riwayat');
+
+        tabTersedia.addEventListener('click', () => {
+            tabTersedia.classList.add('tab-active');
+            tabRiwayat.classList.remove('tab-active');
+            kontenTersedia.classList.remove('hidden');
+            kontenRiwayat.classList.add('hidden');
+        });
+
+        tabRiwayat.addEventListener('click', () => {
+            tabRiwayat.classList.add('tab-active');
+            tabTersedia.classList.remove('tab-active');
+            kontenRiwayat.classList.remove('hidden');
+            kontenTersedia.classList.add('hidden');
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const pinjamBtns = document.querySelectorAll('.pinjam-btn');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        pinjamBtns.forEach(btn => btn.addEventListener('click', openModal));
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        
+        modal.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Pengajuan peminjaman berhasil! Silakan hubungi pengurus RT untuk konfirmasi.');
+            closeModal();
+        });
+
+    </script>
+</body>
+</html>
+

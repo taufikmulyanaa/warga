@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Connect - Grup Chat RT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>:root { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 flex flex-col h-screen">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                 <a href="index.html" class="p-2 text-gray-500 hover:text-gray-700">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </a>
+                <div class="text-center">
+                    <h2 class="font-semibold">Grup Info RT 003</h2>
+                    <p class="text-xs text-gray-500">45 anggota</p>
+                </div>
+                 <button class="p-2 text-gray-500 hover:text-gray-700">
+                    <i data-lucide="more-vertical" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main class="flex-1 overflow-y-auto p-4 space-y-4">
+        <!-- Pesan Masuk -->
+        <div class="flex items-end gap-2">
+            <img src="https://placehold.co/40x40/E2E8F0/475569?text=RT" class="w-8 h-8 rounded-full">
+            <div class="p-3 bg-white rounded-lg rounded-bl-none shadow-sm max-w-xs">
+                <p class="font-semibold text-sm text-blue-600">Ketua RT</p>
+                <p class="text-sm">Assalamualaikum wr. wb. Bapak/Ibu, jangan lupa besok pagi ada kerja bakti jam 7 ya.</p>
+                <p class="text-xs text-right text-gray-400 mt-1">08:10</p>
+            </div>
+        </div>
+        <!-- Pesan Keluar -->
+        <div class="flex items-end gap-2 justify-end">
+            <div class="p-3 bg-blue-500 text-white rounded-lg rounded-br-none shadow-sm max-w-xs">
+                <p class="text-sm">Siap, Pak RT. Terima kasih infonya.</p>
+                <p class="text-xs text-right text-blue-200 mt-1">08:12</p>
+            </div>
+        </div>
+    </main>
+    <footer class="p-2 bg-white border-t">
+        <div class="flex items-center gap-2">
+            <input type="text" placeholder="Ketik pesan..." class="w-full p-2 border rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700">
+                <i data-lucide="send"></i>
+            </button>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
